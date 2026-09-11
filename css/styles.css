@@ -46,10 +46,23 @@
   --font-body: "Coolvetica", "Forma DJR Arabic", sans-serif;
 }
 
-/* One type scale for the whole app. It tracks the panel's width but is capped
-   by its height, so a shorter or wider tablet scales down instead of
-   overflowing. Everything dimensional is in rem or viewport units. */
-html { font-size: min(3.68vw, 2.1dvh); }
+/* ---------- The stage ----------
+   The app is designed for a 9:16 portrait panel. On anything wider — a desktop
+   browser — it is letterboxed into a portrait column and centred, rather than
+   being stretched. Every width in the app measures against --stage-w, not the
+   viewport, so the layout keeps its proportions at any window size. On the
+   kiosk itself the two are identical and nothing changes. */
+:root {
+  --stage-w: min(100vw, calc(100dvh * 9 / 16));
+  --stage-h: 100dvh;
+  --stage-inset: calc((100vw - var(--stage-w)) / 2);
+}
+
+/* One type scale for the whole app: it tracks the stage's width but is capped
+   by its height, so a shorter window scales down instead of overflowing. */
+html {
+  font-size: min(calc(var(--stage-w) * 0.0368), calc(var(--stage-h) * 0.021));
+}
 
 
 /* ---------- Reset & kiosk hardening ---------- */
@@ -115,11 +128,13 @@ button {
 body[data-screen="intro"] #screen-intro { display: flex; }
 body[data-screen="s1"]    #screen-01    { display: grid; }
 body[data-screen="s2"]    #screen-02    { display: grid; }
+body[data-screen="s1"]    { background: var(--cream); }
 body[data-screen="s3"]    #screen-03    { display: grid; }
 
 .screen {
   position: relative;
-  width: 100%;
+  width: var(--stage-w);
+  margin-inline: auto;
   height: 100dvh;
   overflow: hidden;
 }
@@ -133,7 +148,9 @@ body[data-screen="s3"]    #screen-03    { display: grid; }
   display: none;
   place-items: center;
   inset-block-start: 1.4rem;
-  inset-inline-start: 1.4rem;   /* logical, so it mirrors in RTL */
+  /* Logical, so it mirrors in RTL. The inset keeps it on the column
+     rather than out at the window edge when letterboxed. */
+  inset-inline-start: calc(var(--stage-inset) + 1.4rem);
   width: 2.6rem;
   height: 2.6rem;
   color: var(--deep-green);
@@ -176,7 +193,7 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
    own proportions, so replacing a file with a differently-cropped export only
    needs its ratio updated here. */
 .intro__text {
-  width: 90vw;
+  width: calc(var(--stage-w) * 0.9);
   aspect-ratio: 32767 / 1260;
 }
 
@@ -187,7 +204,7 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
 }
 
 .intro__icon {
-  width: 22vw;
+  width: calc(var(--stage-w) * 0.22);
   aspect-ratio: 1;
 }
 
@@ -223,7 +240,7 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
 }
 
 .intro__logo {
-  width: 70vw;
+  width: calc(var(--stage-w) * 0.7);
   aspect-ratio: 17241 / 5129;
 }
 
