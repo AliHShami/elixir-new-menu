@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>ELIXIR — Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#163118">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body data-screen="intro">
+
+<!-- Announces the current screen on every navigation. -->
+<p id="live-region" class="sr-only" role="status" aria-live="polite"></p>
+
+<!-- Fixed chrome. Step screens only — the intro has nowhere to go back to. -->
+<button id="back-btn" class="back-btn" type="button" data-str-aria="back">
+  <svg class="back-btn__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.75"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+
+<!-- ─────────────────────────  INTRO  ─────────────────────────
+     Three anchored zones on one non-scrolling portrait screen.
+     Tint paths stay relative to this document; app.js resolves them before
+     handing them to the CSS mask — see tint() in js/app.js for why.
+-->
+<section id="screen-intro" class="screen intro">
+
+  <!-- The whole screen is the tap target; this transparent button carries it. -->
+  <button id="intro-hit" class="intro__hit" type="button" data-str-aria="start"></button>
+
+  <div class="intro__text tinted" role="img" data-str-aria="brand"
+       data-tint-src="assets/brand/elixir-text-white.png" data-tint="#586C30"></div>
+
+  <div class="intro__centre">
+    <div class="intro__icon tinted" aria-hidden="true"
+         data-tint-src="assets/brand/elixir-icon-white.png" data-tint="#C9BE7B"></div>
+
+    <p class="intro__tagline">
+      <span data-str="tagline"></span>
+      <strong data-str="tagline_em"></strong>
+    </p>
+
+    <p class="intro__start" data-str="start"></p>
+  </div>
+
+  <div class="intro__logo tinted" aria-hidden="true"
+       data-tint-src="assets/brand/elixir-logo-white.png" data-tint="#586C30"></div>
+
+</section>
+
+
+<!-- ────────────────  01 — PICK YOUR FUNCTION  ────────────────
+     One full page read as two halves: the numeral and heading above,
+     the category grid below.
+-->
+<section id="screen-01" class="screen step step--01" aria-labelledby="s1-head">
+
+  <div class="step__top">
+    <div class="step__num" aria-hidden="true">01</div>
+    <div class="step__head">
+      <h1 id="s1-head" class="step__title" data-str="s1_head"></h1>
+      <p class="step__sub" data-str="s1_sub"></p>
+    </div>
+  </div>
+
+  <div id="category-grid" class="cat-grid"></div>
+
+</section>
+
+
+<!-- ──────────────────  02 — PICK YOUR POUR  ──────────────────
+     Same two-zone structure as 01: numeral and heading above, grid below.
+-->
+<section id="screen-02" class="screen step step--02" aria-labelledby="s2-head">
+
+  <div class="step__top">
+    <div class="step__num" aria-hidden="true">02</div>
+    <div class="step__head">
+      <h1 id="s2-head" class="step__title" data-str="s2_head"></h1>
+      <p class="step__sub" data-str="s2_sub"></p>
+    </div>
+  </div>
+
+  <div class="step__zone">
+    <div id="format-grid" class="card-grid"></div>
+  </div>
+
+</section>
+
+
+<!-- ─────────────────  03 — PICK YOUR TASTE  ──────────────────
+     The end of the journey. Cards are not tappable.
+-->
+<section id="screen-03" class="screen step step--03" aria-labelledby="s3-head">
+
+  <div class="step__top">
+    <div class="step__num" aria-hidden="true">03</div>
+    <div class="step__head">
+      <h1 id="s3-head" class="step__title" data-str="s3_head"></h1>
+      <p class="step__sub" data-str="s3_sub"></p>
+    </div>
+  </div>
+
+  <div class="step__zone">
+    <div id="drink-grid" class="card-grid"></div>
+    <button id="restart-btn" class="restart-btn" type="button" data-str="restart"></button>
+  </div>
+
+</section>
+
+
+<script src="js/app.js"></script>
+</body>
+</html>

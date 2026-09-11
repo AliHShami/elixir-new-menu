@@ -1,0 +1,735 @@
+{
+  "formats": {
+    "Mojito": {
+      "name_en": "Mojito",
+      "name_ar": "موهيتو",
+      "color": "#586C30",
+      "image": "assets/formats/mojito.png"
+    },
+    "Smoothie": {
+      "name_en": "Smoothie",
+      "name_ar": "سموذي",
+      "color": "#A51D47",
+      "image": "assets/formats/smoothie.png"
+    },
+    "Iced Tea": {
+      "name_en": "Iced Tea",
+      "name_ar": "آيس تي",
+      "color": "#BD4800",
+      "image": "assets/formats/iced-tea.png"
+    },
+    "In Cream": {
+      "name_en": "In Cream",
+      "name_ar": "إن كريم",
+      "color": "#B87CA3",
+      "image": "assets/formats/in-cream.png"
+    },
+    "Hot": {
+      "name_en": "Hot",
+      "name_ar": "ساخن",
+      "color": "#8A5A2B",
+      "image": "assets/formats/hot.png"
+    },
+    "Matcha": {
+      "name_en": "Matcha",
+      "name_ar": "ماتشا",
+      "color": "#6E8039",
+      "image": "assets/formats/matcha.png"
+    },
+    "Frappe": {
+      "name_en": "Frappe",
+      "name_ar": "فرابيه",
+      "color": "#7A4E2D",
+      "image": "assets/formats/frappe.png"
+    },
+    "Shots": {
+      "name_en": "Shots",
+      "name_ar": "شوت",
+      "color": "#1C3D1E",
+      "image": "assets/formats/shots.png"
+    },
+    "Hot Coffee": {
+      "name_en": "Hot Coffee",
+      "name_ar": "قهوة ساخنة",
+      "color": "#5C3A21",
+      "image": "assets/formats/coffee.png"
+    },
+    "Iced Coffee": {
+      "name_en": "Iced Coffee",
+      "name_ar": "قهوة باردة",
+      "color": "#C08A5E",
+      "image": "assets/formats/coffee.png"
+    }
+  },
+  "elixir_categories": [
+    {
+      "name_en": "Performance",
+      "name_ar": "دفعة",
+      "slug": "performance",
+      "color": "#E08D3C",
+      "icon": "assets/brand/elixir-icon-white.png",
+      "description_en": "Daily energy support",
+      "description_ar": "يدعم طاقتك خلال يومك",
+      "herbs": [
+        {
+          "name_en": "Ginseng",
+          "name_ar": "جذر النشاط"
+        },
+        {
+          "name_en": "Maca",
+          "name_ar": "نبض الحيوية"
+        },
+        {
+          "name_en": "Tongkat Ali",
+          "name_ar": "قوة الجذر"
+        }
+      ],
+      "drinks": {
+        "Mojito": [
+          {
+            "name_en": "Cinnamon Raspberry Mojito",
+            "name_ar": "رازبيري قرفة موهيتو",
+            "price": 3,
+            "color": "#E23E63"
+          }
+        ],
+        "Frappe": [
+          {
+            "name_en": "Dates Frappe",
+            "name_ar": "تمر فرابيه",
+            "price": 4,
+            "color": "#C08A4A"
+          },
+          {
+            "name_en": "After Eight Frappe",
+            "name_ar": "افتر ايت فرابيه",
+            "price": 4,
+            "color": "#3FA06B"
+          },
+          {
+            "name_en": "Cardamom Frappe",
+            "name_ar": "هيل فرابيه",
+            "price": 4,
+            "color": "#C9AE5E"
+          }
+        ],
+        "Iced Tea": [
+          {
+            "name_en": "Moringa Tea Peach",
+            "name_ar": "مورينجا تي خوخ",
+            "price": 3,
+            "color": "#FBA26B"
+          }
+        ],
+        "Hot": [
+          {
+            "name_en": "Cashew Latte",
+            "name_ar": "كاجو لاتيه",
+            "price": 3.75,
+            "color": "#D9B27C"
+          },
+          {
+            "name_en": "Dates Latte",
+            "name_ar": "تمر لاتيه",
+            "price": 3.75,
+            "color": "#C08A4A"
+          },
+          {
+            "name_en": "Pistachio Latte",
+            "name_ar": "فستق لاتيه",
+            "price": 3.75,
+            "color": "#A8CC6B"
+          },
+          {
+            "name_en": "Bounty Latte",
+            "name_ar": "باونتي لاتيه",
+            "price": 3.75,
+            "color": "#8B6A4F"
+          },
+          {
+            "name_en": "Herbs Berries",
+            "name_ar": "أعشاب التوت",
+            "price": 3.75,
+            "color": "#9A4FA8"
+          }
+        ],
+        "In Cream": [
+          {
+            "name_en": "Blueberry Cream",
+            "name_ar": "بلوبيري كريم",
+            "price": 4,
+            "color": "#6A57C4"
+          },
+          {
+            "name_en": "Mix Berry Cream",
+            "name_ar": "مكس بيري كريم",
+            "price": 4,
+            "color": "#9A4FA8"
+          }
+        ],
+        "Matcha": [
+          {
+            "name_en": "Cashew Matcha Latte",
+            "name_ar": "كاجو ماتشا لاتيه",
+            "price": 4.25,
+            "color": "#7FB03C"
+          }
+        ],
+        "Shots": [
+          {
+            "name_en": "Performance Shot",
+            "name_ar": " شوت جذر النشاط",
+            "price": 2.5,
+            "color": "#E8A317"
+          }
+        ]
+      }
+    },
+    {
+      "name_en": "Relaxation & Sleep",
+      "name_ar": "سكون",
+      "slug": "relaxation",
+      "color": "#B8A3D9",
+      "icon": "assets/brand/elixir-icon-white.png",
+      "description_en": "Evening calm ritual",
+      "description_ar": "لحظات استرخاء لنهاية يومك",
+      "herbs": [
+        {
+          "name_en": "Valerian",
+          "name_ar": "ناردين"
+        }
+      ],
+      "drinks": {
+        "Mojito": [
+          {
+            "name_en": "Zaitman Raspberry Mojito",
+            "name_ar": "رازبيري زعيتمان موهيتو",
+            "price": 3,
+            "color": "#E23E63"
+          },
+          {
+            "name_en": "Melissa Passion Fruit Mojito",
+            "name_ar": "باشن فروت مليسة موهيتو",
+            "price": 3,
+            "color": "#F8C01F"
+          }
+        ],
+        "Smoothie": [
+          {
+            "name_en": "Zaitman Raspberry Smoothie",
+            "name_ar": "رازبيري زعيتمان سموذي",
+            "price": 3.75,
+            "color": "#E23E63"
+          },
+          {
+            "name_en": "Melissa Passion Fruit Smoothie",
+            "name_ar": "باشن فروت مليسة سموذي",
+            "price": 3.75,
+            "color": "#F8C01F"
+          }
+        ],
+        "Iced Tea": [
+          {
+            "name_en": "Moringa Tea Passion",
+            "name_ar": "مورينجا تي باشن",
+            "price": 3,
+            "color": "#F8C01F"
+          },
+          {
+            "name_en": "Green Tea Lychee",
+            "name_ar": "جرين تي ليتشي",
+            "price": 3,
+            "color": "#F49AB0"
+          }
+        ],
+        "Hot": [
+          {
+            "name_en": "Herbs Melissa",
+            "name_ar": "أعشاب المليسة",
+            "price": 3.25,
+            "color": "#6FAE5A"
+          },
+          {
+            "name_en": "Herbs Mango Passion",
+            "name_ar": "أعشاب المنجا والباشن",
+            "price": 3.25,
+            "color": "#F8C01F"
+          }
+        ],
+        "In Cream": [
+          {
+            "name_en": "Strawberry Cream",
+            "name_ar": "ستروبيري كريم",
+            "price": 4,
+            "color": "#FB7C96"
+          },
+          {
+            "name_en": "Raspberry Cream",
+            "name_ar": "رازبيري كريم",
+            "price": 4,
+            "color": "#E23E63"
+          }
+        ],
+        "Shots": [
+          {
+            "name_en": "Deep Sleep Shot",
+            "name_ar": "شوت عشبة الهدوء",
+            "price": 2.5,
+            "color": "#8A76D0"
+          }
+        ]
+      }
+    },
+    {
+      "name_en": "Beauty",
+      "name_ar": "وهج",
+      "slug": "beauty",
+      "color": "#E7A6B8",
+      "icon": "assets/brand/elixir-icon-white.png",
+      "description_en": "Glow from within",
+      "description_ar": "إشراقة من الداخل",
+      "herbs": [
+        {
+          "name_en": "Sea Moss",
+          "name_ar": "غذاء البحر"
+        }
+      ],
+      "drinks": {
+        "Mojito": [
+          {
+            "name_en": "Anise Pina Colada Mojito",
+            "name_ar": "بيناكولادا يانسون موهيتو",
+            "price": 3,
+            "color": "#F5D97A"
+          },
+          {
+            "name_en": "Melissa Strawberry Mojito",
+            "name_ar": "فراولة مليسة موهيتو",
+            "price": 3,
+            "color": "#FB7C96"
+          }
+        ],
+        "Smoothie": [
+          {
+            "name_en": "Anise Pina Colada Smoothie",
+            "name_ar": "بيناكولادا يانسون سموذي",
+            "price": 3.75,
+            "color": "#F5D97A"
+          },
+          {
+            "name_en": "Zaitman Strawberry Smoothie",
+            "name_ar": "فراولة زعيتمان سموذي",
+            "price": 3.75,
+            "color": "#FB7C96"
+          }
+        ],
+        "Iced Tea": [
+          {
+            "name_en": "Green Tea Peach",
+            "name_ar": "جرين تي خوخ",
+            "price": 3,
+            "color": "#FBA26B"
+          },
+          {
+            "name_en": "Moringa Tea Cherry",
+            "name_ar": "مورينجا تي شيري",
+            "price": 3,
+            "color": "#D92D4E"
+          }
+        ],
+        "Hot": [
+          {
+            "name_en": "Herbs Peach",
+            "name_ar": "أعشاب الدراق",
+            "price": 3.25,
+            "color": "#FBA26B"
+          },
+          {
+            "name_en": "Herbs Turmeric",
+            "name_ar": "أعشاب الكركم",
+            "price": 3.25,
+            "color": "#F0B419"
+          }
+        ],
+        "In Cream": [
+          {
+            "name_en": "Strawberry Cream",
+            "name_ar": "ستروبيري كريم",
+            "price": 4,
+            "color": "#FB7C96"
+          }
+        ],
+        "Shots": [
+          {
+            "name_en": "Skin Glow Shot",
+            "name_ar": "شوت غذاء البحر",
+            "price": 2.5,
+            "color": "#4FBFA8"
+          }
+        ]
+      }
+    },
+    {
+      "name_en": "Focus",
+      "name_ar": "ارتكاز",
+      "slug": "focus",
+      "color": "#6FA8C7",
+      "icon": "assets/brand/elixir-icon-white.png",
+      "description_en": "Stay sharp & present",
+      "description_ar": "خليك حاضر وواضح",
+      "herbs": [
+        {
+          "name_en": "Ginkgo Biloba",
+          "name_ar": "ورق الصفاء"
+        },
+        {
+          "name_en": "Wheatgrass",
+          "name_ar": "بداية نقية"
+        }
+      ],
+      "drinks": {
+        "Mojito": [
+          {
+            "name_en": "Rosemary Apple Mojito",
+            "name_ar": "تفاح أخضر روزماري موهيتو",
+            "price": 3,
+            "color": "#8FC93A"
+          },
+          {
+            "name_en": "Sage Strawberry Mojito",
+            "name_ar": "فراولة ميرمية موهيتو",
+            "price": 3,
+            "color": "#FB7C96"
+          }
+        ],
+        "Smoothie": [
+          {
+            "name_en": "Rosemary Apple Smoothie",
+            "name_ar": "تفاح أخضر روزماري سموذي",
+            "price": 3.75,
+            "color": "#8FC93A"
+          },
+          {
+            "name_en": "Rosemary Strawberry Smoothie",
+            "name_ar": "فراولة روزماري سموذي",
+            "price": 3.75,
+            "color": "#FB7C96"
+          }
+        ],
+        "Iced Tea": [
+          {
+            "name_en": "Moringa Tea Mango",
+            "name_ar": "مورينجا تي مانجو",
+            "price": 3,
+            "color": "#F79A1E"
+          }
+        ],
+        "Hot": [
+          {
+            "name_en": "Herbs Ginkgo",
+            "name_ar": "أعشاب الجنكا",
+            "price": 3.25,
+            "color": "#C3CC3F"
+          }
+        ],
+        "In Cream": [
+          {
+            "name_en": "Melon Cream",
+            "name_ar": "ميلون كريم",
+            "price": 4,
+            "color": "#A6D77E"
+          },
+          {
+            "name_en": "Mango Cream",
+            "name_ar": "مانجو كريم",
+            "price": 4,
+            "color": "#F79A1E"
+          }
+        ],
+        "Shots": [
+          {
+            "name_en": "Focus Shot",
+            "name_ar": "شوت التركيز",
+            "price": 2.5,
+            "color": "#9BC53D"
+          }
+        ]
+      }
+    },
+    {
+      "name_en": "Immunity",
+      "name_ar": "حصن",
+      "slug": "immunity",
+      "color": "#7FB069",
+      "icon": "assets/brand/elixir-icon-white.png",
+      "description_en": "Daily immune support",
+      "description_ar": "دعم يومي لجسمك",
+      "herbs": [
+        {
+          "name_en": "Pine Needles",
+          "name_ar": "نقاء الغابة"
+        },
+        {
+          "name_en": "Lung Support Herb",
+          "name_ar": "راحة التنفس"
+        },
+        {
+          "name_en": "Oregano",
+          "name_ar": "هواء نقي"
+        }
+      ],
+      "drinks": {
+        "Mojito": [
+          {
+            "name_en": "Coriander Strawberry Mojito",
+            "name_ar": "كزبرة فراولة موهيتو",
+            "price": 3,
+            "color": "#FB7C96"
+          },
+          {
+            "name_en": "Coriander Peach Mojito",
+            "name_ar": "كزبرة دراق موهيتو",
+            "price": 3,
+            "color": "#FBA26B"
+          }
+        ],
+        "Smoothie": [
+          {
+            "name_en": "Anise Mango Smoothie",
+            "name_ar": "مانجا يانسون سموذي",
+            "price": 3.75,
+            "color": "#F79A1E"
+          },
+          {
+            "name_en": "Oregano Raspberry Smoothie",
+            "name_ar": "رازبيري أوريجانو سموذي",
+            "price": 3.75,
+            "color": "#E23E63"
+          }
+        ],
+        "Hot": [
+          {
+            "name_en": "Herbs Oregano",
+            "name_ar": "أعشاب الأوريجانو",
+            "price": 3,
+            "color": "#4F8F45"
+          }
+        ],
+        "Shots": [
+          {
+            "name_en": "Clear Breathing Shot",
+            "name_ar": "شوت نقاء الغابة",
+            "price": 2.5,
+            "color": "#3F8A62"
+          },
+          {
+            "name_en": "Iron Boost Shot",
+            "name_ar": "شوت قوة الدم",
+            "price": 2.5,
+            "color": "#C4243A"
+          },
+          {
+            "name_en": "Circulation Shot",
+            "name_ar": "شوت الحرارة",
+            "price": 2.5,
+            "color": "#F2603C"
+          },
+          {
+            "name_en": "Daily Defense Shot",
+            "name_ar": "طاقة البحر",
+            "price": 2.5,
+            "color": "#2E9AA5"
+          }
+        ]
+      }
+    },
+    {
+      "name_en": "Digestion",
+      "name_ar": "راحة",
+      "slug": "digestion",
+      "color": "#79C2B0",
+      "icon": "assets/brand/elixir-icon-white.png",
+      "description_en": "Feel lighter, naturally",
+      "description_ar": "راحة وتوازن لجهازك الهضمي",
+      "herbs": [
+        {
+          "name_en": "Wormwood",
+          "name_ar": "توازن مرّ"
+        },
+        {
+          "name_en": "Centaury",
+          "name_ar": "راحة الهضم"
+        }
+      ],
+      "drinks": {
+        "Mojito": [
+          {
+            "name_en": "Anise Mango Mojito",
+            "name_ar": "مانجا يانسون موهيتو",
+            "price": 3,
+            "color": "#F79A1E"
+          },
+          {
+            "name_en": "Oregano Strawberry Mojito",
+            "name_ar": "فراولة أوريجانو موهيتو",
+            "price": 3,
+            "color": "#FB7C96"
+          },
+          {
+            "name_en": "Sage Mango Mojito",
+            "name_ar": "مانجا ميرمية موهيتو",
+            "price": 3,
+            "color": "#F79A1E"
+          },
+          {
+            "name_en": "Sage Passion Fruit Mojito",
+            "name_ar": "باشن فروت ميرمية موهيتو",
+            "price": 3,
+            "color": "#F8C01F"
+          }
+        ],
+        "Smoothie": [
+          {
+            "name_en": "Sage Passion Fruit Smoothie",
+            "name_ar": "باشن فروت ميرمية سموذي",
+            "price": 3.75,
+            "color": "#F8C01F"
+          },
+          {
+            "name_en": "Berberine Pomegranate Smoothie",
+            "name_ar": "رمان باربيرين سموذي",
+            "price": 3.75,
+            "color": "#C42350"
+          }
+        ],
+        "Iced Tea": [
+          {
+            "name_en": "Moringa Tea Passion",
+            "name_ar": "مورينجا تي باشن",
+            "price": 3,
+            "color": "#F8C01F"
+          }
+        ],
+        "Shots": [
+          {
+            "name_en": "Gut Reset Shot",
+            "name_ar": "شوت توازن مرّ",
+            "price": 2.5,
+            "color": "#86A34F"
+          }
+        ]
+      }
+    },
+    {
+      "name_en": "The Classic",
+      "name_ar": "قهوة تقليدية",
+      "slug": "classic",
+      "color": "#A97B54",
+      "icon": "assets/brand/elixir-icon-white.png",
+      "description_en": "Timeless coffee favorites",
+      "description_ar": "قهوة كلاسيكية مميزة",
+      "herbs": [
+        {
+          "name_en": "Coffee Beans",
+          "name_ar": "حبوب القهوة"
+        }
+      ],
+      "drinks": {
+        "Hot Coffee": [
+          {
+            "name_en": "Espresso",
+            "name_ar": "إسبرسو",
+            "price": 2.25,
+            "color": "#5A3A28"
+          },
+          {
+            "name_en": "Macchiato",
+            "name_ar": "إسبرسو ماكياتو",
+            "price": 2.5,
+            "color": "#6E4A34"
+          },
+          {
+            "name_en": "American",
+            "name_ar": "قهوة أمريكية",
+            "price": 2.75,
+            "color": "#7C5740"
+          },
+          {
+            "name_en": "Americano",
+            "name_ar": "أمريكانو",
+            "price": 2.75,
+            "color": "#74503B"
+          },
+          {
+            "name_en": "Flat White",
+            "name_ar": "فلات وايت",
+            "price": 3,
+            "color": "#C2A084"
+          },
+          {
+            "name_en": "Latte",
+            "name_ar": "لاتيه",
+            "price": 3,
+            "color": "#CBAE90"
+          },
+          {
+            "name_en": "Cappuccino",
+            "name_ar": "كابتشينو",
+            "price": 3,
+            "color": "#BC9878"
+          },
+          {
+            "name_en": "Latte Flavor",
+            "name_ar": "لاتيه مع نكهة",
+            "price": 3.5,
+            "color": "#B08A66"
+          },
+          {
+            "name_en": "Mocha",
+            "name_ar": "موكا",
+            "price": 3.5,
+            "color": "#6B4438"
+          },
+          {
+            "name_en": "V60",
+            "name_ar": "قهوة مقطرة",
+            "price": 4,
+            "color": "#9A6C48"
+          }
+        ],
+        "Iced Coffee": [
+          {
+            "name_en": "Iced Americano",
+            "name_ar": "آيس أمريكانو",
+            "price": 2.5,
+            "color": "#8A6852"
+          },
+          {
+            "name_en": "Iced Latte",
+            "name_ar": "آيس لاتيه",
+            "price": 3,
+            "color": "#D2B99F"
+          },
+          {
+            "name_en": "Iced Latte Flavor",
+            "name_ar": "آيس لاتيه مع نكهة",
+            "price": 3.5,
+            "color": "#C0A184"
+          },
+          {
+            "name_en": "Iced Mocha",
+            "name_ar": "آيس موكا",
+            "price": 3.5,
+            "color": "#7A5248"
+          },
+          {
+            "name_en": "Iced V60",
+            "name_ar": "قهوة مقطرة باردة",
+            "price": 4,
+            "color": "#A67C57"
+          }
+        ]
+      }
+    }
+  ]
+}

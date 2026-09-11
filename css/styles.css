@@ -1,0 +1,455 @@
+/* ============================================================
+   ELIXIR in-store menu — portrait kiosk
+   No build step. Plain CSS. All paths relative.
+   ============================================================ */
+
+/* ---------- Fonts: self-hosted, never from a CDN. A shop with flaky
+     wifi should never lose its type. Coolvetica has exactly two weights. ---------- */
+
+@font-face {
+  font-family: "Coolvetica";
+  src: url("../fonts/coolvetica-light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Coolvetica";
+  src: url("../fonts/coolvetica-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+/* Arabic is carried by Forma DJR Arabic, a single static cut. Declaring it
+   across the whole range the app uses stops the browser synthesising a fake
+   Light or Bold. Latin never reaches it — Coolvetica covers that first. */
+@font-face {
+  font-family: "Forma DJR Arabic";
+  src: url("../fonts/forma-djr-arabic.woff2") format("woff2");
+  font-weight: 300 400;
+  font-display: swap;
+}
+
+
+/* ---------- Tokens ---------- */
+
+:root {
+  --forest:     #163118;   /* intro background                     */
+  --moss:       #586C30;   /* the intro text strip and the logo    */
+  --gold:       #C9BE7B;   /* the intro icon and its text          */
+  --cream:      #E8D4BE;   /* screen 01 background; text on dark   */
+  --sand:       #D0BC94;   /* the 01 numeral                       */
+  --deep-green: #1C3D1E;   /* text and button strokes on cream     */
+  --rose:       #C14D6F;   /* screen 02 background                 */
+  --rose-deep:  #B13B5A;   /* the 02 numeral                       */
+  --rust:       #A74A2B;   /* screen 03 background; prices         */
+  --rust-deep:  #993823;   /* the 03 numeral                       */
+
+  --font-body: "Coolvetica", "Forma DJR Arabic", sans-serif;
+}
+
+/* One type scale for the whole app. It tracks the panel's width but is capped
+   by its height, so a shorter or wider tablet scales down instead of
+   overflowing. Everything dimensional is in rem or viewport units. */
+html { font-size: min(3.68vw, 2.1dvh); }
+
+
+/* ---------- Reset & kiosk hardening ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  background: var(--forest);
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 0.08rem solid currentColor;
+  outline-offset: 0.3rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+
+/* ---------- White-PNG tinting ----------
+   A CSS mask, never a filter, so the hex is exact. --src and --tint are set
+   per element by app.js from the data- attributes in the markup. */
+
+.tinted {
+  background-color: var(--tint);
+  -webkit-mask: var(--src) center / contain no-repeat;
+          mask: var(--src) center / contain no-repeat;
+}
+
+
+/* ---------- Screen switching ---------- */
+
+.screen { display: none; }
+body[data-screen="intro"] #screen-intro { display: flex; }
+body[data-screen="s1"]    #screen-01    { display: grid; }
+body[data-screen="s2"]    #screen-02    { display: grid; }
+body[data-screen="s3"]    #screen-03    { display: grid; }
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+
+/* ---------- Fixed chrome ---------- */
+
+.back-btn {
+  position: fixed;
+  z-index: 30;
+  display: none;
+  place-items: center;
+  inset-block-start: 1.4rem;
+  inset-inline-start: 1.4rem;   /* logical, so it mirrors in RTL */
+  width: 2.6rem;
+  height: 2.6rem;
+  color: var(--deep-green);
+}
+body:not([data-screen="intro"]) .back-btn { display: grid; }
+body[data-screen="s2"] .back-btn,
+body[data-screen="s3"] .back-btn { color: var(--cream); }
+
+.back-btn__arrow { width: 1.2rem; height: 1.2rem; }
+:root[dir="rtl"] .back-btn__arrow { transform: scaleX(-1); }
+
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+
+.intro {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.6rem 0;
+  background: var(--forest);
+  text-align: center;
+}
+
+/* Full-bleed transparent hit area: a real <button>, no visible chrome. */
+.intro__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+.intro__hit:focus-visible {
+  outline: 0.08rem solid var(--gold);
+  outline-offset: -0.8rem;
+}
+
+/* Both brand PNGs are sized by width and take their height from the artwork's
+   own proportions, so replacing a file with a differently-cropped export only
+   needs its ratio updated here. */
+.intro__text {
+  width: 90vw;
+  aspect-ratio: 32767 / 1260;
+}
+
+.intro__centre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro__icon {
+  width: 22vw;
+  aspect-ratio: 1;
+}
+
+.intro__tagline {
+  max-width: 16rem;
+  margin: 1.1rem 0 0;
+  font-weight: 300;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: var(--gold);
+}
+
+/* Coolvetica only has Light and Regular, so emphasis is the step up to
+   Regular — never a synthesised bold, never a third family. */
+.intro__tagline strong { font-weight: 400; }
+
+.intro__start {
+  margin: 2.6rem 0 0;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--gold);
+  opacity: 0.85;
+  animation: intro-pulse 3s ease-in-out infinite;
+}
+
+/* The one ambient effect in the entire app. */
+@keyframes intro-pulse {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 0.4; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro__start { animation: none; }
+}
+
+.intro__logo {
+  width: 70vw;
+  aspect-ratio: 17241 / 5129;
+}
+
+
+/* ============================================================
+   01 — PICK YOUR FUNCTION
+   One page, read as two halves.
+   ============================================================ */
+
+.step--01 {
+  grid-template-rows: 1fr 1fr;
+  background: var(--cream);
+  color: var(--deep-green);
+}
+
+.step__top {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* Scenery, never a label: the heading sits on top of it. */
+.step__num {
+  position: absolute;
+  z-index: 0;
+  font-weight: 300;
+  font-size: 45dvh;
+  line-height: 1;
+  color: var(--sand);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.step__head {
+  position: relative;
+  z-index: 1;
+  padding-inline: 2.4rem;
+  text-align: center;
+}
+
+.step__title {
+  margin: 0;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 1.1;
+}
+
+.step__sub {
+  max-width: 15rem;
+  margin: 0.9rem auto 0;
+  font-weight: 400;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+
+/* ---------- The category grid ---------- */
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  gap: 0.9rem;
+  padding-inline: 1.8rem;
+  padding-block-end: 1.8rem;
+}
+
+.cat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 72px;                /* the touch-target floor; do not go lower */
+  padding-inline: 1.1rem;
+  border: 1.5px solid var(--deep-green);
+  border-radius: 999px;
+  color: var(--deep-green);
+  text-align: start;
+}
+
+.cat-pill__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.15;
+}
+
+/* The ELIXIR starburst, tinted per category from menu.json. */
+.cat-pill__icon {
+  flex: 0 0 auto;
+  width: 1.15rem;
+  aspect-ratio: 1;
+}
+
+/* Touchscreen: press feedback only, never a hover state. */
+.cat-pill:active {
+  background: var(--deep-green);
+  color: var(--cream);
+}
+
+
+/* ============================================================
+   02 — PICK YOUR POUR
+   Same two-zone structure as 01, so the numeral sits identically.
+   ============================================================ */
+
+.step--02 {
+  grid-template-rows: 50dvh auto;   /* top half pinned; the grid grows */
+  height: auto;
+  min-height: 100dvh;
+  overflow: visible;
+  background: var(--rose);
+  color: var(--cream);
+}
+/* Match the page behind it so overscroll never flashes the intro's green. */
+body[data-screen="s2"] { background: var(--rose); }
+.step--02 .step__num { color: var(--rose-deep); }
+
+/* Holds the grid below the numeral. Screen 02 scrolls, so the cards take the
+   full column width and the page simply grows to fit them. */
+.step__zone {
+  padding-inline: 1.8rem;
+  padding-block-end: 1.8rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  width: 100%;
+}
+
+/* Portrait card, shared by the pours on 02 and the drinks on 03:
+   colour panel on top, white band across the bottom third. */
+.card {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+/* No overflow clip here: the photo is allowed to hang past the bottom of the
+   panel so it reads as standing on the white band rather than being cut off by
+   it. The panel is positioned, the band is not, so the photo paints on top. */
+.card__panel {
+  position: relative;
+  flex: 2 1 0;          /* the top two thirds */
+  background: var(--panel);
+}
+
+.card__photo {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -14%;  /* rests on, and over, the white band */
+  display: block;
+  width: 104%;
+  height: 104%;
+  margin-inline: auto;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.card__band {
+  flex: 1 1 0;          /* the bottom third */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 0.7rem;
+  background: #fff;
+}
+
+.card__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.15;
+  color: var(--deep-green);
+  text-align: start;
+}
+
+/* Drinks only. Latin numerals in both languages. */
+.card__price {
+  flex: 0 0 auto;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.15;
+  color: var(--rust);
+  white-space: nowrap;
+}
+
+button.card:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) {
+  button.card:active { transform: none; }
+}
+
+
+/* ============================================================
+   03 — PICK YOUR TASTE
+   The end of the journey. Same card, plus a price.
+   ============================================================ */
+
+.step--03 {
+  grid-template-rows: 50dvh auto;   /* top half pinned; the grid grows */
+  height: auto;
+  min-height: 100dvh;
+  overflow: visible;
+  background: var(--rust);
+  color: var(--cream);
+}
+.step--03 .step__num { color: var(--rust-deep); }
+body[data-screen="s3"] { background: var(--rust); }
+
+/* Clearance is the section's padding, not this button's margin: a trailing
+   margin on the last in-flow child would collapse out of the scroll area. */
+.restart-btn {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.7rem 1.8rem;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--rust);
+  font-size: 0.85rem;
+}
+.restart-btn:active { opacity: 0.82; }
