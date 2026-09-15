@@ -168,6 +168,11 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
    ============================================================ */
 
 .intro {
+  /* Both brand marks share this width, so the strip at the top and the logo at
+     the bottom start and end on the same line. Each keeps its own
+     aspect-ratio — they are different artwork, so only the widths match. */
+  --brand-w: calc(var(--stage-w) * 0.9);
+
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -193,7 +198,7 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
    own proportions, so replacing a file with a differently-cropped export only
    needs its ratio updated here. */
 .intro__text {
-  width: calc(var(--stage-w) * 0.9);
+  width: var(--brand-w);
   aspect-ratio: 32767 / 1260;
 }
 
@@ -240,7 +245,7 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
 }
 
 .intro__logo {
-  width: calc(var(--stage-w) * 0.7);
+  width: var(--brand-w);
   aspect-ratio: 17241 / 5129;
 }
 
