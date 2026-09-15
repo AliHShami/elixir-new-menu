@@ -18,6 +18,19 @@
   font-weight: 400;
   font-display: swap;
 }
+/* The display serif: a true variable font (fvar/gvar/STAT), used for the step
+   numerals and the three step headings. The weight range is declared wide
+   because the axis limits cannot be read from the .woff2 here; the browser
+   clamps to whatever the font actually supports. Plain format("woff2") is
+   correct for a variable font — the older "woff2-variations" keyword is
+   unrecognised by current browsers, which drops the source silently. */
+@font-face {
+  font-family: "Awesome Serif";
+  src: url("../fonts/awesome-serif-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 /* Arabic is carried by Forma DJR Arabic, a single static cut. Declaring it
    across the whole range the app uses stops the browser synthesising a fake
    Light or Bold. Latin never reaches it — Coolvetica covers that first. */
@@ -44,6 +57,8 @@
   --rust-deep:  #993823;   /* the 03 numeral                       */
 
   --font-body: "Coolvetica", "Forma DJR Arabic", sans-serif;
+  /* Step numerals and step headings only. Everything else is --font-body. */
+  --font-display: "Awesome Serif", Georgia, serif;
 }
 
 /* ---------- The stage ----------
@@ -108,6 +123,26 @@ button {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+
+/* ---------- Caps treatment ----------
+   Labels on the buttons and cards are set in capitals, with a little tracking
+   so the uppercase does not read as cramped. Latin only: Arabic has no
+   uppercase forms, and letter-spacing breaks the joins between its letters. */
+
+.cat-pill__name,
+.card__name,
+.restart-btn {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+:root[lang="ar"] .cat-pill__name,
+:root[lang="ar"] .card__name,
+:root[lang="ar"] .restart-btn {
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 
@@ -272,6 +307,7 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
 .step__num {
   position: absolute;
   z-index: 0;
+  font-family: var(--font-display);
   font-weight: 300;
   font-size: 45dvh;
   line-height: 1;
@@ -290,6 +326,7 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
 
 .step__title {
   margin: 0;
+  font-family: var(--font-display);
   font-weight: 300;
   font-size: 2.4rem;
   line-height: 1.1;
@@ -299,8 +336,16 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
   max-width: 15rem;
   margin: 0.9rem auto 0;
   font-weight: 400;
-  font-size: 0.85rem;
+  /* Sized so no subtext ends on a lone word. Against the 15rem measure,
+     0.78-0.88rem leaves "today." and "mood." stranded on a line of their own,
+     and 0.91rem+ strands "best." The clean band is 0.60-0.77rem, where all
+     three settle into two lines; 0.75rem sits inside it with margin. */
+  font-size: 0.75rem;
   line-height: 1.35;
+  /* Belt and braces: keeps a widow from creeping back if the copy is edited.
+     Ignored by browsers that do not support it, which is why the size above
+     does the real work. */
+  text-wrap: pretty;
 }
 
 
@@ -331,8 +376,13 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
   flex: 1 1 auto;
   min-width: 0;
   font-weight: 400;
-  font-size: 0.8rem;
+  /* Held to one line. The text box is ~7.1rem wide and the longest label,
+     "RELAXATION & SLEEP", measures 9.87em in Coolvetica caps at 0.04em
+     tracking — so 0.68rem fits with ~6% spare. A longer category name than
+     that will need this size dropped again. */
+  font-size: 0.68rem;
   line-height: 1.15;
+  white-space: nowrap;
 }
 
 /* The ELIXIR starburst, tinted per category from menu.json. */
@@ -425,7 +475,9 @@ body[data-screen="s2"] { background: var(--rose); }
   flex: 1 1 auto;
   min-width: 0;
   font-weight: 400;
-  font-size: 1rem;
+  /* Wraps freely; the longest drink name runs to three lines, which is well
+     inside the band's ~4.97rem. */
+  font-size: 0.8rem;
   line-height: 1.15;
   color: var(--deep-green);
   text-align: start;
@@ -472,6 +524,6 @@ body[data-screen="s3"] { background: var(--rust); }
   border-radius: 999px;
   background: var(--cream);
   color: var(--rust);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 .restart-btn:active { opacity: 0.82; }
