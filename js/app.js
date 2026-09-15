@@ -183,6 +183,8 @@ function renderCategories() {
   menu.elixir_categories.forEach((category) => {
     const pill = el("button", "cat-pill", { type: "button" });
     pill.dataset.slug = category.slug;
+    // Drives the pressed fill; the star below is tinted the same colour.
+    pill.style.setProperty("--cat", category.color);
 
     const name = el("span", "cat-pill__name");
     name.textContent = localised(category, "name");

@@ -392,10 +392,19 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
   aspect-ratio: 1;
 }
 
-/* Touchscreen: press feedback only, never a hover state. */
+/* Touchscreen: press feedback only, never a hover state.
+   The pill fills with its own category colour — the same one the icon carries,
+   set as --cat by app.js from menu.json. The label stays deep green rather
+   than inverting to cream: deep green clears 3.2:1 against every category
+   colour, where cream manages only 1.4-2.6:1 and would be unreadable. */
 .cat-pill:active {
-  background: var(--deep-green);
-  color: var(--cream);
+  background: var(--cat);
+}
+
+/* The icon is tinted that same colour, so against the pressed fill it would
+   disappear. Flip it to the stroke colour for the duration of the press. */
+.cat-pill:active .cat-pill__icon {
+  background-color: var(--deep-green);
 }
 
 
