@@ -1,80 +1,86 @@
 /* ============================================================
-   ELIXIR in-store menu — portrait kiosk
+   ELIXIR HOUSE — in-store menu kiosk
    No build step. Plain CSS. All paths relative.
    ============================================================ */
 
 /* ---------- Fonts: self-hosted, never from a CDN. A shop with flaky
-     wifi should never lose its type. Coolvetica has exactly two weights. ---------- */
+     wifi should never lose its type. ---------- */
 
+/* PRIMARY display. NOTE: these are Fontspring DEMO cuts — evaluation
+   licence, 95 glyphs, basic ASCII only. No em dash, no curly quotes.
+   See TODO.md before this goes live. */
 @font-face {
-  font-family: "Coolvetica";
-  src: url("../fonts/coolvetica-light.woff2") format("woff2");
-  font-weight: 300;
+  font-family: "The Seasons";
+  src: url("../fonts/Fontspring-DEMO-theseasons-bd.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Coolvetica";
-  src: url("../fonts/coolvetica-regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-/* The display serif: a true variable font (fvar/gvar/STAT), used for the step
-   numerals and the three step headings. The weight range is declared wide
-   because the axis limits cannot be read from the .woff2 here; the browser
-   clamps to whatever the font actually supports. Plain format("woff2") is
-   correct for a variable font — the older "woff2-variations" keyword is
-   unrecognised by current browsers, which drops the source silently. */
-@font-face {
-  font-family: "Awesome Serif";
-  src: url("../fonts/awesome-serif-var.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "The Seasons";
+  src: url("../fonts/Fontspring-DEMO-theseasons-bdit.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
 
-/* Arabic is carried by Forma DJR Arabic, a single static cut. Declaring it
-   across the whole range the app uses stops the browser synthesising a fake
-   Light or Bold. Latin never reaches it — Coolvetica covers that first. */
+/* EDITORIAL. A true variable font — one file covers the whole range. */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../fonts/CormorantGaramond-VariableFont_wght.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+/* SUPPORTING. Labels, prices, small caps-set copy. */
+@font-face {
+  font-family: "Goldplay";
+  src: url("../fonts/goldplay-alt-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* Arabic, for when the language toggle is switched on. Single static cut,
+   declared across the range so no fake weight is ever synthesised. */
 @font-face {
   font-family: "Forma DJR Arabic";
   src: url("../fonts/forma-djr-arabic.woff2") format("woff2");
-  font-weight: 300 400;
+  font-weight: 300 500;
   font-display: swap;
 }
 
 
-/* ---------- Tokens ---------- */
+/* ---------- Brand tokens ---------- */
 
 :root {
-  --forest:     #163118;   /* intro background                     */
-  --moss:       #586C30;   /* the intro text strip and the logo    */
-  --gold:       #C9BE7B;   /* the intro icon and its text          */
-  --cream:      #E8D4BE;   /* screen 01 background; text on dark   */
-  --sand:       #D0BC94;   /* the 01 numeral                       */
-  --deep-green: #1C3D1E;   /* text and button strokes on cream     */
-  --rose:       #C14D6F;   /* screen 02 background                 */
-  --rose-deep:  #B13B5A;   /* the 02 numeral                       */
-  --rust:       #A74A2B;   /* screen 03 background; prices         */
-  --rust-deep:  #993823;   /* the 03 numeral                       */
+  --ivory:   #E8E3DE;
+  --taupe:   #816C59;
+  --brown:   #615143;
+  --olive:   #3D4127;   /* dark olive — the deepest field */
+  --green:   #636B2F;   /* olive green */
 
-  --font-body: "Coolvetica", "Forma DJR Arabic", sans-serif;
-  /* Step numerals and step headings only. Everything else is --font-body. */
-  --font-display: "Awesome Serif", Georgia, serif;
+  /* Refined gold, as a gradient and as its three stops */
+  --gold-dark: #C6B990;
+  --gold-mid:  #CFC6A0;
+  --gold-light:#D9D0AD;
+  --gold: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+
+  --font-display: "The Seasons", Georgia, serif;
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+  --font-support: "Goldplay", "Forma DJR Arabic", system-ui, sans-serif;
 }
 
 /* ---------- The stage ----------
-   The app is designed for a 9:16 portrait panel. On anything wider — a desktop
-   browser — it is letterboxed into a portrait column and centred, rather than
-   being stretched. Every width in the app measures against --stage-w, not the
-   viewport, so the layout keeps its proportions at any window size. On the
-   kiosk itself the two are identical and nothing changes. */
+   Designed for a 9:16 portrait panel. Anything wider is letterboxed into a
+   portrait column and centred, never stretched. Every width measures against
+   --stage-w, so the kiosk and a desktop browser get the same layout at
+   different scales rather than two different designs. */
 :root {
   --stage-w: min(100vw, calc(100dvh * 9 / 16));
   --stage-h: 100dvh;
   --stage-inset: calc((100vw - var(--stage-w)) / 2);
 }
 
-/* One type scale for the whole app: it tracks the stage's width but is capped
-   by its height, so a shorter window scales down instead of overflowing. */
 html {
   font-size: min(calc(var(--stage-w) * 0.0368), calc(var(--stage-h) * 0.021));
 }
@@ -88,12 +94,12 @@ html, body {
   margin: 0;
   padding: 0;
   overscroll-behavior: none;
-  background: var(--forest);
+  background: var(--olive);
 }
 
 body {
-  font-family: var(--font-body);
-  font-weight: 400;
+  font-family: var(--font-support);
+  color: var(--olive);
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -111,6 +117,8 @@ button {
   cursor: pointer;
 }
 
+img { max-width: 100%; }
+
 :focus-visible {
   outline: 0.08rem solid currentColor;
   outline-offset: 0.3rem;
@@ -126,50 +134,45 @@ button {
 }
 
 
-/* ---------- Caps treatment ----------
-   Labels on the buttons and cards are set in capitals, with a little tracking
-   so the uppercase does not read as cramped. Latin only: Arabic has no
-   uppercase forms, and letter-spacing breaks the joins between its letters. */
+/* ---------- Shared type treatments ---------- */
 
-.cat-pill__name,
-.card__name,
-.restart-btn {
+/* Small labels sit in capitals with open tracking. Latin only: Arabic has no
+   uppercase forms and letter-spacing breaks the joins between its letters. */
+.u-caps {
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
 }
-
-:root[lang="ar"] .cat-pill__name,
-:root[lang="ar"] .card__name,
-:root[lang="ar"] .restart-btn {
+:root[lang="ar"] .u-caps {
   text-transform: none;
   letter-spacing: normal;
 }
 
-
-/* ---------- White-PNG tinting ----------
-   A CSS mask, never a filter, so the hex is exact. --src and --tint are set
-   per element by app.js from the data- attributes in the markup. */
-
-.tinted {
-  background-color: var(--tint);
-  -webkit-mask: var(--src) center / contain no-repeat;
-          mask: var(--src) center / contain no-repeat;
+/* Gold is a gradient, so it is painted as clipped text rather than a colour. */
+.u-gold {
+  background: var(--gold);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
 }
 
 
 /* ---------- Screen switching ---------- */
 
 .screen { display: none; }
-body[data-screen="intro"] #screen-intro { display: flex; }
-body[data-screen="s1"]    #screen-01    { display: grid; }
-body[data-screen="s2"]    #screen-02    { display: grid; }
-body[data-screen="s1"]    { background: var(--cream); }
-body[data-screen="s3"]    #screen-03    { display: grid; }
+body[data-screen="intro"]     #screen-intro     { display: flex; }
+body[data-screen="functions"] #screen-functions { display: block; }
+body[data-screen="menu"]      #screen-menu      { display: block; }
+body[data-screen="category"]  #screen-category  { display: block; }
 
 .screen {
   position: relative;
   width: var(--stage-w);
   margin-inline: auto;
+  min-height: 100dvh;
+}
+
+/* The intro never scrolls; the three list screens do. */
+.screen--fixed {
   height: 100dvh;
   overflow: hidden;
 }
@@ -177,25 +180,33 @@ body[data-screen="s3"]    #screen-03    { display: grid; }
 
 /* ---------- Fixed chrome ---------- */
 
-.back-btn {
+.chrome {
   position: fixed;
   z-index: 30;
   display: none;
   place-items: center;
-  inset-block-start: 1.4rem;
-  /* Logical, so it mirrors in RTL. The inset keeps it on the column
-     rather than out at the window edge when letterboxed. */
-  inset-inline-start: calc(var(--stage-inset) + 1.4rem);
-  width: 2.6rem;
-  height: 2.6rem;
-  color: var(--deep-green);
+  inset-block-start: 1.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--ivory);
 }
-body:not([data-screen="intro"]) .back-btn { display: grid; }
-body[data-screen="s2"] .back-btn,
-body[data-screen="s3"] .back-btn { color: var(--cream); }
+body:not([data-screen="intro"]) .chrome { display: grid; }
 
-.back-btn__arrow { width: 1.2rem; height: 1.2rem; }
-:root[dir="rtl"] .back-btn__arrow { transform: scaleX(-1); }
+/* Logical insets, so the whole bar mirrors in RTL, and --stage-inset keeps
+   both buttons on the column rather than out at the window edge. */
+.chrome--back { inset-inline-start: calc(var(--stage-inset) + 1.3rem); }
+.chrome--info {
+  inset-inline-end: calc(var(--stage-inset) + 1.3rem);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+/* The functions screen is what the (i) opens — no point offering it there. */
+body[data-screen="functions"] .chrome--info { display: none; }
+
+.chrome__arrow { width: 1.1rem; height: 1.1rem; }
+:root[dir="rtl"] .chrome__arrow { transform: scaleX(-1); }
 
 
 /* ============================================================
@@ -203,17 +214,13 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
    ============================================================ */
 
 .intro {
-  /* Both brand marks share this width, so the strip at the top and the logo at
-     the bottom start and end on the same line. Each keeps its own
-     aspect-ratio — they are different artwork, so only the widths match. */
-  --brand-w: calc(var(--stage-w) * 0.9);
-
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-block: 1.6rem 0;
-  background: var(--forest);
+  justify-content: center;
+  gap: 3rem;
+  background: var(--olive);
   text-align: center;
+  cursor: pointer;
 }
 
 /* Full-bleed transparent hit area: a real <button>, no visible chrome. */
@@ -225,314 +232,310 @@ body[data-screen="s3"] .back-btn { color: var(--cream); }
   height: 100%;
 }
 .intro__hit:focus-visible {
-  outline: 0.08rem solid var(--gold);
+  outline: 0.08rem solid var(--gold-mid);
   outline-offset: -0.8rem;
 }
 
-/* Both brand PNGs are sized by width and take their height from the artwork's
-   own proportions, so replacing a file with a differently-cropped export only
-   needs its ratio updated here. */
-.intro__text {
-  width: var(--brand-w);
-  aspect-ratio: 32767 / 1260;
+/* The supplied lockup, used as-is. Never recoloured, never rebuilt from
+   live type — the wordmark is artwork, not a font. */
+.intro__logo {
+  width: 78%;
+  max-width: 78%;
 }
-
-.intro__centre {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.intro__icon {
-  width: calc(var(--stage-w) * 0.22);
-  aspect-ratio: 1;
-}
-
-.intro__tagline {
-  max-width: 16rem;
-  margin: 1.1rem 0 0;
-  font-weight: 300;
-  font-size: 1.6rem;
-  line-height: 1.25;
-  color: var(--gold);
-}
-
-/* Coolvetica only has Light and Regular, so emphasis is the step up to
-   Regular — never a synthesised bold, never a third family. */
-.intro__tagline strong { font-weight: 400; }
 
 .intro__start {
-  margin: 2.6rem 0 0;
-  font-weight: 400;
-  font-size: 0.95rem;
-  color: var(--gold);
-  opacity: 0.85;
+  margin: 0;
+  font-family: var(--font-support);
+  font-size: 0.72rem;
+  color: var(--gold-mid);
   animation: intro-pulse 3s ease-in-out infinite;
 }
 
 /* The one ambient effect in the entire app. */
 @keyframes intro-pulse {
-  0%, 100% { opacity: 0.85; }
+  0%, 100% { opacity: 0.9; }
   50%      { opacity: 0.4; }
 }
 @media (prefers-reduced-motion: reduce) {
   .intro__start { animation: none; }
 }
 
-.intro__logo {
-  width: var(--brand-w);
-  aspect-ratio: 17241 / 5129;
-}
-
 
 /* ============================================================
-   01 — PICK YOUR FUNCTION
-   One page, read as two halves.
+   SHARED PAGE SCAFFOLDING (functions / menu / category)
    ============================================================ */
 
-.step--01 {
-  grid-template-rows: 1fr 1fr;
-  background: var(--cream);
-  color: var(--deep-green);
+.page {
+  padding-inline: 1.6rem;
+  padding-block: 5rem 2.5rem;
+  background: var(--ivory);
 }
 
-.step__top {
-  position: relative;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-/* Scenery, never a label: the heading sits on top of it. */
-.step__num {
-  position: absolute;
-  z-index: 0;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 45dvh;
-  line-height: 1;
-  color: var(--sand);
-  opacity: 0.5;
-  pointer-events: none;
-  user-select: none;
-}
-
-.step__head {
-  position: relative;
-  z-index: 1;
-  padding-inline: 2.4rem;
+.page__head {
+  margin-block-end: 1.8rem;
   text-align: center;
 }
 
-.step__title {
+.page__title {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 2.4rem;
+  font-weight: 700;
+  font-size: 2.3rem;
   line-height: 1.1;
+  color: var(--olive);
 }
 
-.step__sub {
+.page__sub {
   max-width: 15rem;
-  margin: 0.9rem auto 0;
+  margin: 0.7rem auto 0;
+  font-family: var(--font-editorial);
   font-weight: 400;
-  /* Sized so no subtext ends on a lone word. Against the 15rem measure,
-     0.78-0.88rem leaves "today." and "mood." stranded on a line of their own,
-     and 0.91rem+ strands "best." The clean band is 0.60-0.77rem, where all
-     three settle into two lines; 0.75rem sits inside it with margin. */
-  font-size: 0.75rem;
-  line-height: 1.35;
-  /* Belt and braces: keeps a widow from creeping back if the copy is edited.
-     Ignored by browsers that do not support it, which is why the size above
-     does the real work. */
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--brown);
   text-wrap: pretty;
 }
 
-
-/* ---------- The category grid ---------- */
-
-.cat-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-content: center;
-  gap: 0.9rem;
-  padding-inline: 1.8rem;
-  padding-block-end: 1.8rem;
-}
-
-.cat-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  min-height: 72px;                /* the touch-target floor; do not go lower */
-  padding-inline: 1.1rem;
-  border: 1.5px solid var(--deep-green);
-  border-radius: 999px;
-  color: var(--deep-green);
-  text-align: start;
-}
-
-.cat-pill__name {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-weight: 400;
-  /* Held to one line. The text box is ~7.1rem wide and the longest label,
-     "RELAXATION & SLEEP", measures 9.87em in Coolvetica caps at 0.04em
-     tracking — so 0.68rem fits with ~6% spare. A longer category name than
-     that will need this size dropped again. */
-  font-size: 0.68rem;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-
-/* The ELIXIR starburst, tinted per category from menu.json. */
-.cat-pill__icon {
-  flex: 0 0 auto;
-  width: 1.15rem;
-  aspect-ratio: 1;
-}
-
-/* Touchscreen: press feedback only, never a hover state.
-   The pill fills with its own category colour — the same one the icon carries,
-   set as --cat by app.js from menu.json. The label stays deep green rather
-   than inverting to cream: deep green clears 3.2:1 against every category
-   colour, where cream manages only 1.4-2.6:1 and would be unreadable. */
-.cat-pill:active {
-  background: var(--cat);
-}
-
-/* The icon is tinted that same colour, so against the pressed fill it would
-   disappear. Flip it to the stroke colour for the duration of the press. */
-.cat-pill:active .cat-pill__icon {
-  background-color: var(--deep-green);
-}
+body[data-screen="functions"] .chrome,
+body[data-screen="menu"] .chrome,
+body[data-screen="category"] .chrome { color: var(--olive); }
 
 
 /* ============================================================
-   02 — PICK YOUR POUR
-   Same two-zone structure as 01, so the numeral sits identically.
+   FUNCTIONS — the explainer
    ============================================================ */
 
-.step--02 {
-  grid-template-rows: 50dvh auto;   /* top half pinned; the grid grows */
-  height: auto;
-  min-height: 100dvh;
-  overflow: visible;
-  background: var(--rose);
-  color: var(--cream);
-}
-/* Match the page behind it so overscroll never flashes the intro's green. */
-body[data-screen="s2"] { background: var(--rose); }
-.step--02 .step__num { color: var(--rose-deep); }
-
-/* Holds the grid below the numeral. Screen 02 scrolls, so the cards take the
-   full column width and the page simply grows to fit them. */
-.step__zone {
-  padding-inline: 1.8rem;
-  padding-block-end: 1.8rem;
-}
-
-.card-grid {
+/* An editorial list, deliberately NOT button-shaped. The category rows on the
+   next screen use a border, a radius and a fill, and anything wearing that
+   here reads as pressable — which these are not. Hairline rules only. */
+.fn-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.8rem;
-  width: 100%;
+  gap: 0;
 }
 
-/* Portrait card, shared by the pours on 02 and the drinks on 03:
-   colour panel on top, white band across the bottom third. */
-.card {
-  display: flex;
-  flex-direction: column;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  background: #fff;
-}
-
-/* No overflow clip here: the photo is allowed to hang past the bottom of the
-   panel so it reads as standing on the white band rather than being cut off by
-   it. The panel is positioned, the band is not, so the photo paints on top. */
-.card__panel {
-  position: relative;
-  flex: 2 1 0;          /* the top two thirds */
-  background: var(--panel);
-}
-
-.card__photo {
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: -14%;  /* rests on, and over, the white band */
+.fn {
   display: block;
-  width: 104%;
-  height: 104%;
-  margin-inline: auto;
-  object-fit: contain;
-  object-position: center bottom;
+  padding-block: 0.8rem;
+  border-block-end: 1px solid rgba(129, 108, 89, 0.22);
+}
+.fn:last-child { border-block-end: 0; }
+
+.fn__name {
+  display: block;
+  font-family: var(--font-support);
+  font-size: 0.56rem;
+  color: var(--green);
 }
 
-.card__band {
-  flex: 1 1 0;          /* the bottom third */
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-inline: 0.7rem;
-  background: #fff;
-}
-
-.card__name {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-weight: 400;
-  /* Wraps freely; the longest drink name runs to three lines, which is well
-     inside the band's ~4.97rem. */
-  font-size: 0.8rem;
-  line-height: 1.15;
-  color: var(--deep-green);
-  text-align: start;
-}
-
-/* Drinks only. Latin numerals in both languages. */
-.card__price {
-  flex: 0 0 auto;
+.fn__desc {
+  display: block;
+  margin-block-start: 0.2rem;
+  font-family: var(--font-editorial);
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.15;
-  color: var(--rust);
-  white-space: nowrap;
+  line-height: 1.25;
+  color: var(--brown);
+  text-align: start;
 }
 
-button.card:active { transform: scale(0.97); }
-@media (prefers-reduced-motion: reduce) {
-  button.card:active { transform: none; }
+.page__note {
+  margin: 1.6rem auto 0;
+  max-width: 17rem;
+  font-family: var(--font-editorial);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--taupe);
+  text-align: center;
+  text-wrap: pretty;
 }
+
+.btn {
+  display: block;
+  margin: 0 auto;
+  padding: 0.7rem 1.9rem;
+  border-radius: 999px;
+  background: var(--olive);
+  color: var(--ivory);
+  font-family: var(--font-support);
+  font-size: 0.62rem;
+}
+.btn:active { opacity: 0.82; }
+
+/* Pinned to the foot of the stage so the way forward is visible without
+   scrolling nine functions first. Sized and offset against --stage-w, so it
+   tracks the column rather than the window when letterboxed. The fade stops
+   list text colliding with the pill as it scrolls underneath. */
+.cta-bar {
+  position: fixed;
+  z-index: 25;
+  display: none;
+  inset-block-end: 0;
+  inset-inline-start: var(--stage-inset);
+  width: var(--stage-w);
+  padding-block: 1.8rem 1.4rem;
+  background: linear-gradient(to top, var(--ivory) 58%, rgba(232, 227, 222, 0));
+  pointer-events: none;      /* the fade must not swallow taps */
+}
+body[data-screen="functions"] .cta-bar { display: block; }
+.cta-bar .btn { pointer-events: auto; }
+
+/* Clearance so the closing note is never trapped behind the pinned bar. */
+#screen-functions { padding-block-end: 7rem; }
 
 
 /* ============================================================
-   03 — PICK YOUR TASTE
-   The end of the journey. Same card, plus a price.
+   MENU — the eight categories
    ============================================================ */
 
-.step--03 {
-  grid-template-rows: 50dvh auto;   /* top half pinned; the grid grows */
-  height: auto;
-  min-height: 100dvh;
-  overflow: visible;
-  background: var(--rust);
-  color: var(--cream);
+.cat-list {
+  display: grid;
+  gap: 0.7rem;
 }
-.step--03 .step__num { color: var(--rust-deep); }
-body[data-screen="s3"] { background: var(--rust); }
 
-/* Clearance is the section's padding, not this button's margin: a trailing
-   margin on the last in-flow child would collapse out of the scroll area. */
-.restart-btn {
-  display: block;
-  margin: 2rem auto 0;
-  padding: 0.7rem 1.8rem;
-  border-radius: 999px;
-  background: var(--cream);
-  color: var(--rust);
-  font-size: 0.75rem;
+.cat {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 72px;            /* touch-target floor */
+  padding-inline: 1.2rem;
+  border: 1px solid var(--taupe);
+  border-radius: 0.3rem;
+  background: none;
+  color: var(--olive);
+  text-align: start;
 }
-.restart-btn:active { opacity: 0.82; }
+
+.cat__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.15;
+}
+
+.cat__count {
+  flex: 0 0 auto;
+  font-family: var(--font-support);
+  font-size: 0.55rem;
+  color: var(--taupe);
+}
+
+.cat:active {
+  background: var(--olive);
+  color: var(--ivory);
+}
+.cat:active .cat__count { color: var(--gold-mid); }
+
+
+/* ============================================================
+   CATEGORY — the drinks
+   ============================================================ */
+
+/* The legend that explains the function tags. Shown only where a category
+   actually contains a tagged drink. */
+.legend {
+  margin: 0 0 1.2rem;
+  font-family: var(--font-editorial);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--taupe);
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.drink-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+}
+
+.drink {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.drink__figure {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+/* Positioned absolutely, with its box stated in calc() rather than percentages.
+   This used to be a centred grid item sized `height: 100%` — but centring stops
+   a grid item stretching, so that percentage had no definite height to resolve
+   against and fell back to the image's intrinsic height (up to 1100px) inside a
+   ~550px figure. overflow:hidden then cropped it, which is why drinks looked
+   enormous and lost their lower half. Keep these dimensions explicit. */
+.drink__photo {
+  position: absolute;
+  inset-block-start: 0.9rem;
+  inset-inline-start: 0.9rem;
+  width: calc(100% - 1.8rem);
+  height: calc(100% - 1.5rem);
+  object-fit: contain;
+  /* Centred vertically. Top-anchoring left all the slack beneath the drink —
+     with a scale of 0.8 that put ~36px above and ~135px below. Centring splits
+     it evenly, and the trimmed photos share a bounding box, so they still line
+     up with one another. */
+  object-position: center;
+  /* Per-drink size, set from menu.json. Scaling about the centre keeps the
+     drink centred whatever its scale. */
+  transform: scale(var(--photo-scale, 1));
+  transform-origin: center;
+}
+
+/* Stands in until a photo is mapped to this drink — see TODO.md. */
+.drink__ghost {
+  position: absolute;
+  inset-block-start: 22%;
+  inset-inline-start: 27%;
+  width: 46%;
+  aspect-ratio: 1;
+  border: 1px dashed rgba(129, 108, 89, 0.45);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* The function tag. One brand colour for all nine, never nine invented
+   colours — the palette is five plus gold and recolouring is off-brand. */
+.drink__tag {
+  position: absolute;
+  inset-block-start: 0.45rem;
+  inset-inline-start: 0.45rem;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--ivory);
+  font-family: var(--font-support);
+  font-size: 0.42rem;
+}
+
+.drink__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.55rem 0.65rem 0.7rem;
+}
+
+.drink__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  color: var(--olive);
+  text-align: start;
+}
+
+.drink__price {
+  flex: 0 0 auto;
+  font-family: var(--font-support);
+  font-size: 0.6rem;
+  color: var(--taupe);
+  white-space: nowrap;
+}

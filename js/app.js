@@ -1,47 +1,47 @@
 /* ============================================================
-   ELIXIR in-store menu — kiosk app
+   ELIXIR HOUSE — in-store menu kiosk
    Plain vanilla JS. No framework, no build step, no router.
    ============================================================ */
 
 /* ---------- Everything tweakable lives here ---------- */
 
 const CONFIG = {
-  arabicEnabled: true,   // false → English only: no RTL, no Arabic font
+  // Bilingual-ready, English for now. Flipping this to true turns Arabic back
+  // on: the strings, the font, the dir handling and the logical-property CSS
+  // are all already in place. Supply the Arabic first — see TODO.md.
+  arabicEnabled: false,
   idleTimeoutMs: 60_000,
   defaultLang: "en",
-  placeholderImage: "assets/placeholder.png",   // stands in for a missing photo
+  placeholderImage: "assets/placeholder.png",
 };
 
 
-/* ---------- All UI copy. Never inline a user-facing string in markup.
-              The Arabic column is a draft, pending review. ---------- */
+/* ---------- All UI copy. Never inline a user-facing string in markup. ---------- */
 
 const STRINGS = {
-  tagline:    { en: "Where wellbeing is a", ar: "حيث العافية" },
-  tagline_em: { en: "full experience", ar: "تجربة متكاملة" },
-  start:      { en: "Click to start your journey", ar: "اضغط لتبدأ رحلتك" },
-  brand:      { en: "ELIXIR", ar: "ELIXIR" },
-  back:       { en: "Back", ar: "رجوع" },
+  start: { en: "Press anywhere to begin", ar: "اضغط لتبدأ" },
+  back:  { en: "Back", ar: "رجوع" },
 
-  s1_head: { en: "Pick your function.", ar: "اختر هدفك." },
-  s1_sub: {
-    en: "Start with what you need most. Choose a function that fits how you want to feel today.",
-    ar: "ابدأ بما تحتاجه أكثر. اختر ما يناسب شعورك اليوم.",
+  fn_head: { en: "Our functions", ar: "" },
+  fn_sub:  { en: "Nine blends, each with its own purpose.", ar: "" },
+  fn_note: {
+    en: "Add any function to any drink on the menu. A few drinks come with theirs already chosen.",
+    ar: "",
   },
+  see_menu: { en: "See the menu", ar: "" },
+  functions_open: { en: "About our functions", ar: "" },
 
-  s2_head: { en: "Pick your pour.", ar: "اختر شكل مشروبك." },
-  s2_sub: {
-    en: "Now choose how you'd like to enjoy your ELIXIR. Pick the format that suits your mood.",
-    ar: "الآن اختر الطريقة التي تحب أن تستمتع بها بمشروب ELIXIR. اختر الشكل الذي يناسب مزاجك.",
+  menu_head: { en: "The menu", ar: "" },
+  menu_sub:  { en: "Eight ways to take it.", ar: "" },
+
+  // {n} is replaced with the function's name.
+  legend_some: {
+    en: "Drinks without a tag take any function you choose. Tagged drinks come with theirs set.",
+    ar: "",
   },
+  legend_none: { en: "Every drink here takes any function you choose.", ar: "" },
 
-  s3_head: { en: "Pick your taste.", ar: "اختر نكهتك." },
-  s3_sub: {
-    en: "Explore our ready-made flavours and find the one that suits your taste best.",
-    ar: "اكتشف نكهاتنا الجاهزة واختر ما يناسب ذوقك.",
-  },
-
-  restart:  { en: "Back to the start", ar: "العودة إلى البداية" },
+  drinks_count: { en: "{n} drinks", ar: "" },
   currency: { en: "JOD", ar: "JOD" },
 };
 
@@ -52,7 +52,6 @@ const state = {
   lang: CONFIG.arabicEnabled ? CONFIG.defaultLang : "en",
   screen: "intro",
   category: null,
-  format: null,
 };
 
 let menu = null;
@@ -62,23 +61,29 @@ const els = {
   root: document.documentElement,
   live: document.getElementById("live-region"),
   backBtn: document.getElementById("back-btn"),
+  infoBtn: document.getElementById("info-btn"),
   introHit: document.getElementById("intro-hit"),
-  categoryGrid: document.getElementById("category-grid"),
-  formatGrid: document.getElementById("format-grid"),
+  functionList: document.getElementById("function-list"),
+  toMenuBtn: document.getElementById("to-menu-btn"),
+  categoryList: document.getElementById("category-list"),
+  categoryHead: document.getElementById("cat-head"),
+  categoryLegend: document.getElementById("category-legend"),
   drinkGrid: document.getElementById("drink-grid"),
-  restartBtn: document.getElementById("restart-btn"),
 };
 
 
 /* ---------- Helpers ---------- */
 
-function t(key) {
+function t(key, vars) {
   const entry = STRINGS[key];
   if (!entry) return "";
-  return entry[state.lang] ?? entry.en;
+  let s = entry[state.lang] || entry.en;
+  if (vars) for (const [k, v] of Object.entries(vars)) s = s.replace(`{${k}}`, v);
+  return s;
 }
 
-/** Picks the field for the current language off any menu.json record. */
+/** Picks the field for the current language off any menu.json record, falling
+    back to English wherever a translation has not been supplied yet. */
 function localised(record, field) {
   return record[`${field}_${state.lang}`] || record[`${field}_en`] || "";
 }
@@ -90,26 +95,14 @@ function el(tag, className, attrs) {
   return node;
 }
 
-/** White-PNG tinting via CSS mask, driven by --src and --tint.
- *
- *  The url() ends up in a custom property that css/styles.css substitutes into
- *  `mask:`, and browsers resolve it against the *stylesheet's* base URL — so a
- *  plain "assets/brand/x.png" gets fetched as "css/assets/brand/x.png" and
- *  404s. Resolving against document.baseURI first removes the ambiguity.
- *  Authored paths stay relative; only what reaches the mask is absolute, so
- *  this still works from a project sub-path like user.github.io/repo/. */
-function tint(node, src, colour) {
-  const resolved = new URL(src, document.baseURI).href;
-  node.style.setProperty("--src", `url("${resolved}")`);
-  node.style.setProperty("--tint", colour);
+/** "3 JOD", "4.25 JOD" — trailing zeros stripped, Latin numerals in both
+    languages. 3.5 renders as "3.5 JOD", matching the price list. */
+function priceLabel(price) {
+  return `${Number(price)} ${t("currency")}`;
 }
 
-/** Applies the tint declared by data-tint-src / data-tint in the markup. */
-function tintFromMarkup(root = document) {
-  root.querySelectorAll("[data-tint-src]").forEach((node) => {
-    tint(node, node.dataset.tintSrc, node.dataset.tint);
-  });
-}
+/** The nine functions, by id, for tag lookups. */
+let functionsById = {};
 
 
 /* ---------- Language ---------- */
@@ -133,28 +126,34 @@ function applyLanguage() {
 
 /* ---------- Navigation ---------- */
 
-const SCREEN_HEADINGS = { s1: "s1_head", s2: "s2_head", s3: "s3_head" };
+const SCREEN_HEADINGS = {
+  functions: "fn_head",
+  menu: "menu_head",
+};
 
 function goTo(screen) {
   state.screen = screen;
   els.body.dataset.screen = screen;
   window.scrollTo(0, 0);
   renderCurrentScreen();
-  announce(screen === "intro" ? t("start") : t(SCREEN_HEADINGS[screen]));
+  announce(
+    screen === "intro" ? t("start")
+    : screen === "category" ? localised(state.category, "name")
+    : t(SCREEN_HEADINGS[screen])
+  );
   resetIdleTimer();
 }
 
 function goBack() {
-  if (state.screen === "s1") goTo("intro");
-  else if (state.screen === "s2") goTo("s1");
-  else if (state.screen === "s3") goTo("s2");
+  if (state.screen === "functions") goTo("intro");
+  else if (state.screen === "menu") goTo("functions");
+  else if (state.screen === "category") goTo("menu");
 }
 
 function restart() {
   // Leave the screen before clearing the selection it was rendered from.
   goTo("intro");
   state.category = null;
-  state.format = null;
   if (CONFIG.arabicEnabled) state.lang = CONFIG.defaultLang;
   applyLanguage();
 }
@@ -171,122 +170,110 @@ function announce(message) {
 
 function renderCurrentScreen() {
   if (!menu) return;
-  if (state.screen === "s1") renderCategories();
-  if (state.screen === "s2" && state.category) renderFormats();
-  if (state.screen === "s3" && state.category && state.format) renderDrinks();
+  if (state.screen === "functions") renderFunctions();
+  if (state.screen === "menu") renderCategories();
+  if (state.screen === "category" && state.category) renderDrinks();
+}
+
+function renderFunctions() {
+  const list = els.functionList;
+  list.textContent = "";
+
+  menu.functions.forEach((fn) => {
+    const row = el("div", "fn");
+    row.dataset.fn = fn.id;
+
+    const name = el("span", "fn__name u-caps");
+    name.textContent = localised(fn, "name");
+
+    const desc = el("span", "fn__desc");
+    desc.textContent = localised(fn, "description");
+
+    row.append(name, desc);
+    list.append(row);
+  });
 }
 
 function renderCategories() {
-  const grid = els.categoryGrid;
-  grid.textContent = "";
+  const list = els.categoryList;
+  list.textContent = "";
 
-  menu.elixir_categories.forEach((category) => {
-    const pill = el("button", "cat-pill", { type: "button" });
-    pill.dataset.slug = category.slug;
-    // Drives the pressed fill; the star below is tinted the same colour.
-    pill.style.setProperty("--cat", category.color);
+  menu.categories.forEach((category) => {
+    const button = el("button", "cat", { type: "button" });
+    button.dataset.category = category.id;
 
-    const name = el("span", "cat-pill__name");
+    const name = el("span", "cat__name");
     name.textContent = localised(category, "name");
 
-    const icon = el("span", "cat-pill__icon tinted", { "aria-hidden": "true" });
-    tint(icon, category.icon, category.color);
+    const count = el("span", "cat__count u-caps");
+    count.textContent = t("drinks_count", { n: category.drinks.length });
 
-    pill.append(name, icon);
-    pill.addEventListener("click", () => selectCategory(category));
-    grid.append(pill);
+    button.append(name, count);
+    button.addEventListener("click", () => selectCategory(category));
+    list.append(button);
   });
 }
 
 function selectCategory(category) {
   state.category = category;
-  state.format = null;
-  goTo("s2");
-}
-
-
-/** The pour's photo, falling back to the placeholder when the file is not on
-    disk — frappe.png and matcha.png, see TODO.md. The guard stops an endless
-    loop if the placeholder itself ever goes missing. */
-function photoFor(format) {
-  const photo = el("img", "card__photo", { src: format.image, alt: "" });
-  photo.addEventListener("error", () => {
-    if (photo.dataset.fallback) return;
-    photo.dataset.fallback = "true";
-    photo.src = CONFIG.placeholderImage;
-  });
-  return photo;
-}
-
-
-/* --- 02: only the pours this category actually has, in formats-map order --- */
-
-function renderFormats() {
-  const grid = els.formatGrid;
-  grid.textContent = "";
-
-  const available = Object.keys(menu.formats)
-    .filter((key) => Array.isArray(state.category.drinks[key]));
-
-  available.forEach((key) => {
-    const format = menu.formats[key];
-
-    const card = el("button", "card", { type: "button" });
-    card.dataset.format = key;
-
-    const panel = el("span", "card__panel");
-    panel.style.setProperty("--panel", format.color);
-
-    panel.append(photoFor(format));
-
-    const band = el("span", "card__band");
-    const name = el("span", "card__name");
-    name.textContent = localised(format, "name");
-    band.append(name);
-
-    card.append(panel, band);
-    card.addEventListener("click", () => selectFormat(key));
-    grid.append(card);
-  });
-}
-
-function selectFormat(key) {
-  state.format = key;
-  goTo("s3");
-}
-
-
-/* --- 03: the drinks for the chosen category and pour --- */
-
-/** "3 JOD", "3.75 JOD" — Latin numerals in both languages, no trailing zeros. */
-function priceLabel(price) {
-  return `${Number(price)} ${t("currency")}`;
+  goTo("category");
 }
 
 function renderDrinks() {
+  const category = state.category;
+  els.categoryHead.textContent = localised(category, "name");
+
+  // The legend only earns its place where a tagged drink actually appears.
+  const hasTagged = category.drinks.some((d) => d.function);
+  els.categoryLegend.textContent = t(hasTagged ? "legend_some" : "legend_none");
+
   const grid = els.drinkGrid;
   grid.textContent = "";
 
-  // No drink photography yet, so every drink borrows its pour's image.
-  const format = menu.formats[state.format];
+  category.drinks.forEach((drink) => {
+    // Not tappable: the menu is the end of the journey. An <article>, not a
+    // <button>, but structured so a detail view could be added later.
+    const card = el("article", "drink");
+    card.dataset.drink = drink.id;
 
-  (state.category.drinks[state.format] || []).forEach((drink) => {
-    // The end of the journey: an <article>, not a <button>. Same structure as
-    // a pour card, so a detail view can be added without a rewrite.
-    const card = el("article", "card");
+    const figure = el("div", "drink__figure");
 
-    const panel = el("span", "card__panel");
-    panel.style.setProperty("--panel", drink.color);
-    panel.append(photoFor(format));
+    if (drink.image) {
+      const photo = el("img", "drink__photo", {
+        src: drink.image, alt: "", loading: "lazy", decoding: "async",
+      });
+      // The guard stops an endless loop if the placeholder itself goes missing.
+      photo.addEventListener("error", () => {
+        if (photo.dataset.fallback) return;
+        photo.dataset.fallback = "true";
+        photo.src = CONFIG.placeholderImage;
+      });
+      // Per-drink sizing, so one oversized glass can be dialled back on its
+      // own without touching the others. Absent or 1 means "as supplied".
+      if (drink.scale) photo.style.setProperty("--photo-scale", drink.scale);
+      figure.append(photo);
+    } else {
+      // No photo mapped to this drink yet — see TODO.md.
+      figure.append(el("div", "drink__ghost", { "aria-hidden": "true" }));
+    }
 
-    const band = el("span", "card__band");
-    const name = el("span", "card__name");
+    // A drink whose function is fixed carries its tag; the rest carry none,
+    // which the legend above explains.
+    if (drink.function) {
+      const fn = functionsById[drink.function];
+      const tag = el("span", "drink__tag u-caps");
+      tag.textContent = fn ? localised(fn, "name") : drink.function;
+      figure.append(tag);
+    }
+
+    const meta = el("div", "drink__meta");
+    const name = el("span", "drink__name");
     name.textContent = localised(drink, "name");
-    const price = el("span", "card__price", { dir: "ltr" });
+    const price = el("span", "drink__price", { dir: "ltr" });
     price.textContent = priceLabel(drink.price);
-    band.append(name, price);
+    meta.append(name, price);
 
-    card.append(panel, band);
+    card.append(figure, meta);
     grid.append(card);
   });
 }
@@ -306,9 +293,10 @@ function resetIdleTimer() {
 /* ---------- Boot ---------- */
 
 function wireEvents() {
-  els.introHit.addEventListener("click", () => goTo("s1"));
+  els.introHit.addEventListener("click", () => goTo("functions"));
+  els.toMenuBtn.addEventListener("click", () => goTo("menu"));
   els.backBtn.addEventListener("click", goBack);
-  els.restartBtn.addEventListener("click", restart);
+  els.infoBtn.addEventListener("click", () => goTo("functions"));
 
   ["pointerdown", "touchstart", "keydown"].forEach((evt) => {
     window.addEventListener(evt, resetIdleTimer, { passive: true });
@@ -317,11 +305,11 @@ function wireEvents() {
 
 async function init() {
   wireEvents();
-  tintFromMarkup();
   applyLanguage();
 
   const response = await fetch("data/menu.json");
   menu = await response.json();
+  functionsById = Object.fromEntries(menu.functions.map((f) => [f.id, f]));
 
   renderCurrentScreen();
 }

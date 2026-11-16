@@ -1,735 +1,734 @@
 {
-  "formats": {
-    "Mojito": {
-      "name_en": "Mojito",
-      "name_ar": "موهيتو",
-      "color": "#586C30",
-      "image": "assets/formats/mojito.png"
-    },
-    "Smoothie": {
-      "name_en": "Smoothie",
-      "name_ar": "سموذي",
-      "color": "#A51D47",
-      "image": "assets/formats/smoothie.png"
-    },
-    "Iced Tea": {
-      "name_en": "Iced Tea",
-      "name_ar": "آيس تي",
-      "color": "#BD4800",
-      "image": "assets/formats/iced-tea.png"
-    },
-    "In Cream": {
-      "name_en": "In Cream",
-      "name_ar": "إن كريم",
-      "color": "#B87CA3",
-      "image": "assets/formats/in-cream.png"
-    },
-    "Hot": {
-      "name_en": "Hot",
-      "name_ar": "ساخن",
-      "color": "#8A5A2B",
-      "image": "assets/formats/hot.png"
-    },
-    "Matcha": {
-      "name_en": "Matcha",
-      "name_ar": "ماتشا",
-      "color": "#6E8039",
-      "image": "assets/formats/matcha.png"
-    },
-    "Frappe": {
-      "name_en": "Frappe",
-      "name_ar": "فرابيه",
-      "color": "#7A4E2D",
-      "image": "assets/formats/frappe.png"
-    },
-    "Shots": {
-      "name_en": "Shots",
-      "name_ar": "شوت",
-      "color": "#1C3D1E",
-      "image": "assets/formats/shots.png"
-    },
-    "Hot Coffee": {
-      "name_en": "Hot Coffee",
-      "name_ar": "قهوة ساخنة",
-      "color": "#5C3A21",
-      "image": "assets/formats/coffee.png"
-    },
-    "Iced Coffee": {
-      "name_en": "Iced Coffee",
-      "name_ar": "قهوة باردة",
-      "color": "#C08A5E",
-      "image": "assets/formats/coffee.png"
-    }
-  },
-  "elixir_categories": [
+  "_note": "name_ar is intentionally empty - see TODO.md. image is null where no photo exists yet. scale tunes how large that drink renders inside its card: 1 = fills the card, lower = smaller. Hand-edit any value.",
+  "functions": [
     {
-      "name_en": "Performance",
-      "name_ar": "دفعة",
-      "slug": "performance",
-      "color": "#E08D3C",
-      "icon": "assets/brand/elixir-icon-white.png",
-      "description_en": "Daily energy support",
-      "description_ar": "يدعم طاقتك خلال يومك",
-      "herbs": [
-        {
-          "name_en": "Ginseng",
-          "name_ar": "جذر النشاط"
-        },
-        {
-          "name_en": "Maca",
-          "name_ar": "نبض الحيوية"
-        },
-        {
-          "name_en": "Tongkat Ali",
-          "name_ar": "قوة الجذر"
-        }
-      ],
-      "drinks": {
-        "Mojito": [
-          {
-            "name_en": "Cinnamon Raspberry Mojito",
-            "name_ar": "رازبيري قرفة موهيتو",
-            "price": 3,
-            "color": "#E23E63"
-          }
-        ],
-        "Frappe": [
-          {
-            "name_en": "Dates Frappe",
-            "name_ar": "تمر فرابيه",
-            "price": 4,
-            "color": "#C08A4A"
-          },
-          {
-            "name_en": "After Eight Frappe",
-            "name_ar": "افتر ايت فرابيه",
-            "price": 4,
-            "color": "#3FA06B"
-          },
-          {
-            "name_en": "Cardamom Frappe",
-            "name_ar": "هيل فرابيه",
-            "price": 4,
-            "color": "#C9AE5E"
-          }
-        ],
-        "Iced Tea": [
-          {
-            "name_en": "Moringa Tea Peach",
-            "name_ar": "مورينجا تي خوخ",
-            "price": 3,
-            "color": "#FBA26B"
-          }
-        ],
-        "Hot": [
-          {
-            "name_en": "Cashew Latte",
-            "name_ar": "كاجو لاتيه",
-            "price": 3.75,
-            "color": "#D9B27C"
-          },
-          {
-            "name_en": "Dates Latte",
-            "name_ar": "تمر لاتيه",
-            "price": 3.75,
-            "color": "#C08A4A"
-          },
-          {
-            "name_en": "Pistachio Latte",
-            "name_ar": "فستق لاتيه",
-            "price": 3.75,
-            "color": "#A8CC6B"
-          },
-          {
-            "name_en": "Bounty Latte",
-            "name_ar": "باونتي لاتيه",
-            "price": 3.75,
-            "color": "#8B6A4F"
-          },
-          {
-            "name_en": "Herbs Berries",
-            "name_ar": "أعشاب التوت",
-            "price": 3.75,
-            "color": "#9A4FA8"
-          }
-        ],
-        "In Cream": [
-          {
-            "name_en": "Blueberry Cream",
-            "name_ar": "بلوبيري كريم",
-            "price": 4,
-            "color": "#6A57C4"
-          },
-          {
-            "name_en": "Mix Berry Cream",
-            "name_ar": "مكس بيري كريم",
-            "price": 4,
-            "color": "#9A4FA8"
-          }
-        ],
-        "Matcha": [
-          {
-            "name_en": "Cashew Matcha Latte",
-            "name_ar": "كاجو ماتشا لاتيه",
-            "price": 4.25,
-            "color": "#7FB03C"
-          }
-        ],
-        "Shots": [
-          {
-            "name_en": "Performance Shot",
-            "name_ar": " شوت جذر النشاط",
-            "price": 2.5,
-            "color": "#E8A317"
-          }
-        ]
-      }
+      "id": "vitality",
+      "name_en": "Vitality — For Him",
+      "name_ar": "",
+      "description_en": "Strength by nature",
+      "description_ar": ""
     },
     {
-      "name_en": "Relaxation & Sleep",
-      "name_ar": "سكون",
-      "slug": "relaxation",
-      "color": "#B8A3D9",
-      "icon": "assets/brand/elixir-icon-white.png",
-      "description_en": "Evening calm ritual",
-      "description_ar": "لحظات استرخاء لنهاية يومك",
-      "herbs": [
-        {
-          "name_en": "Valerian",
-          "name_ar": "ناردين"
-        }
-      ],
-      "drinks": {
-        "Mojito": [
-          {
-            "name_en": "Zaitman Raspberry Mojito",
-            "name_ar": "رازبيري زعيتمان موهيتو",
-            "price": 3,
-            "color": "#E23E63"
-          },
-          {
-            "name_en": "Melissa Passion Fruit Mojito",
-            "name_ar": "باشن فروت مليسة موهيتو",
-            "price": 3,
-            "color": "#F8C01F"
-          }
-        ],
-        "Smoothie": [
-          {
-            "name_en": "Zaitman Raspberry Smoothie",
-            "name_ar": "رازبيري زعيتمان سموذي",
-            "price": 3.75,
-            "color": "#E23E63"
-          },
-          {
-            "name_en": "Melissa Passion Fruit Smoothie",
-            "name_ar": "باشن فروت مليسة سموذي",
-            "price": 3.75,
-            "color": "#F8C01F"
-          }
-        ],
-        "Iced Tea": [
-          {
-            "name_en": "Moringa Tea Passion",
-            "name_ar": "مورينجا تي باشن",
-            "price": 3,
-            "color": "#F8C01F"
-          },
-          {
-            "name_en": "Green Tea Lychee",
-            "name_ar": "جرين تي ليتشي",
-            "price": 3,
-            "color": "#F49AB0"
-          }
-        ],
-        "Hot": [
-          {
-            "name_en": "Herbs Melissa",
-            "name_ar": "أعشاب المليسة",
-            "price": 3.25,
-            "color": "#6FAE5A"
-          },
-          {
-            "name_en": "Herbs Mango Passion",
-            "name_ar": "أعشاب المنجا والباشن",
-            "price": 3.25,
-            "color": "#F8C01F"
-          }
-        ],
-        "In Cream": [
-          {
-            "name_en": "Strawberry Cream",
-            "name_ar": "ستروبيري كريم",
-            "price": 4,
-            "color": "#FB7C96"
-          },
-          {
-            "name_en": "Raspberry Cream",
-            "name_ar": "رازبيري كريم",
-            "price": 4,
-            "color": "#E23E63"
-          }
-        ],
-        "Shots": [
-          {
-            "name_en": "Deep Sleep Shot",
-            "name_ar": "شوت عشبة الهدوء",
-            "price": 2.5,
-            "color": "#8A76D0"
-          }
-        ]
-      }
+      "id": "eve",
+      "name_en": "Eve — For Her",
+      "name_ar": "",
+      "description_en": "Eve rhythm",
+      "description_ar": ""
     },
     {
-      "name_en": "Beauty",
-      "name_ar": "وهج",
-      "slug": "beauty",
-      "color": "#E7A6B8",
-      "icon": "assets/brand/elixir-icon-white.png",
-      "description_en": "Glow from within",
-      "description_ar": "إشراقة من الداخل",
-      "herbs": [
-        {
-          "name_en": "Sea Moss",
-          "name_ar": "غذاء البحر"
-        }
-      ],
-      "drinks": {
-        "Mojito": [
-          {
-            "name_en": "Anise Pina Colada Mojito",
-            "name_ar": "بيناكولادا يانسون موهيتو",
-            "price": 3,
-            "color": "#F5D97A"
-          },
-          {
-            "name_en": "Melissa Strawberry Mojito",
-            "name_ar": "فراولة مليسة موهيتو",
-            "price": 3,
-            "color": "#FB7C96"
-          }
-        ],
-        "Smoothie": [
-          {
-            "name_en": "Anise Pina Colada Smoothie",
-            "name_ar": "بيناكولادا يانسون سموذي",
-            "price": 3.75,
-            "color": "#F5D97A"
-          },
-          {
-            "name_en": "Zaitman Strawberry Smoothie",
-            "name_ar": "فراولة زعيتمان سموذي",
-            "price": 3.75,
-            "color": "#FB7C96"
-          }
-        ],
-        "Iced Tea": [
-          {
-            "name_en": "Green Tea Peach",
-            "name_ar": "جرين تي خوخ",
-            "price": 3,
-            "color": "#FBA26B"
-          },
-          {
-            "name_en": "Moringa Tea Cherry",
-            "name_ar": "مورينجا تي شيري",
-            "price": 3,
-            "color": "#D92D4E"
-          }
-        ],
-        "Hot": [
-          {
-            "name_en": "Herbs Peach",
-            "name_ar": "أعشاب الدراق",
-            "price": 3.25,
-            "color": "#FBA26B"
-          },
-          {
-            "name_en": "Herbs Turmeric",
-            "name_ar": "أعشاب الكركم",
-            "price": 3.25,
-            "color": "#F0B419"
-          }
-        ],
-        "In Cream": [
-          {
-            "name_en": "Strawberry Cream",
-            "name_ar": "ستروبيري كريم",
-            "price": 4,
-            "color": "#FB7C96"
-          }
-        ],
-        "Shots": [
-          {
-            "name_en": "Skin Glow Shot",
-            "name_ar": "شوت غذاء البحر",
-            "price": 2.5,
-            "color": "#4FBFA8"
-          }
-        ]
-      }
+      "id": "nour",
+      "name_en": "Nour",
+      "name_ar": "",
+      "description_en": "Nourish your skin",
+      "description_ar": ""
     },
     {
+      "id": "gut-reset",
+      "name_en": "Gut Reset",
+      "name_ar": "",
+      "description_en": "Gut feeling restored",
+      "description_ar": ""
+    },
+    {
+      "id": "relax",
+      "name_en": "Relax",
+      "name_ar": "",
+      "description_en": "Calm your center",
+      "description_ar": ""
+    },
+    {
+      "id": "hb-plus",
+      "name_en": "Hb Plus",
+      "name_ar": "",
+      "description_en": "Blood support",
+      "description_ar": ""
+    },
+    {
+      "id": "spark",
+      "name_en": "Spark",
+      "name_ar": "",
+      "description_en": "Rise and spark",
+      "description_ar": ""
+    },
+    {
+      "id": "focus",
       "name_en": "Focus",
-      "name_ar": "ارتكاز",
-      "slug": "focus",
-      "color": "#6FA8C7",
-      "icon": "assets/brand/elixir-icon-white.png",
-      "description_en": "Stay sharp & present",
-      "description_ar": "خليك حاضر وواضح",
-      "herbs": [
-        {
-          "name_en": "Ginkgo Biloba",
-          "name_ar": "ورق الصفاء"
-        },
-        {
-          "name_en": "Wheatgrass",
-          "name_ar": "بداية نقية"
-        }
-      ],
-      "drinks": {
-        "Mojito": [
-          {
-            "name_en": "Rosemary Apple Mojito",
-            "name_ar": "تفاح أخضر روزماري موهيتو",
-            "price": 3,
-            "color": "#8FC93A"
-          },
-          {
-            "name_en": "Sage Strawberry Mojito",
-            "name_ar": "فراولة ميرمية موهيتو",
-            "price": 3,
-            "color": "#FB7C96"
-          }
-        ],
-        "Smoothie": [
-          {
-            "name_en": "Rosemary Apple Smoothie",
-            "name_ar": "تفاح أخضر روزماري سموذي",
-            "price": 3.75,
-            "color": "#8FC93A"
-          },
-          {
-            "name_en": "Rosemary Strawberry Smoothie",
-            "name_ar": "فراولة روزماري سموذي",
-            "price": 3.75,
-            "color": "#FB7C96"
-          }
-        ],
-        "Iced Tea": [
-          {
-            "name_en": "Moringa Tea Mango",
-            "name_ar": "مورينجا تي مانجو",
-            "price": 3,
-            "color": "#F79A1E"
-          }
-        ],
-        "Hot": [
-          {
-            "name_en": "Herbs Ginkgo",
-            "name_ar": "أعشاب الجنكا",
-            "price": 3.25,
-            "color": "#C3CC3F"
-          }
-        ],
-        "In Cream": [
-          {
-            "name_en": "Melon Cream",
-            "name_ar": "ميلون كريم",
-            "price": 4,
-            "color": "#A6D77E"
-          },
-          {
-            "name_en": "Mango Cream",
-            "name_ar": "مانجو كريم",
-            "price": 4,
-            "color": "#F79A1E"
-          }
-        ],
-        "Shots": [
-          {
-            "name_en": "Focus Shot",
-            "name_ar": "شوت التركيز",
-            "price": 2.5,
-            "color": "#9BC53D"
-          }
-        ]
-      }
+      "name_ar": "",
+      "description_en": "Clear mind",
+      "description_ar": ""
     },
     {
-      "name_en": "Immunity",
-      "name_ar": "حصن",
-      "slug": "immunity",
-      "color": "#7FB069",
-      "icon": "assets/brand/elixir-icon-white.png",
-      "description_en": "Daily immune support",
-      "description_ar": "دعم يومي لجسمك",
-      "herbs": [
+      "id": "season",
+      "name_en": "Season",
+      "name_ar": "",
+      "description_en": "Your seasonal shield",
+      "description_ar": ""
+    }
+  ],
+  "categories": [
+    {
+      "id": "smoothies",
+      "name_en": "Smoothies",
+      "name_ar": "",
+      "drinks": [
         {
-          "name_en": "Pine Needles",
-          "name_ar": "نقاء الغابة"
+          "id": "SM-01",
+          "name_en": "Pomegranate Hibiscus Tamarind",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": null
         },
         {
-          "name_en": "Lung Support Herb",
-          "name_ar": "راحة التنفس"
+          "id": "SM-02",
+          "name_en": "Mixed Berry Cinnamon",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-02.webp",
+          "scale": 0.8
         },
         {
-          "name_en": "Oregano",
-          "name_ar": "هواء نقي"
+          "id": "SM-03",
+          "name_en": "Piña Colada Anise",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-03.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-04",
+          "name_en": "Cantaloupe Ginger",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-04.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-05",
+          "name_en": "Pineapple Passion Rosemary",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-05.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-06",
+          "name_en": "Blueberry Za'itman",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-06.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-07",
+          "name_en": "Blueberry Thyme",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-07.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-08",
+          "name_en": "Raspberry Rosemary",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-08.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-09",
+          "name_en": "Raspberry Za'itman",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-09.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-10",
+          "name_en": "Strawberry Rosemary",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-10.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-11",
+          "name_en": "Mango Sage",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-11.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-12",
+          "name_en": "Kiwi Rosemary",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sm-12.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SM-13",
+          "name_en": "Mango Spirulina",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": null
         }
-      ],
-      "drinks": {
-        "Mojito": [
-          {
-            "name_en": "Coriander Strawberry Mojito",
-            "name_ar": "كزبرة فراولة موهيتو",
-            "price": 3,
-            "color": "#FB7C96"
-          },
-          {
-            "name_en": "Coriander Peach Mojito",
-            "name_ar": "كزبرة دراق موهيتو",
-            "price": 3,
-            "color": "#FBA26B"
-          }
-        ],
-        "Smoothie": [
-          {
-            "name_en": "Anise Mango Smoothie",
-            "name_ar": "مانجا يانسون سموذي",
-            "price": 3.75,
-            "color": "#F79A1E"
-          },
-          {
-            "name_en": "Oregano Raspberry Smoothie",
-            "name_ar": "رازبيري أوريجانو سموذي",
-            "price": 3.75,
-            "color": "#E23E63"
-          }
-        ],
-        "Hot": [
-          {
-            "name_en": "Herbs Oregano",
-            "name_ar": "أعشاب الأوريجانو",
-            "price": 3,
-            "color": "#4F8F45"
-          }
-        ],
-        "Shots": [
-          {
-            "name_en": "Clear Breathing Shot",
-            "name_ar": "شوت نقاء الغابة",
-            "price": 2.5,
-            "color": "#3F8A62"
-          },
-          {
-            "name_en": "Iron Boost Shot",
-            "name_ar": "شوت قوة الدم",
-            "price": 2.5,
-            "color": "#C4243A"
-          },
-          {
-            "name_en": "Circulation Shot",
-            "name_ar": "شوت الحرارة",
-            "price": 2.5,
-            "color": "#F2603C"
-          },
-          {
-            "name_en": "Daily Defense Shot",
-            "name_ar": "طاقة البحر",
-            "price": 2.5,
-            "color": "#2E9AA5"
-          }
-        ]
-      }
+      ]
     },
     {
-      "name_en": "Digestion",
-      "name_ar": "راحة",
-      "slug": "digestion",
-      "color": "#79C2B0",
-      "icon": "assets/brand/elixir-icon-white.png",
-      "description_en": "Feel lighter, naturally",
-      "description_ar": "راحة وتوازن لجهازك الهضمي",
-      "herbs": [
+      "id": "hot-herbal",
+      "name_en": "Hot Herbal",
+      "name_ar": "",
+      "drinks": [
         {
-          "name_en": "Wormwood",
-          "name_ar": "توازن مرّ"
+          "id": "HH-01",
+          "name_en": "Berry Herbal",
+          "name_ar": "",
+          "price": 3.25,
+          "function": null,
+          "image": "assets/drinks/hh-01.webp",
+          "scale": 0.8
         },
         {
-          "name_en": "Centaury",
-          "name_ar": "راحة الهضم"
+          "id": "HH-02",
+          "name_en": "Turmeric Herbal",
+          "name_ar": "",
+          "price": 3.25,
+          "function": "nour",
+          "image": null
+        },
+        {
+          "id": "HH-03",
+          "name_en": "Lemon Balm Herbal",
+          "name_ar": "",
+          "price": 3.25,
+          "function": null,
+          "image": "assets/drinks/hh-03.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "HH-04",
+          "name_en": "Ginkgo Herbal",
+          "name_ar": "",
+          "price": 3.25,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "HH-05",
+          "name_en": "Peach Herbal",
+          "name_ar": "",
+          "price": 3.25,
+          "function": "nour",
+          "image": null
+        },
+        {
+          "id": "HH-06",
+          "name_en": "Oregano Herbal",
+          "name_ar": "",
+          "price": 3.25,
+          "function": "season",
+          "image": null
+        },
+        {
+          "id": "HH-07",
+          "name_en": "Mango Passion Herbal",
+          "name_ar": "",
+          "price": 3.25,
+          "function": null,
+          "image": "assets/drinks/hh-07.webp",
+          "scale": 0.8
         }
-      ],
-      "drinks": {
-        "Mojito": [
-          {
-            "name_en": "Anise Mango Mojito",
-            "name_ar": "مانجا يانسون موهيتو",
-            "price": 3,
-            "color": "#F79A1E"
-          },
-          {
-            "name_en": "Oregano Strawberry Mojito",
-            "name_ar": "فراولة أوريجانو موهيتو",
-            "price": 3,
-            "color": "#FB7C96"
-          },
-          {
-            "name_en": "Sage Mango Mojito",
-            "name_ar": "مانجا ميرمية موهيتو",
-            "price": 3,
-            "color": "#F79A1E"
-          },
-          {
-            "name_en": "Sage Passion Fruit Mojito",
-            "name_ar": "باشن فروت ميرمية موهيتو",
-            "price": 3,
-            "color": "#F8C01F"
-          }
-        ],
-        "Smoothie": [
-          {
-            "name_en": "Sage Passion Fruit Smoothie",
-            "name_ar": "باشن فروت ميرمية سموذي",
-            "price": 3.75,
-            "color": "#F8C01F"
-          },
-          {
-            "name_en": "Berberine Pomegranate Smoothie",
-            "name_ar": "رمان باربيرين سموذي",
-            "price": 3.75,
-            "color": "#C42350"
-          }
-        ],
-        "Iced Tea": [
-          {
-            "name_en": "Moringa Tea Passion",
-            "name_ar": "مورينجا تي باشن",
-            "price": 3,
-            "color": "#F8C01F"
-          }
-        ],
-        "Shots": [
-          {
-            "name_en": "Gut Reset Shot",
-            "name_ar": "شوت توازن مرّ",
-            "price": 2.5,
-            "color": "#86A34F"
-          }
-        ]
-      }
+      ]
     },
     {
-      "name_en": "The Classic",
-      "name_ar": "قهوة تقليدية",
-      "slug": "classic",
-      "color": "#A97B54",
-      "icon": "assets/brand/elixir-icon-white.png",
-      "description_en": "Timeless coffee favorites",
-      "description_ar": "قهوة كلاسيكية مميزة",
-      "herbs": [
+      "id": "iced-tea",
+      "name_en": "Iced Tea",
+      "name_ar": "",
+      "drinks": [
         {
-          "name_en": "Coffee Beans",
-          "name_ar": "حبوب القهوة"
+          "id": "IT-01",
+          "name_en": "Mango Iced Tea",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "IT-02",
+          "name_en": "Cranberry Iced Tea",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "IT-03",
+          "name_en": "Blueberry Iced Tea",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "IT-04",
+          "name_en": "Passion Fruit Iced Tea",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "IT-05",
+          "name_en": "Lemon Iced Tea",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": "assets/drinks/it-05.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "IT-06",
+          "name_en": "Tamarind Hibiscus Iced Tea",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": "assets/drinks/it-06.webp",
+          "scale": 0.8
         }
-      ],
-      "drinks": {
-        "Hot Coffee": [
-          {
-            "name_en": "Espresso",
-            "name_ar": "إسبرسو",
-            "price": 2.25,
-            "color": "#5A3A28"
-          },
-          {
-            "name_en": "Macchiato",
-            "name_ar": "إسبرسو ماكياتو",
-            "price": 2.5,
-            "color": "#6E4A34"
-          },
-          {
-            "name_en": "American",
-            "name_ar": "قهوة أمريكية",
-            "price": 2.75,
-            "color": "#7C5740"
-          },
-          {
-            "name_en": "Americano",
-            "name_ar": "أمريكانو",
-            "price": 2.75,
-            "color": "#74503B"
-          },
-          {
-            "name_en": "Flat White",
-            "name_ar": "فلات وايت",
-            "price": 3,
-            "color": "#C2A084"
-          },
-          {
-            "name_en": "Latte",
-            "name_ar": "لاتيه",
-            "price": 3,
-            "color": "#CBAE90"
-          },
-          {
-            "name_en": "Cappuccino",
-            "name_ar": "كابتشينو",
-            "price": 3,
-            "color": "#BC9878"
-          },
-          {
-            "name_en": "Latte Flavor",
-            "name_ar": "لاتيه مع نكهة",
-            "price": 3.5,
-            "color": "#B08A66"
-          },
-          {
-            "name_en": "Mocha",
-            "name_ar": "موكا",
-            "price": 3.5,
-            "color": "#6B4438"
-          },
-          {
-            "name_en": "V60",
-            "name_ar": "قهوة مقطرة",
-            "price": 4,
-            "color": "#9A6C48"
-          }
-        ],
-        "Iced Coffee": [
-          {
-            "name_en": "Iced Americano",
-            "name_ar": "آيس أمريكانو",
-            "price": 2.5,
-            "color": "#8A6852"
-          },
-          {
-            "name_en": "Iced Latte",
-            "name_ar": "آيس لاتيه",
-            "price": 3,
-            "color": "#D2B99F"
-          },
-          {
-            "name_en": "Iced Latte Flavor",
-            "name_ar": "آيس لاتيه مع نكهة",
-            "price": 3.5,
-            "color": "#C0A184"
-          },
-          {
-            "name_en": "Iced Mocha",
-            "name_ar": "آيس موكا",
-            "price": 3.5,
-            "color": "#7A5248"
-          },
-          {
-            "name_en": "Iced V60",
-            "name_ar": "قهوة مقطرة باردة",
-            "price": 4,
-            "color": "#A67C57"
-          }
-        ]
-      }
+      ]
+    },
+    {
+      "id": "milkshakes",
+      "name_en": "Milkshakes",
+      "name_ar": "",
+      "drinks": [
+        {
+          "id": "MS-01",
+          "name_en": "Arabic Booza Frankincense",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-01.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-02",
+          "name_en": "Crocant Anise",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "MS-03",
+          "name_en": "Crocant Cinnamon & Cardamom",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-03.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-04",
+          "name_en": "Blueberry Thyme",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-04.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-05",
+          "name_en": "Kiwi Apple Rosemary",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-05.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-06",
+          "name_en": "Arabic Booza Spirulina",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-06.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-07",
+          "name_en": "Raspberry Thyme",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-07.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-08",
+          "name_en": "Raspberry Lavender",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-08.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-09",
+          "name_en": "Mango Ginger",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-09.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-10",
+          "name_en": "Strawberry Rosemary",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-10.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-11",
+          "name_en": "Mixed Berry Lavender",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": "assets/drinks/ms-11.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "MS-12",
+          "name_en": "Hibiscus & Tamarind",
+          "name_ar": "",
+          "price": 4.5,
+          "function": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "spirulina",
+      "name_en": "Spirulina",
+      "name_ar": "",
+      "drinks": [
+        {
+          "id": "SP-01",
+          "name_en": "Spirulina Blueberry",
+          "name_ar": "",
+          "price": 4.75,
+          "function": null,
+          "image": "assets/drinks/sp-01.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SP-02",
+          "name_en": "Spirulina Mango",
+          "name_ar": "",
+          "price": 4.75,
+          "function": null,
+          "image": "assets/drinks/sp-02.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SP-03",
+          "name_en": "Spirulina Peach",
+          "name_ar": "",
+          "price": 4.75,
+          "function": null,
+          "image": "assets/drinks/sp-03.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SP-04",
+          "name_en": "Spirulina Mixed Berry",
+          "name_ar": "",
+          "price": 4.75,
+          "function": null,
+          "image": "assets/drinks/sp-04.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SP-05",
+          "name_en": "Spirulina Strawberry",
+          "name_ar": "",
+          "price": 4.75,
+          "function": null,
+          "image": "assets/drinks/sp-05.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SP-06",
+          "name_en": "Spirulina Classic",
+          "name_ar": "",
+          "price": 4.25,
+          "function": null,
+          "image": "assets/drinks/sp-06.webp",
+          "scale": 0.8
+        }
+      ]
+    },
+    {
+      "id": "specialty-coffee",
+      "name_en": "Specialty Coffee",
+      "name_ar": "",
+      "drinks": [
+        {
+          "id": "SC-01",
+          "name_en": "Espresso",
+          "name_ar": "",
+          "price": 2.25,
+          "function": null,
+          "image": "assets/drinks/sc-01.webp",
+          "scale": 0.9
+        },
+        {
+          "id": "SC-02",
+          "name_en": "Lungo",
+          "name_ar": "",
+          "price": 2.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "SC-03",
+          "name_en": "Americano",
+          "name_ar": "",
+          "price": 2.75,
+          "function": null,
+          "image": "assets/drinks/sc-03.webp",
+          "scale": 0.9
+        },
+        {
+          "id": "SC-04",
+          "name_en": "American Filter Coffee",
+          "name_ar": "",
+          "price": 2.75,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "SC-05",
+          "name_en": "Cappuccino",
+          "name_ar": "",
+          "price": 3.0,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "SC-06",
+          "name_en": "Latte",
+          "name_ar": "",
+          "price": 3.0,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "SC-07",
+          "name_en": "Flat White",
+          "name_ar": "",
+          "price": 3.0,
+          "function": null,
+          "image": "assets/drinks/sc-07.webp",
+          "scale": 0.9
+        },
+        {
+          "id": "SC-08",
+          "name_en": "Cortado",
+          "name_ar": "",
+          "price": 2.5,
+          "function": null,
+          "image": "assets/drinks/sc-08.webp",
+          "scale": 0.9
+        },
+        {
+          "id": "SC-09",
+          "name_en": "Macchiato",
+          "name_ar": "",
+          "price": 2.5,
+          "function": null,
+          "image": "assets/drinks/sc-09.webp",
+          "scale": 0.9
+        },
+        {
+          "id": "SC-10",
+          "name_en": "Hot Chocolate",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "iced-coffee",
+      "name_en": "Iced Coffee",
+      "name_ar": "",
+      "drinks": [
+        {
+          "id": "IC-01",
+          "name_en": "Iced Coffee",
+          "name_ar": "",
+          "price": 2.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "IC-02",
+          "name_en": "Iced Latte",
+          "name_ar": "",
+          "price": 3.0,
+          "function": null,
+          "image": "assets/drinks/ic-02.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "IC-03",
+          "name_en": "Date Frappe",
+          "name_ar": "",
+          "price": 4.0,
+          "function": null,
+          "image": "assets/drinks/ic-03.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "IC-04",
+          "name_en": "Flavored Iced Latte",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": "assets/drinks/ic-04.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "IC-05",
+          "name_en": "Iced Mocha",
+          "name_ar": "",
+          "price": 3.5,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "IC-06",
+          "name_en": "Iced V60",
+          "name_ar": "",
+          "price": 4.0,
+          "function": null,
+          "image": null
+        },
+        {
+          "id": "IC-07",
+          "name_en": "Caramel Frappe",
+          "name_ar": "",
+          "price": 4.0,
+          "function": null,
+          "image": null
+        }
+      ]
+    },
+    {
+      "id": "shots",
+      "name_en": "Shots",
+      "name_ar": "",
+      "drinks": [
+        {
+          "id": "SH-01",
+          "name_en": "Vitality Shot — For Him",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "vitality",
+          "image": null
+        },
+        {
+          "id": "SH-03",
+          "name_en": "Nour Shot",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "nour",
+          "image": "assets/drinks/sh-03.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SH-04",
+          "name_en": "Gut Reset Shot",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "gut-reset",
+          "image": "assets/drinks/sh-04.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SH-05",
+          "name_en": "Relax Shot",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "relax",
+          "image": "assets/drinks/sh-05.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SH-06",
+          "name_en": "Season Shot",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "season",
+          "image": "assets/drinks/sh-06.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SH-07",
+          "name_en": "Spark Shot",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "spark",
+          "image": "assets/drinks/sh-07.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SH-08",
+          "name_en": "Focus Shot",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "focus",
+          "image": "assets/drinks/sh-08.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SH-09",
+          "name_en": "Hb Plus Shot",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "hb-plus",
+          "image": "assets/drinks/sh-09.webp",
+          "scale": 0.8
+        },
+        {
+          "id": "SH-10",
+          "name_en": "Eve Shot — For Her",
+          "name_ar": "",
+          "price": 2.5,
+          "function": "eve",
+          "image": "assets/drinks/sh-10.webp",
+          "scale": 0.8
+        }
+      ]
     }
   ]
 }
