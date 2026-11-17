@@ -6,10 +6,10 @@
 /* ---------- Everything tweakable lives here ---------- */
 
 const CONFIG = {
-  // Bilingual-ready, English for now. Flipping this to true turns Arabic back
-  // on: the strings, the font, the dir handling and the logical-property CSS
-  // are all already in place. Supply the Arabic first — see TODO.md.
-  arabicEnabled: false,
+  // Arabic is live. Setting this to false collapses the app back to English
+  // only: the intro stops offering a choice and the chrome toggle disappears,
+  // with no other change needed.
+  arabicEnabled: true,
   idleTimeoutMs: 60_000,
   defaultLang: "en",
   placeholderImage: "assets/placeholder.png",
@@ -19,29 +19,48 @@ const CONFIG = {
 /* ---------- All UI copy. Never inline a user-facing string in markup. ---------- */
 
 const STRINGS = {
-  start: { en: "Press anywhere to begin", ar: "اضغط لتبدأ" },
+  // Announced when the intro appears. The screen no longer takes a tap
+  // anywhere — the two language buttons are the way in.
+  start: { en: "Choose your language to begin", ar: "اختر لغتك للبدء" },
   back:  { en: "Back", ar: "رجوع" },
 
-  fn_head: { en: "Our functions", ar: "" },
-  fn_sub:  { en: "Nine blends, each with its own purpose.", ar: "" },
+  // The two names a language calls itself. They never translate, so both
+  // columns carry the same value — they live here only because no
+  // user-facing string belongs in the markup.
+  lang_en: { en: "English", ar: "English" },
+  lang_ar: { en: "عربي", ar: "عربي" },
+  // The chrome toggle is a circle, so its face is one short mark, not a word.
+  lang_short_en: { en: "EN", ar: "EN" },
+  lang_short_ar: { en: "ع", ar: "ع" },
+  // Always describes the language being switched TO, in the language in use.
+  lang_switch: { en: "Switch to Arabic", ar: "التبديل إلى الإنجليزية" },
+
+  fn_head: { en: "Our functions", ar: "وظائفنا" },
+  fn_sub:  { en: "Nine blends, each with its own purpose.", ar: "تسع خلطات، لكل واحدة غايتها." },
   fn_note: {
     en: "Add any function to any drink on the menu. A few drinks come with theirs already chosen.",
-    ar: "",
+    ar: "أضف أي وظيفة إلى أي مشروب في المنيو. وبعض المشروبات تأتي بوظيفتها جاهزة.",
   },
-  see_menu: { en: "See the menu", ar: "" },
-  functions_open: { en: "About our functions", ar: "" },
+  see_menu: { en: "See the menu", ar: "شاهد المنيو" },
+  functions_open: { en: "About our functions", ar: "عن وظائفنا" },
 
-  menu_head: { en: "The menu", ar: "" },
-  menu_sub:  { en: "Eight ways to take it.", ar: "" },
+  menu_head: { en: "The menu", ar: "المنيو" },
+  menu_sub:  { en: "Eight ways to take it.", ar: "ثماني طرق لتستمتع بها." },
 
-  // {n} is replaced with the function's name.
   legend_some: {
     en: "Drinks without a tag take any function you choose. Tagged drinks come with theirs set.",
-    ar: "",
+    ar: "المشروبات بدون علامة تقبل أي وظيفة تختارها. والمشروبات التي تحمل علامة تأتي بوظيفتها محددة.",
   },
-  legend_none: { en: "Every drink here takes any function you choose.", ar: "" },
+  legend_none: {
+    en: "Every drink here takes any function you choose.",
+    ar: "كل مشروب هنا يقبل أي وظيفة تختارها.",
+  },
 
-  drinks_count: { en: "{n} drinks", ar: "" },
+  // {n} is the number of drinks. Arabic counts a noun by the size of the
+  // number, so the two forms are separate keys — see drinksCount().
+  drinks_count:      { en: "{n} drinks", ar: "{n} مشروبات" },
+  drinks_count_many: { en: "{n} drinks", ar: "{n} مشروباً" },
+
   currency: { en: "JOD", ar: "JOD" },
 };
 
@@ -62,7 +81,10 @@ const els = {
   live: document.getElementById("live-region"),
   backBtn: document.getElementById("back-btn"),
   infoBtn: document.getElementById("info-btn"),
-  introHit: document.getElementById("intro-hit"),
+  langEn: document.getElementById("lang-en"),
+  langAr: document.getElementById("lang-ar"),
+  langBtn: document.getElementById("lang-btn"),
+  langBtnFace: document.getElementById("lang-btn-face"),
   functionList: document.getElementById("function-list"),
   toMenuBtn: document.getElementById("to-menu-btn"),
   categoryList: document.getElementById("category-list"),
@@ -101,6 +123,13 @@ function priceLabel(price) {
   return `${Number(price)} ${t("currency")}`;
 }
 
+/** Arabic counts a noun by the size of the number: 3–10 take the plural
+    (مشروبات), 11 and up take the accusative singular (مشروباً). The menu's
+    categories span both. English has a single form, so both keys match. */
+function drinksCount(n) {
+  return t(n >= 11 ? "drinks_count_many" : "drinks_count", { n });
+}
+
 /** The nine functions, by id, for tag lookups. */
 let functionsById = {};
 
@@ -119,8 +148,25 @@ function applyStrings(root = document) {
 function applyLanguage() {
   els.root.lang = state.lang;
   els.root.dir = CONFIG.arabicEnabled && state.lang === "ar" ? "rtl" : "ltr";
+  // The toggle always offers the other language, never the one in use.
+  els.langBtnFace.textContent =
+    state.lang === "ar" ? t("lang_short_en") : t("lang_short_ar");
   applyStrings();
   renderCurrentScreen();
+}
+
+function setLanguage(lang) {
+  if (lang === "ar" && !CONFIG.arabicEnabled) return;
+  if (lang === state.lang) return;
+  state.lang = lang;
+  applyLanguage();
+}
+
+/** The intro's two buttons are the only way in: pick a language, then enter.
+    That way no session can slip past the choice into a default. */
+function startIn(lang) {
+  setLanguage(lang);
+  goTo("functions");
 }
 
 
@@ -206,7 +252,7 @@ function renderCategories() {
     name.textContent = localised(category, "name");
 
     const count = el("span", "cat__count u-caps");
-    count.textContent = t("drinks_count", { n: category.drinks.length });
+    count.textContent = drinksCount(category.drinks.length);
 
     button.append(name, count);
     button.addEventListener("click", () => selectCategory(category));
@@ -293,10 +339,16 @@ function resetIdleTimer() {
 /* ---------- Boot ---------- */
 
 function wireEvents() {
-  els.introHit.addEventListener("click", () => goTo("functions"));
+  els.langEn.addEventListener("click", () => startIn("en"));
+  els.langAr.addEventListener("click", () => startIn("ar"));
   els.toMenuBtn.addEventListener("click", () => goTo("menu"));
   els.backBtn.addEventListener("click", goBack);
   els.infoBtn.addEventListener("click", () => goTo("functions"));
+  // Switching mid-browse re-renders in place; the customer keeps their screen.
+  els.langBtn.addEventListener("click", () => {
+    setLanguage(state.lang === "ar" ? "en" : "ar");
+    resetIdleTimer();
+  });
 
   ["pointerdown", "touchstart", "keydown"].forEach((evt) => {
     window.addEventListener(evt, resetIdleTimer, { passive: true });
@@ -304,6 +356,13 @@ function wireEvents() {
 }
 
 async function init() {
+  // With Arabic off the app collapses to one language: no chrome toggle, and
+  // the intro offers only the English way in — which still enters.
+  if (!CONFIG.arabicEnabled) {
+    els.langBtn.hidden = true;
+    els.langAr.hidden = true;
+  }
+
   wireEvents();
   applyLanguage();
 

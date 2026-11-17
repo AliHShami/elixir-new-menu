@@ -15,7 +15,7 @@
 Everything else about them is fine: A–Z, a–z, 0–9 and `.` are all present, which
 covers every heading in the app.
 
-## 2. Photo mapping — 48 of 70 done
+## 2. Photo mapping — 49 of 70 done
 
 Photos come from `D:\Elixir\Product Images\Elixir Products Images` (`Cold Drinks`,
 `Hot Drinks`, `Shots`). They are converted to WebP in `assets/drinks/`, named by
@@ -24,7 +24,7 @@ the price-list code: `sm-02.webp`, `sh-10.webp`, and so on. 87.5 MB → 5.7 MB.
 Files named `Image NN.png` were skipped as instructed — those are drinks that
 aren't on the current menu.
 
-**22 drinks still have no photo.** Each renders a dashed placeholder:
+**21 drinks still have no photo.** Each renders a dashed placeholder:
 
 | Category | Missing |
 |---|---|
@@ -34,7 +34,6 @@ aren't on the current menu.
 | Milkshakes | MS-02 Crocant Anise, MS-12 Hibiscus & Tamarind |
 | Specialty Coffee | SC-02 Lungo, SC-04 American Filter, SC-05 Cappuccino, SC-06 Latte, SC-10 Hot Chocolate |
 | Iced Coffee | IC-01 Iced Coffee, IC-05 Iced Mocha, IC-06 Iced V60, IC-07 Caramel Frappe |
-| Shots | SH-01 Vitality — For Him |
 
 **Five judgement calls to confirm** — the filename didn't match the menu name exactly:
 
@@ -48,6 +47,16 @@ aren't on the current menu.
 **lemon** iced tea, confirmed by you, so it is wired to `IT-05 Lemon Iced Tea`
 (`assets/drinks/it-05.webp`) and `IT-01 Mango Iced Tea` has no photo. Worth
 renaming the source file so the next pass doesn't re-introduce the error.
+
+**The nine shots were re-shot.** They now come from
+`D:\Elixir\Product Images\Shots New\Bottles finals`, where each file names its
+own function (`nour-shot.png`, `gut-reset-shot.png`, …), so the mapping is exact
+rather than inferred. All nine are in, SH-01 Vitality included — it was the last
+shot without a photo. 8.2 MB of PNG became 0.81 MB of WebP.
+
+That folder holds a tenth bottle, **`NA.png`** — a caramel-coloured shot with no
+function in its name. It is not on the price list and is not wired to anything.
+Worth asking whether it is the missing **SH-02** (see section 4).
 
 **Five named files went unused**, in case any belongs to a drink above:
 `pina-colada-patterson.png`, `smoothie-green-apple-kiwi-rosemary (2).png`,
@@ -82,21 +91,44 @@ rescale against `TARGET_H` / `TARGET_W` (0.66 / 0.78) rather than editing 48
 values — every `scale` is `min(TARGET_H / fh, TARGET_W / fw)` where `fh`/`fw` are
 how much of the card the trimmed photo fills in each axis.
 
-## 3. Arabic — data deliberately left empty
+## 3. Arabic — live, two lists still need sign-off
 
-Every `name_ar` in `data/menu.json` is `""`, and `CONFIG.arabicEnabled` is `false`.
+`CONFIG.arabicEnabled` is `true` and every `name_ar` is filled. Sources, in
+order of how much they can be trusted:
 
-The Arabic in the price-list PDF **cannot be extracted safely**. Its text layer has
-the word order reversed (`رمان كركديه تمر هندي` comes out as `ھندي تمر كركدیھ رمان`),
-uses the Urdu `ھ` (U+06BE) where Arabic wants `ه` (U+0647) and the Farsi `ی`
-(U+06CC) where Arabic wants `ي` (U+064A), and places parentheses on the wrong
-sides. Extracting it would bake 70 subtly-broken strings into the data.
+- **The nine functions** — names and descriptions supplied by the client as
+  typed text. Clean: no Urdu heh, no Farsi yeh, no presentation forms, correct
+  word order. This is the authoritative copy.
+- **61 of the 70 drinks** — the `Arabic Name` column of
+  `D:\Elixir\ELIXIR_Price_List.xlsx`. Also clean, and every drink name and
+  price in that sheet was checked against `data/menu.json` before use: they
+  agree exactly. (The one divergence is SC-10 Hot Chocolate, whose price cell
+  reads `Not listed` — see section 4.)
+- **The nine shot names — NEEDS SIGN-OFF.** The shots are not in the
+  spreadsheet. Each is literally `<Function> Shot`, so each Arabic name was
+  built as `شوت` plus the client's own function name: `شوت نور`,
+  `شوت إعادة ضبط الأمعاء`, and so on. Mechanically derived, not translated,
+  but nobody has approved the phrasing.
+- **The eight category names — NEEDS SIGN-OFF.** No Arabic for these exists in
+  any supplied file. They are plain translations of the section labels, in the
+  register the spreadsheet already uses: سموذي، أعشاب ساخنة، شاي مثلج،
+  ميلك شيك، سبيرولينا، قهوة مختصة، قهوة مثلجة، شوتس.
+- **The UI copy** in `STRINGS` — written, not supplied. The client chose
+  **الوظائف** as the word for "function"; the surrounding sentences are ours
+  and deserve a read-through.
 
-**To turn Arabic on:** supply the Arabic drink names as text from the source
-spreadsheet, plus Arabic for the 8 category names and 9 function names, then flip
-`CONFIG.arabicEnabled` to `true`. The strings table, the font, the `dir` handling
-and the logical-property CSS are all already in place. A language toggle still
-needs building — there is no control for it yet.
+**Two spellings worth a second look**, both left exactly as supplied rather
+than silently corrected:
+
+- Eve's description is `إيقاع إنوثتك` — hamza below. Standard spelling is
+  `أنوثتك`, hamza above.
+- Nour's description is `غذي بشرتك`. `غذّي` with the shadda is the fuller form.
+
+**Never take Arabic from the price-list PDF.** Its text layer reverses word
+order (`رمان كركديه تمر هندي` comes out as `ھندي تمر كركدیھ رمان`), uses the
+Urdu `ھ` (U+06BE) for `ه` (U+0647) and the Farsi `ی` (U+06CC) for `ي`
+(U+064A), and puts parentheses on the wrong sides. The spreadsheet is the
+source; the PDF is not.
 
 ## 4. Price-list queries, still unanswered
 

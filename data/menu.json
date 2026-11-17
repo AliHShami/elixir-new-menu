@@ -1,80 +1,80 @@
 {
-  "_note": "name_ar is intentionally empty - see TODO.md. image is null where no photo exists yet. scale tunes how large that drink renders inside its card: 1 = fills the card, lower = smaller. Hand-edit any value.",
+  "_note": "name_ar is populated: functions and drinks from client-supplied text, category names and the nine shot names are translations awaiting sign-off - see TODO.md. image is null where no photo exists yet. scale tunes how large that drink renders inside its card: 1 = fills the card, lower = smaller. Hand-edit any value.",
   "functions": [
     {
       "id": "vitality",
       "name_en": "Vitality — For Him",
-      "name_ar": "",
+      "name_ar": "حيوية - للرجال",
       "description_en": "Strength by nature",
-      "description_ar": ""
+      "description_ar": "قوتك من الطبيعة"
     },
     {
       "id": "eve",
       "name_en": "Eve — For Her",
-      "name_ar": "",
+      "name_ar": "حواء - لها",
       "description_en": "Eve rhythm",
-      "description_ar": ""
+      "description_ar": "إيقاع إنوثتك"
     },
     {
       "id": "nour",
       "name_en": "Nour",
-      "name_ar": "",
+      "name_ar": "نور",
       "description_en": "Nourish your skin",
-      "description_ar": ""
+      "description_ar": "غذي بشرتك"
     },
     {
       "id": "gut-reset",
       "name_en": "Gut Reset",
-      "name_ar": "",
+      "name_ar": "إعادة ضبط الأمعاء",
       "description_en": "Gut feeling restored",
-      "description_ar": ""
+      "description_ar": "راحة لأمعائك"
     },
     {
       "id": "relax",
       "name_en": "Relax",
-      "name_ar": "",
+      "name_ar": "الهدوء والاسترخاء",
       "description_en": "Calm your center",
-      "description_ar": ""
+      "description_ar": "هدوء"
     },
     {
       "id": "hb-plus",
       "name_en": "Hb Plus",
-      "name_ar": "",
+      "name_ar": "Hb بلس",
       "description_en": "Blood support",
-      "description_ar": ""
+      "description_ar": "لقوة الدم"
     },
     {
       "id": "spark",
       "name_en": "Spark",
-      "name_ar": "",
+      "name_ar": "النشاط",
       "description_en": "Rise and spark",
-      "description_ar": ""
+      "description_ar": "ابدأ يومك بشرارة"
     },
     {
       "id": "focus",
       "name_en": "Focus",
-      "name_ar": "",
+      "name_ar": "التركيز",
       "description_en": "Clear mind",
-      "description_ar": ""
+      "description_ar": "قوة التركيز"
     },
     {
       "id": "season",
       "name_en": "Season",
-      "name_ar": "",
+      "name_ar": "الموسم",
       "description_en": "Your seasonal shield",
-      "description_ar": ""
+      "description_ar": "درعك الموسمي"
     }
   ],
   "categories": [
     {
       "id": "smoothies",
       "name_en": "Smoothies",
-      "name_ar": "",
+      "name_ar": "سموذي",
       "drinks": [
         {
           "id": "SM-01",
           "name_en": "Pomegranate Hibiscus Tamarind",
-          "name_ar": "",
+          "name_ar": "رمان كركديه تمر هندي",
           "price": 4.25,
           "function": null,
           "image": null
@@ -82,7 +82,7 @@
         {
           "id": "SM-02",
           "name_en": "Mixed Berry Cinnamon",
-          "name_ar": "",
+          "name_ar": "مكس بيري قرفة",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-02.webp",
@@ -91,7 +91,7 @@
         {
           "id": "SM-03",
           "name_en": "Piña Colada Anise",
-          "name_ar": "",
+          "name_ar": "بينا كولادا يانسون",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-03.webp",
@@ -100,7 +100,7 @@
         {
           "id": "SM-04",
           "name_en": "Cantaloupe Ginger",
-          "name_ar": "",
+          "name_ar": "شمام زنجبيل",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-04.webp",
@@ -109,7 +109,7 @@
         {
           "id": "SM-05",
           "name_en": "Pineapple Passion Rosemary",
-          "name_ar": "",
+          "name_ar": "أناناس باشن روزماري",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-05.webp",
@@ -118,7 +118,7 @@
         {
           "id": "SM-06",
           "name_en": "Blueberry Za'itman",
-          "name_ar": "",
+          "name_ar": "بلوبيري زعيتمان",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-06.webp",
@@ -127,7 +127,7 @@
         {
           "id": "SM-07",
           "name_en": "Blueberry Thyme",
-          "name_ar": "",
+          "name_ar": "بلوبيري زعتر",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-07.webp",
@@ -136,7 +136,7 @@
         {
           "id": "SM-08",
           "name_en": "Raspberry Rosemary",
-          "name_ar": "",
+          "name_ar": "رازبيري روزماري",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-08.webp",
@@ -145,7 +145,7 @@
         {
           "id": "SM-09",
           "name_en": "Raspberry Za'itman",
-          "name_ar": "",
+          "name_ar": "رازبيري زعيتمان",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-09.webp",
@@ -154,7 +154,7 @@
         {
           "id": "SM-10",
           "name_en": "Strawberry Rosemary",
-          "name_ar": "",
+          "name_ar": "فراولة روزماري",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-10.webp",
@@ -163,7 +163,7 @@
         {
           "id": "SM-11",
           "name_en": "Mango Sage",
-          "name_ar": "",
+          "name_ar": "مانجو ميرمية",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-11.webp",
@@ -172,7 +172,7 @@
         {
           "id": "SM-12",
           "name_en": "Kiwi Rosemary",
-          "name_ar": "",
+          "name_ar": "كيوي روزماري",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sm-12.webp",
@@ -181,7 +181,7 @@
         {
           "id": "SM-13",
           "name_en": "Mango Spirulina",
-          "name_ar": "",
+          "name_ar": "مانجو سبيرولينا",
           "price": 4.25,
           "function": null,
           "image": null
@@ -191,12 +191,12 @@
     {
       "id": "hot-herbal",
       "name_en": "Hot Herbal",
-      "name_ar": "",
+      "name_ar": "أعشاب ساخنة",
       "drinks": [
         {
           "id": "HH-01",
           "name_en": "Berry Herbal",
-          "name_ar": "",
+          "name_ar": "هيربل التوت",
           "price": 3.25,
           "function": null,
           "image": "assets/drinks/hh-01.webp",
@@ -205,7 +205,7 @@
         {
           "id": "HH-02",
           "name_en": "Turmeric Herbal",
-          "name_ar": "",
+          "name_ar": "هيربل كركم",
           "price": 3.25,
           "function": "nour",
           "image": null
@@ -213,7 +213,7 @@
         {
           "id": "HH-03",
           "name_en": "Lemon Balm Herbal",
-          "name_ar": "",
+          "name_ar": "هيربل مليسة",
           "price": 3.25,
           "function": null,
           "image": "assets/drinks/hh-03.webp",
@@ -222,7 +222,7 @@
         {
           "id": "HH-04",
           "name_en": "Ginkgo Herbal",
-          "name_ar": "",
+          "name_ar": "هيربل جنكة",
           "price": 3.25,
           "function": null,
           "image": null
@@ -230,7 +230,7 @@
         {
           "id": "HH-05",
           "name_en": "Peach Herbal",
-          "name_ar": "",
+          "name_ar": "هيربل خوخ (بيتش)",
           "price": 3.25,
           "function": "nour",
           "image": null
@@ -238,7 +238,7 @@
         {
           "id": "HH-06",
           "name_en": "Oregano Herbal",
-          "name_ar": "",
+          "name_ar": "هيربل أوريجانو",
           "price": 3.25,
           "function": "season",
           "image": null
@@ -246,7 +246,7 @@
         {
           "id": "HH-07",
           "name_en": "Mango Passion Herbal",
-          "name_ar": "",
+          "name_ar": "هيربل مانجو باشن",
           "price": 3.25,
           "function": null,
           "image": "assets/drinks/hh-07.webp",
@@ -257,12 +257,12 @@
     {
       "id": "iced-tea",
       "name_en": "Iced Tea",
-      "name_ar": "",
+      "name_ar": "شاي مثلج",
       "drinks": [
         {
           "id": "IT-01",
           "name_en": "Mango Iced Tea",
-          "name_ar": "",
+          "name_ar": "آيس تي مانجو",
           "price": 3.5,
           "function": null,
           "image": null
@@ -270,7 +270,7 @@
         {
           "id": "IT-02",
           "name_en": "Cranberry Iced Tea",
-          "name_ar": "",
+          "name_ar": "آيس تي كرانبيري",
           "price": 3.5,
           "function": null,
           "image": null
@@ -278,7 +278,7 @@
         {
           "id": "IT-03",
           "name_en": "Blueberry Iced Tea",
-          "name_ar": "",
+          "name_ar": "آيس تي بلوبيري",
           "price": 3.5,
           "function": null,
           "image": null
@@ -286,7 +286,7 @@
         {
           "id": "IT-04",
           "name_en": "Passion Fruit Iced Tea",
-          "name_ar": "",
+          "name_ar": "آيس تي باشن",
           "price": 3.5,
           "function": null,
           "image": null
@@ -294,7 +294,7 @@
         {
           "id": "IT-05",
           "name_en": "Lemon Iced Tea",
-          "name_ar": "",
+          "name_ar": "آيس تي ليمون",
           "price": 3.5,
           "function": null,
           "image": "assets/drinks/it-05.webp",
@@ -303,7 +303,7 @@
         {
           "id": "IT-06",
           "name_en": "Tamarind Hibiscus Iced Tea",
-          "name_ar": "",
+          "name_ar": "آيس تي تمر هندي كركديه",
           "price": 3.5,
           "function": null,
           "image": "assets/drinks/it-06.webp",
@@ -314,12 +314,12 @@
     {
       "id": "milkshakes",
       "name_en": "Milkshakes",
-      "name_ar": "",
+      "name_ar": "ميلك شيك",
       "drinks": [
         {
           "id": "MS-01",
           "name_en": "Arabic Booza Frankincense",
-          "name_ar": "",
+          "name_ar": "بوظة عربية لبان ذكر",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-01.webp",
@@ -328,7 +328,7 @@
         {
           "id": "MS-02",
           "name_en": "Crocant Anise",
-          "name_ar": "",
+          "name_ar": "كروكان يانسون",
           "price": 4.5,
           "function": null,
           "image": null
@@ -336,7 +336,7 @@
         {
           "id": "MS-03",
           "name_en": "Crocant Cinnamon & Cardamom",
-          "name_ar": "",
+          "name_ar": "كروكان قرفة وهيل",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-03.webp",
@@ -345,7 +345,7 @@
         {
           "id": "MS-04",
           "name_en": "Blueberry Thyme",
-          "name_ar": "",
+          "name_ar": "بلوبيري زعتر",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-04.webp",
@@ -354,7 +354,7 @@
         {
           "id": "MS-05",
           "name_en": "Kiwi Apple Rosemary",
-          "name_ar": "",
+          "name_ar": "كيوي تفاح روزماري",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-05.webp",
@@ -363,7 +363,7 @@
         {
           "id": "MS-06",
           "name_en": "Arabic Booza Spirulina",
-          "name_ar": "",
+          "name_ar": "بوظة عربية سبيرولينا",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-06.webp",
@@ -372,7 +372,7 @@
         {
           "id": "MS-07",
           "name_en": "Raspberry Thyme",
-          "name_ar": "",
+          "name_ar": "رازبيري زعتر",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-07.webp",
@@ -381,7 +381,7 @@
         {
           "id": "MS-08",
           "name_en": "Raspberry Lavender",
-          "name_ar": "",
+          "name_ar": "رازبيري لافندر",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-08.webp",
@@ -390,7 +390,7 @@
         {
           "id": "MS-09",
           "name_en": "Mango Ginger",
-          "name_ar": "",
+          "name_ar": "مانجو زنجبيل",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-09.webp",
@@ -399,7 +399,7 @@
         {
           "id": "MS-10",
           "name_en": "Strawberry Rosemary",
-          "name_ar": "",
+          "name_ar": "فراولة روزماري",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-10.webp",
@@ -408,7 +408,7 @@
         {
           "id": "MS-11",
           "name_en": "Mixed Berry Lavender",
-          "name_ar": "",
+          "name_ar": "مكس بيري لافندر",
           "price": 4.5,
           "function": null,
           "image": "assets/drinks/ms-11.webp",
@@ -417,7 +417,7 @@
         {
           "id": "MS-12",
           "name_en": "Hibiscus & Tamarind",
-          "name_ar": "",
+          "name_ar": "كركديه وتمر هندي",
           "price": 4.5,
           "function": null,
           "image": null
@@ -427,12 +427,12 @@
     {
       "id": "spirulina",
       "name_en": "Spirulina",
-      "name_ar": "",
+      "name_ar": "سبيرولينا",
       "drinks": [
         {
           "id": "SP-01",
           "name_en": "Spirulina Blueberry",
-          "name_ar": "",
+          "name_ar": "سبيرولينا بلوبيري",
           "price": 4.75,
           "function": null,
           "image": "assets/drinks/sp-01.webp",
@@ -441,7 +441,7 @@
         {
           "id": "SP-02",
           "name_en": "Spirulina Mango",
-          "name_ar": "",
+          "name_ar": "سبيرولينا مانجو",
           "price": 4.75,
           "function": null,
           "image": "assets/drinks/sp-02.webp",
@@ -450,7 +450,7 @@
         {
           "id": "SP-03",
           "name_en": "Spirulina Peach",
-          "name_ar": "",
+          "name_ar": "سبيرولينا خوخ",
           "price": 4.75,
           "function": null,
           "image": "assets/drinks/sp-03.webp",
@@ -459,7 +459,7 @@
         {
           "id": "SP-04",
           "name_en": "Spirulina Mixed Berry",
-          "name_ar": "",
+          "name_ar": "سبيرولينا مكس بيري",
           "price": 4.75,
           "function": null,
           "image": "assets/drinks/sp-04.webp",
@@ -468,7 +468,7 @@
         {
           "id": "SP-05",
           "name_en": "Spirulina Strawberry",
-          "name_ar": "",
+          "name_ar": "سبيرولينا فراولة",
           "price": 4.75,
           "function": null,
           "image": "assets/drinks/sp-05.webp",
@@ -477,7 +477,7 @@
         {
           "id": "SP-06",
           "name_en": "Spirulina Classic",
-          "name_ar": "",
+          "name_ar": "سبيرولينا كلاسيك",
           "price": 4.25,
           "function": null,
           "image": "assets/drinks/sp-06.webp",
@@ -488,12 +488,12 @@
     {
       "id": "specialty-coffee",
       "name_en": "Specialty Coffee",
-      "name_ar": "",
+      "name_ar": "قهوة مختصة",
       "drinks": [
         {
           "id": "SC-01",
           "name_en": "Espresso",
-          "name_ar": "",
+          "name_ar": "إسبريسو",
           "price": 2.25,
           "function": null,
           "image": "assets/drinks/sc-01.webp",
@@ -502,7 +502,7 @@
         {
           "id": "SC-02",
           "name_en": "Lungo",
-          "name_ar": "",
+          "name_ar": "لونغو",
           "price": 2.5,
           "function": null,
           "image": null
@@ -510,7 +510,7 @@
         {
           "id": "SC-03",
           "name_en": "Americano",
-          "name_ar": "",
+          "name_ar": "أمريكانو",
           "price": 2.75,
           "function": null,
           "image": "assets/drinks/sc-03.webp",
@@ -519,7 +519,7 @@
         {
           "id": "SC-04",
           "name_en": "American Filter Coffee",
-          "name_ar": "",
+          "name_ar": "قهوة فلتر أمريكية",
           "price": 2.75,
           "function": null,
           "image": null
@@ -527,7 +527,7 @@
         {
           "id": "SC-05",
           "name_en": "Cappuccino",
-          "name_ar": "",
+          "name_ar": "كابتشينو",
           "price": 3.0,
           "function": null,
           "image": null
@@ -535,7 +535,7 @@
         {
           "id": "SC-06",
           "name_en": "Latte",
-          "name_ar": "",
+          "name_ar": "لاتيه",
           "price": 3.0,
           "function": null,
           "image": null
@@ -543,7 +543,7 @@
         {
           "id": "SC-07",
           "name_en": "Flat White",
-          "name_ar": "",
+          "name_ar": "فلات وايت",
           "price": 3.0,
           "function": null,
           "image": "assets/drinks/sc-07.webp",
@@ -552,7 +552,7 @@
         {
           "id": "SC-08",
           "name_en": "Cortado",
-          "name_ar": "",
+          "name_ar": "كورتادو",
           "price": 2.5,
           "function": null,
           "image": "assets/drinks/sc-08.webp",
@@ -561,7 +561,7 @@
         {
           "id": "SC-09",
           "name_en": "Macchiato",
-          "name_ar": "",
+          "name_ar": "ماكياتو",
           "price": 2.5,
           "function": null,
           "image": "assets/drinks/sc-09.webp",
@@ -570,7 +570,7 @@
         {
           "id": "SC-10",
           "name_en": "Hot Chocolate",
-          "name_ar": "",
+          "name_ar": "هوت تشوكلت",
           "price": 3.5,
           "function": null,
           "image": null
@@ -580,12 +580,12 @@
     {
       "id": "iced-coffee",
       "name_en": "Iced Coffee",
-      "name_ar": "",
+      "name_ar": "قهوة مثلجة",
       "drinks": [
         {
           "id": "IC-01",
           "name_en": "Iced Coffee",
-          "name_ar": "",
+          "name_ar": "آيس كوفي",
           "price": 2.5,
           "function": null,
           "image": null
@@ -593,7 +593,7 @@
         {
           "id": "IC-02",
           "name_en": "Iced Latte",
-          "name_ar": "",
+          "name_ar": "آيس لاتيه",
           "price": 3.0,
           "function": null,
           "image": "assets/drinks/ic-02.webp",
@@ -602,7 +602,7 @@
         {
           "id": "IC-03",
           "name_en": "Date Frappe",
-          "name_ar": "",
+          "name_ar": "فرابيه تمر",
           "price": 4.0,
           "function": null,
           "image": "assets/drinks/ic-03.webp",
@@ -611,7 +611,7 @@
         {
           "id": "IC-04",
           "name_en": "Flavored Iced Latte",
-          "name_ar": "",
+          "name_ar": "آيس لاتيه بنكهة",
           "price": 3.5,
           "function": null,
           "image": "assets/drinks/ic-04.webp",
@@ -620,7 +620,7 @@
         {
           "id": "IC-05",
           "name_en": "Iced Mocha",
-          "name_ar": "",
+          "name_ar": "آيس موكا",
           "price": 3.5,
           "function": null,
           "image": null
@@ -628,7 +628,7 @@
         {
           "id": "IC-06",
           "name_en": "Iced V60",
-          "name_ar": "",
+          "name_ar": "آيس V60",
           "price": 4.0,
           "function": null,
           "image": null
@@ -636,7 +636,7 @@
         {
           "id": "IC-07",
           "name_en": "Caramel Frappe",
-          "name_ar": "",
+          "name_ar": "كراميل فرابيه",
           "price": 4.0,
           "function": null,
           "image": null
@@ -646,20 +646,21 @@
     {
       "id": "shots",
       "name_en": "Shots",
-      "name_ar": "",
+      "name_ar": "شوتس",
       "drinks": [
         {
           "id": "SH-01",
           "name_en": "Vitality Shot — For Him",
-          "name_ar": "",
+          "name_ar": "شوت حيوية - للرجال",
           "price": 2.5,
           "function": "vitality",
-          "image": null
+          "image": "assets/drinks/sh-01.webp",
+          "scale": 0.8
         },
         {
           "id": "SH-03",
           "name_en": "Nour Shot",
-          "name_ar": "",
+          "name_ar": "شوت نور",
           "price": 2.5,
           "function": "nour",
           "image": "assets/drinks/sh-03.webp",
@@ -668,7 +669,7 @@
         {
           "id": "SH-04",
           "name_en": "Gut Reset Shot",
-          "name_ar": "",
+          "name_ar": "شوت إعادة ضبط الأمعاء",
           "price": 2.5,
           "function": "gut-reset",
           "image": "assets/drinks/sh-04.webp",
@@ -677,7 +678,7 @@
         {
           "id": "SH-05",
           "name_en": "Relax Shot",
-          "name_ar": "",
+          "name_ar": "شوت الهدوء والاسترخاء",
           "price": 2.5,
           "function": "relax",
           "image": "assets/drinks/sh-05.webp",
@@ -686,7 +687,7 @@
         {
           "id": "SH-06",
           "name_en": "Season Shot",
-          "name_ar": "",
+          "name_ar": "شوت الموسم",
           "price": 2.5,
           "function": "season",
           "image": "assets/drinks/sh-06.webp",
@@ -695,7 +696,7 @@
         {
           "id": "SH-07",
           "name_en": "Spark Shot",
-          "name_ar": "",
+          "name_ar": "شوت النشاط",
           "price": 2.5,
           "function": "spark",
           "image": "assets/drinks/sh-07.webp",
@@ -704,7 +705,7 @@
         {
           "id": "SH-08",
           "name_en": "Focus Shot",
-          "name_ar": "",
+          "name_ar": "شوت التركيز",
           "price": 2.5,
           "function": "focus",
           "image": "assets/drinks/sh-08.webp",
@@ -713,7 +714,7 @@
         {
           "id": "SH-09",
           "name_en": "Hb Plus Shot",
-          "name_ar": "",
+          "name_ar": "شوت Hb بلس",
           "price": 2.5,
           "function": "hb-plus",
           "image": "assets/drinks/sh-09.webp",
@@ -722,7 +723,7 @@
         {
           "id": "SH-10",
           "name_en": "Eve Shot — For Her",
-          "name_ar": "",
+          "name_ar": "شوت حواء - لها",
           "price": 2.5,
           "function": "eve",
           "image": "assets/drinks/sh-10.webp",

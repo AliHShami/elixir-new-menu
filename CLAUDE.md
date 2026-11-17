@@ -67,7 +67,7 @@ Four self-hosted families in `/fonts`. Never load fonts from a CDN — a shop wi
 - **The Seasons** (`--font-display`) — primary display. Page titles and category names. Bold and Bold Italic. **Currently a Fontspring DEMO cut: evaluation licence, 95 glyphs, no em dash or curly apostrophe.** Display copy avoids both. See `TODO.md`.
 - **Cormorant Garamond** (`--font-editorial`) — subheads, intro text, body paragraphs, drink names. A true variable font, declared `font-weight: 300 700`.
 - **Goldplay** (`--font-support`) — labels, prices, counts, buttons. Medium only.
-- **Forma DJR Arabic** — Arabic, for when the toggle is built. Single static cut, declared across the range so no fake weight is ever synthesised.
+- **Forma DJR Arabic** — Arabic. Single static cut, declared across the range so no fake weight is ever synthesised. It is the only family with Arabic coverage, so under `:root[lang="ar"]` all three type roles — display, editorial and support — are redefined to it. A Latin serif would otherwise hand Arabic to whatever the device happened to have.
 
 Small labels — function names, counts, buttons, tags — are set in **capitals with `0.1em` tracking** via `.u-caps`. Latin only: the rule switches off under `:root[lang="ar"]`, because Arabic has no uppercase forms and letter-spacing breaks the joins between its letters.
 
@@ -103,7 +103,16 @@ Any image that 404s falls back to `CONFIG.placeholderImage`, guarded so a missin
 
 All UI copy lives in `STRINGS` in `js/app.js` — never inline a user-facing string in markup. `t()` supports `{n}` interpolation.
 
-**The app is bilingual-ready but English-only right now.** `CONFIG.arabicEnabled` is `false`, every `name_ar` is empty, and there is no language toggle yet. Nothing on the Arabic path has been deleted — the font, the `dir` handling, the logical-property CSS and the `ar` column all stay. See `TODO.md` for why the Arabic cannot simply be lifted out of the PDF.
+**The app is bilingual and Arabic is live.** `CONFIG.arabicEnabled` is `true`, every `name_ar` is filled, and the language can be set two ways:
+
+- **On the intro**, two buttons — ENGLISH and عربي — are the only way in. Each sets the language and enters, so no session can slip past the choice into a default.
+- **A toggle in the fixed chrome**, beside the (i), switches language on any list screen without losing the customer's place. Its face shows the language it switches *to* (`ع` / `EN`), never the one in use.
+
+The idle reset returns to the intro and to `CONFIG.defaultLang`, so the next customer chooses again.
+
+Arabic counts a noun by the size of the number — 3–10 take the plural, 11 and up the accusative singular — and the categories span both. `drinksCount()` picks the form; the two are separate `STRINGS` keys rather than one string with a guessed ending.
+
+Drink and function Arabic came from the client as text. The price-list **PDF's** Arabic layer is unusable and must never be the source — see `TODO.md`.
 
 Use CSS logical properties (`margin-inline-start`, `inset-inline-end`) rather than left/right so mirroring is automatic.
 
@@ -111,7 +120,7 @@ Use CSS logical properties (`margin-inline-start`, `inset-inline-end`) rather th
 
 All four are sibling `<section>` elements in one `index.html`, shown and hidden by a `data-screen` attribute on `<body>`. No router, no hash navigation.
 
-- **Intro** — the logo on dark olive, centred, with a pulsing start line. One big tap target, no visible button.
+- **Intro** — the logo on dark olive, centred, above the two language buttons. They are the entry point; there is no whole-screen tap target.
 - **Functions** — the nine, each a name and its description, then a note that any function goes with any drink, and a button through to the menu.
 - **Menu** — the eight categories as full-width rows with a drink count.
 - **Category** — the legend, then a 2-column grid of drink cards: photo on top at `aspect-ratio: 3/4`, name and price beneath, function tag on the photo where one is fixed.
@@ -124,11 +133,12 @@ Drink cards are the end of the journey and are **not tappable** — they are `<a
 
 - Back arrow on the three list screens, fixed, tracking the stage column. Never on the intro.
 - An **(i)** button, also fixed, returns to the functions screen from anywhere — so a customer can re-read them without restarting. It hides on the functions screen itself.
+- A **language toggle**, outermost on the end side of the chrome so it keeps its position when the (i) hides. Switching re-renders in place rather than navigating.
 - Idle reset after 60 seconds of no input: back to the intro, selection cleared, language reset. Constants live in `CONFIG` at the top of `js/app.js`.
 
 ## Motion
 
-One ambient effect in the entire app: the slow opacity pulse on the intro's start line. Everything else moves only in response to a touch. Respect `prefers-reduced-motion`.
+**There is no ambient motion.** Nothing moves except in response to a touch — `:active` feedback and nothing more. The intro's pulsing start line was the single exception and went when the language buttons replaced it. Anything reintroduced has to respect `prefers-reduced-motion`.
 
 ## When something is missing
 

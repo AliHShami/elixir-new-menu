@@ -26,15 +26,26 @@
   <span aria-hidden="true">i</span>
 </button>
 
+<!-- Switches language without leaving the screen, the same way (i) lets a
+     customer re-read the functions without restarting. Its face shows the
+     language it switches TO, set in applyLanguage(). -->
+<button id="lang-btn" class="chrome chrome--lang" type="button" data-str-aria="lang_switch">
+  <span id="lang-btn-face" aria-hidden="true"></span>
+</button>
+
 
 <!-- ─────────────────────────  INTRO  ───────────────────────── -->
 <section id="screen-intro" class="screen screen--fixed intro">
-  <!-- The whole screen is the tap target; this transparent button carries it. -->
-  <button id="intro-hit" class="intro__hit" type="button" data-str-aria="start"></button>
-
   <img class="intro__logo" src="assets/brand/elixir-logo.svg" alt="ELIXIR — functional phyto blends">
 
-  <p class="intro__start u-caps" data-str="start"></p>
+  <!-- The way in. Two labelled buttons rather than a whole-screen tap, so no
+       session starts without an explicit language choice. Each sets the
+       language and enters. The labels name their own language and so are
+       never translated. -->
+  <div class="intro__langs">
+    <button id="lang-en" class="lang-pill lang-pill--en" type="button" data-str="lang_en"></button>
+    <button id="lang-ar" class="lang-pill lang-pill--ar" type="button" data-str="lang_ar"></button>
+  </div>
 </section>
 
 
