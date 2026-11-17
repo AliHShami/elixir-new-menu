@@ -3,29 +3,29 @@
   "functions": [
     {
       "id": "vitality",
-      "name_en": "Vitality — For Him",
-      "name_ar": "حيوية - للرجال",
+      "name_en": "Vitality",
+      "name_ar": "الرجولة",
       "description_en": "Strength by nature",
       "description_ar": "قوتك من الطبيعة"
     },
     {
       "id": "eve",
-      "name_en": "Eve — For Her",
-      "name_ar": "حواء - لها",
+      "name_en": "Eve",
+      "name_ar": "توازن الأنوثة",
       "description_en": "Eve rhythm",
       "description_ar": "إيقاع إنوثتك"
     },
     {
       "id": "nour",
       "name_en": "Nour",
-      "name_ar": "نور",
+      "name_ar": "الجمال",
       "description_en": "Nourish your skin",
       "description_ar": "غذي بشرتك"
     },
     {
       "id": "gut-reset",
       "name_en": "Gut Reset",
-      "name_ar": "إعادة ضبط الأمعاء",
+      "name_ar": "الأمعاء والقولون",
       "description_en": "Gut feeling restored",
       "description_ar": "راحة لأمعائك"
     },
@@ -39,14 +39,14 @@
     {
       "id": "hb-plus",
       "name_en": "Hb Plus",
-      "name_ar": "Hb بلس",
+      "name_ar": "قوة الدم",
       "description_en": "Blood support",
       "description_ar": "لقوة الدم"
     },
     {
       "id": "spark",
       "name_en": "Spark",
-      "name_ar": "النشاط",
+      "name_ar": "الطاقة والنشاط",
       "description_en": "Rise and spark",
       "description_ar": "ابدأ يومك بشرارة"
     },
@@ -60,7 +60,7 @@
     {
       "id": "season",
       "name_en": "Season",
-      "name_ar": "الموسم",
+      "name_ar": "الدرع الموسمي",
       "description_en": "Your seasonal shield",
       "description_ar": "درعك الموسمي"
     }
@@ -650,8 +650,8 @@
       "drinks": [
         {
           "id": "SH-01",
-          "name_en": "Vitality Shot — For Him",
-          "name_ar": "شوت حيوية - للرجال",
+          "name_en": "Vitality Shot",
+          "name_ar": "جرعة الرجولة",
           "price": 2.5,
           "function": "vitality",
           "image": "assets/drinks/sh-01.webp",
@@ -660,7 +660,7 @@
         {
           "id": "SH-03",
           "name_en": "Nour Shot",
-          "name_ar": "شوت نور",
+          "name_ar": "جرعة الجمال",
           "price": 2.5,
           "function": "nour",
           "image": "assets/drinks/sh-03.webp",
@@ -669,7 +669,7 @@
         {
           "id": "SH-04",
           "name_en": "Gut Reset Shot",
-          "name_ar": "شوت إعادة ضبط الأمعاء",
+          "name_ar": "جرعة الأمعاء والقولون",
           "price": 2.5,
           "function": "gut-reset",
           "image": "assets/drinks/sh-04.webp",
@@ -678,7 +678,7 @@
         {
           "id": "SH-05",
           "name_en": "Relax Shot",
-          "name_ar": "شوت الهدوء والاسترخاء",
+          "name_ar": "جرعة الهدوء والاسترخاء",
           "price": 2.5,
           "function": "relax",
           "image": "assets/drinks/sh-05.webp",
@@ -687,7 +687,7 @@
         {
           "id": "SH-06",
           "name_en": "Season Shot",
-          "name_ar": "شوت الموسم",
+          "name_ar": "جرعة الدرع الموسمي",
           "price": 2.5,
           "function": "season",
           "image": "assets/drinks/sh-06.webp",
@@ -696,7 +696,7 @@
         {
           "id": "SH-07",
           "name_en": "Spark Shot",
-          "name_ar": "شوت النشاط",
+          "name_ar": "جرعة الطاقة والنشاط",
           "price": 2.5,
           "function": "spark",
           "image": "assets/drinks/sh-07.webp",
@@ -705,7 +705,7 @@
         {
           "id": "SH-08",
           "name_en": "Focus Shot",
-          "name_ar": "شوت التركيز",
+          "name_ar": "جرعة التركيز",
           "price": 2.5,
           "function": "focus",
           "image": "assets/drinks/sh-08.webp",
@@ -714,7 +714,7 @@
         {
           "id": "SH-09",
           "name_en": "Hb Plus Shot",
-          "name_ar": "شوت Hb بلس",
+          "name_ar": "جرعة قوة الدم",
           "price": 2.5,
           "function": "hb-plus",
           "image": "assets/drinks/sh-09.webp",
@@ -722,8 +722,8 @@
         },
         {
           "id": "SH-10",
-          "name_en": "Eve Shot — For Her",
-          "name_ar": "شوت حواء - لها",
+          "name_en": "Eve Shot",
+          "name_ar": "جرعة توازن الأنوثة",
           "price": 2.5,
           "function": "eve",
           "image": "assets/drinks/sh-10.webp",

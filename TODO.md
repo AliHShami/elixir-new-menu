@@ -96,19 +96,17 @@ how much of the card the trimmed photo fills in each axis.
 `CONFIG.arabicEnabled` is `true` and every `name_ar` is filled. Sources, in
 order of how much they can be trusted:
 
-- **The nine functions** — names and descriptions supplied by the client as
-  typed text. Clean: no Urdu heh, no Farsi yeh, no presentation forms, correct
-  word order. This is the authoritative copy.
+- **The nine functions and the nine shots** — supplied by the client as typed
+  text. Clean: no Urdu heh, no Farsi yeh, no presentation forms, correct word
+  order. This is the authoritative copy. The two sets are deliberately locked
+  together: each shot is `جرعة` plus its function's name, so a change to one
+  has to be made to the other. The descriptions are the client's original set
+  and were not revised alongside the names.
 - **61 of the 70 drinks** — the `Arabic Name` column of
   `D:\Elixir\ELIXIR_Price_List.xlsx`. Also clean, and every drink name and
   price in that sheet was checked against `data/menu.json` before use: they
   agree exactly. (The one divergence is SC-10 Hot Chocolate, whose price cell
   reads `Not listed` — see section 4.)
-- **The nine shot names — NEEDS SIGN-OFF.** The shots are not in the
-  spreadsheet. Each is literally `<Function> Shot`, so each Arabic name was
-  built as `شوت` plus the client's own function name: `شوت نور`,
-  `شوت إعادة ضبط الأمعاء`, and so on. Mechanically derived, not translated,
-  but nobody has approved the phrasing.
 - **The eight category names — NEEDS SIGN-OFF.** No Arabic for these exists in
   any supplied file. They are plain translations of the section labels, in the
   register the spreadsheet already uses: سموذي، أعشاب ساخنة، شاي مثلج،
@@ -116,6 +114,23 @@ order of how much they can be trusted:
 - **The UI copy** in `STRINGS` — written, not supplied. The client chose
   **الوظائف** as the word for "function"; the surrounding sentences are ours
   and deserve a read-through.
+
+**Four functions now repeat themselves on screen.** The Arabic function names
+were revised into descriptive phrases, which moved them onto the ground the
+descriptions already held. The functions screen stacks name above description,
+so these four read as near-duplicates:
+
+| Function | Name | Description |
+|---|---|---|
+| Relax | الهدوء والاسترخاء | هدوء |
+| Season | الدرع الموسمي | درعك الموسمي |
+| Focus | التركيز | قوة التركيز |
+| Hb Plus | قوة الدم | لقوة الدم |
+
+The English does not have this problem — `Season` / `Your seasonal shield`
+reads fine because the name is a single word. Needs either shorter Arabic
+names or fresh Arabic descriptions; both are client copy, so neither was
+changed here.
 
 **Two spellings worth a second look**, both left exactly as supplied rather
 than silently corrected:

@@ -19,8 +19,8 @@ Nine functions, each a hydrosol added to a drink:
 
 | id | Name | Description |
 |---|---|---|
-| `vitality` | Vitality — For Him | Strength by nature |
-| `eve` | Eve — For Her | Eve rhythm |
+| `vitality` | Vitality | Strength by nature |
+| `eve` | Eve | Eve rhythm |
 | `nour` | Nour | Nourish your skin |
 | `gut-reset` | Gut Reset | Gut feeling restored |
 | `relax` | Relax | Calm your center |
@@ -32,6 +32,8 @@ Nine functions, each a hydrosol added to a drink:
 **Most drinks take any function the customer picks. Twelve have theirs fixed** — the nine shots (one per function, a clean 1:1) plus three Hot Herbals: Turmeric → Nour, Peach → Nour, Oregano → Season.
 
 A fixed-function drink carries a **tag** on its photo. Untagged drinks carry nothing, and a **legend** at the top of the category explains the difference. The legend only renders where that category actually contains a tagged drink.
+
+**A shot's name is its function's name plus the word for "shot", in both languages** — `Focus` / `Focus Shot`, `التركيز` / `جرعة التركيز`. The two are locked together, so renaming a function means renaming its shot in the same pass. Neither carries an audience qualifier any more.
 
 **Never invent health or clinical claims.** The nine descriptions above are the approved copy; nothing beyond them goes on screen.
 
