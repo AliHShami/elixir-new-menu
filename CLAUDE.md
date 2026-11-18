@@ -88,6 +88,7 @@ There is no white-on-transparent mark any more, so the old CSS-mask tinting is g
 - `functions[]` — `id`, `name_en`, `name_ar`, `description_en`, `description_ar`.
 - `categories[]` — `id`, `name_en`, `name_ar`, and a `drinks` array.
 - Each drink — `id` (the price-list code, e.g. `SM-01`), `name_en`, `name_ar`, `price` (a number, in JOD), `function` (a function `id`, or `null` for customer's choice) and `image`.
+- `ingredients_en` / `ingredients_ar` — **only on the nine shots.** Every other drink's name already says what is in it, so a card without ingredients is the norm, not a gap. Stored as an array of items per language, never a pre-joined string: the separator is chosen at render time, and Arabic takes the Arabic comma `،` (U+060C). The two arrays are not positionally parallel — the client's Arabic orders some items differently — so never pair them by index.
 
 Prices render as the number followed by `JOD`, trailing zeros stripped — `3 JOD`, `4.25 JOD`, `3.5 JOD` — in Latin numerals in both languages.
 
@@ -125,7 +126,7 @@ All four are sibling `<section>` elements in one `index.html`, shown and hidden 
 - **Intro** — the logo on dark olive, centred, above the two language buttons. They are the entry point; there is no whole-screen tap target.
 - **Functions** — the nine, each a name and its description, then a note that any function goes with any drink, and a button through to the menu.
 - **Menu** — the eight categories as full-width rows with a drink count.
-- **Category** — the legend, then a 2-column grid of drink cards: photo on top at `aspect-ratio: 3/4`, name and price beneath, function tag on the photo where one is fixed.
+- **Category** — the legend, then a 2-column grid of drink cards: photo on top at `aspect-ratio: 3/4`, name and price beneath on one line, function tag on the photo where one is fixed. A shot card carries its ingredients under that line; no other drink does.
 
 The intro is fixed at `100dvh` and never scrolls (`.screen--fixed`). The other three scroll.
 

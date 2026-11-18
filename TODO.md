@@ -132,12 +132,32 @@ reads fine because the name is a single word. Needs either shorter Arabic
 names or fresh Arabic descriptions; both are client copy, so neither was
 changed here.
 
-**Two spellings worth a second look**, both left exactly as supplied rather
-than silently corrected:
+**Shot ingredients** were supplied as typed text, English and Arabic, and
+are in `data/menu.json` on the nine shots only. Word choices and spellings are
+the client's; the one thing changed was the **casing of the English items**,
+regularised to the sentence case their own list already used in most places,
+so a single card does not mix `Chia seeds` with `sage`.
 
-- Eve's description is `إيقاع إنوثتك` — hamza below. Standard spelling is
-  `أنوثتك`, hamza above.
-- Nour's description is `غذي بشرتك`. `غذّي` with the shadda is the fuller form.
+**Four spellings were supplied wrong and have been corrected**, each one
+confirmed by the client rather than changed silently:
+
+| Supplied | Now | Where |
+|---|---|---|
+| `إكليل الحبل` | `إكليل الجبل` | Focus Shot ingredients — rosemary is mountain's crown, not rope |
+| `إنوثتك` | `أنوثتك` | Eve's description — hamza above, and it now matches the function name `الأنوثة` |
+| `غذي` | `غذّي` | Nour's description — the shadda, nothing else |
+| `Chlorophyl` | `Chlorophyll` | Focus Shot ingredients |
+
+`غذّي بشرتك` is the only diacritic in the Arabic copy apart from the
+tanween on `مشروباً`. Forma DJR Arabic carries the shadda (U+0651) and sets it
+over the `ذ` correctly — checked on the rendered functions screen, not just in
+the font's character map.
+
+That spelling keeps Nour's line in the feminine imperative, which Spark's
+`ابدأ يومك بشرارة` does not match — Spark addresses a man. **The client chose
+to leave it that way**, so the two imperatives disagree by decision, not by
+oversight. Seven of the nine descriptions have no verb at all and so carry no
+gender; only these two do.
 
 **Never take Arabic from the price-list PDF.** Its text layer reverses word
 order (`رمان كركديه تمر هندي` comes out as `ھندي تمر كركدیھ رمان`), uses the

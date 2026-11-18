@@ -123,6 +123,17 @@ function priceLabel(price) {
   return `${Number(price)} ${t("currency")}`;
 }
 
+/** Ingredients are stored as a list per language rather than one pre-joined
+    string, so the separator is decided here and only here: Arabic takes the
+    Arabic comma (U+060C), not the Latin one. Only the nine shots carry a list
+    — every other drink's name already says what is in it, so a card without
+    ingredients is the norm, not a gap. */
+function ingredientsLabel(drink) {
+  const list = localised(drink, "ingredients");
+  if (!Array.isArray(list) || list.length === 0) return "";
+  return list.join(state.lang === "ar" ? "، " : ", ");
+}
+
 /** Arabic counts a noun by the size of the number: 3–10 take the plural
     (مشروبات), 11 and up take the accusative singular (مشروباً). The menu's
     categories span both. English has a single form, so both keys match. */
@@ -313,11 +324,24 @@ function renderDrinks() {
     }
 
     const meta = el("div", "drink__meta");
+
+    // Name and price share a baseline on one line; anything else stacks under
+    // them, so the row keeps its shape whether or not ingredients follow.
+    const line = el("div", "drink__line");
     const name = el("span", "drink__name");
     name.textContent = localised(drink, "name");
     const price = el("span", "drink__price", { dir: "ltr" });
     price.textContent = priceLabel(drink.price);
-    meta.append(name, price);
+    line.append(name, price);
+    meta.append(line);
+
+    // Only the shots carry these — see ingredientsLabel().
+    const ingredients = ingredientsLabel(drink);
+    if (ingredients) {
+      const list = el("p", "drink__ingredients");
+      list.textContent = ingredients;
+      meta.append(list);
+    }
 
     card.append(figure, meta);
     grid.append(card);

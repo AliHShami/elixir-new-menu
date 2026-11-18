@@ -557,11 +557,19 @@ body[data-screen="functions"] .cta-bar { display: block; }
   font-size: 0.42rem;
 }
 
+/* A column, so an ingredients line can stack under the name without changing
+   how the name and price sit together. */
 .drink__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.55rem 0.65rem 0.7rem;
+}
+
+.drink__line {
   display: flex;
   align-items: baseline;
   gap: 0.4rem;
-  padding: 0.55rem 0.65rem 0.7rem;
 }
 
 .drink__name {
@@ -573,6 +581,19 @@ body[data-screen="functions"] .cta-bar { display: block; }
   line-height: 1.2;
   color: var(--olive);
   text-align: start;
+}
+
+/* The shots only. Secondary to the name in both size and colour — it is
+   supporting detail, not a second title. Taupe on the card's near-white fill
+   is the same pairing the legend above the grid uses. */
+.drink__ingredients {
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: 0.58rem;
+  line-height: 1.35;
+  color: var(--taupe);
+  text-align: start;
+  text-wrap: pretty;
 }
 
 .drink__price {

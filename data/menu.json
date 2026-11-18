@@ -11,16 +11,16 @@
     {
       "id": "eve",
       "name_en": "Eve",
-      "name_ar": "توازن الأنوثة",
+      "name_ar": "الأنوثة",
       "description_en": "Eve rhythm",
-      "description_ar": "إيقاع إنوثتك"
+      "description_ar": "إيقاع أنوثتك"
     },
     {
       "id": "nour",
       "name_en": "Nour",
       "name_ar": "الجمال",
       "description_en": "Nourish your skin",
-      "description_ar": "غذي بشرتك"
+      "description_ar": "غذّي بشرتك"
     },
     {
       "id": "gut-reset",
@@ -46,7 +46,7 @@
     {
       "id": "spark",
       "name_en": "Spark",
-      "name_ar": "الطاقة والنشاط",
+      "name_ar": "النشاط",
       "description_en": "Rise and spark",
       "description_ar": "ابدأ يومك بشرارة"
     },
@@ -652,6 +652,16 @@
           "id": "SH-01",
           "name_en": "Vitality Shot",
           "name_ar": "جرعة الرجولة",
+          "ingredients_en": [
+            "Blueberry",
+            "Oregano",
+            "Elixir Vitality blend"
+          ],
+          "ingredients_ar": [
+            "بلوبيري",
+            "أوريجانو",
+            "إكسير الحيوية"
+          ],
           "price": 2.5,
           "function": "vitality",
           "image": "assets/drinks/sh-01.webp",
@@ -661,6 +671,18 @@
           "id": "SH-03",
           "name_en": "Nour Shot",
           "name_ar": "جرعة الجمال",
+          "ingredients_en": [
+            "Coconut",
+            "Pineapple",
+            "Chia seeds",
+            "Irish moss"
+          ],
+          "ingredients_ar": [
+            "جوز الهند",
+            "أناناس",
+            "بذور الشيا",
+            "الطحلب الإيرلندي"
+          ],
           "price": 2.5,
           "function": "nour",
           "image": "assets/drinks/sh-03.webp",
@@ -670,6 +692,18 @@
           "id": "SH-04",
           "name_en": "Gut Reset Shot",
           "name_ar": "جرعة الأمعاء والقولون",
+          "ingredients_en": [
+            "Papaya",
+            "Chia seeds",
+            "Sage",
+            "Elixir Gut Reset blend"
+          ],
+          "ingredients_ar": [
+            "بابايا",
+            "بذور الشيا",
+            "ميرمية",
+            "إكسير راحة الأمعاء والقولون"
+          ],
           "price": 2.5,
           "function": "gut-reset",
           "image": "assets/drinks/sh-04.webp",
@@ -679,6 +713,20 @@
           "id": "SH-05",
           "name_en": "Relax Shot",
           "name_ar": "جرعة الهدوء والاسترخاء",
+          "ingredients_en": [
+            "Raspberry",
+            "Green apple",
+            "Sweet basil",
+            "Lime flower",
+            "Elixir Relax blend"
+          ],
+          "ingredients_ar": [
+            "رازبيري",
+            "تفاح أخضر",
+            "حبق حلو",
+            "زيزفون",
+            "إكسير الهدوء والاسترخاء"
+          ],
           "price": 2.5,
           "function": "relax",
           "image": "assets/drinks/sh-05.webp",
@@ -688,6 +736,18 @@
           "id": "SH-06",
           "name_en": "Season Shot",
           "name_ar": "جرعة الدرع الموسمي",
+          "ingredients_en": [
+            "Honey",
+            "Oregano",
+            "Lemon",
+            "Elixir Season blend"
+          ],
+          "ingredients_ar": [
+            "عسل",
+            "أوريجانو",
+            "ليمون",
+            "إكسير الدرع الموسمي"
+          ],
           "price": 2.5,
           "function": "season",
           "image": "assets/drinks/sh-06.webp",
@@ -696,7 +756,19 @@
         {
           "id": "SH-07",
           "name_en": "Spark Shot",
-          "name_ar": "جرعة الطاقة والنشاط",
+          "name_ar": "جرعة النشاط",
+          "ingredients_en": [
+            "Mango",
+            "Passion fruit",
+            "Sweet basil",
+            "Elixir Spark blend"
+          ],
+          "ingredients_ar": [
+            "المانجو",
+            "فاكهة البسفلورا",
+            "حبق حلو",
+            "إكسير النشاط"
+          ],
           "price": 2.5,
           "function": "spark",
           "image": "assets/drinks/sh-07.webp",
@@ -706,6 +778,18 @@
           "id": "SH-08",
           "name_en": "Focus Shot",
           "name_ar": "جرعة التركيز",
+          "ingredients_en": [
+            "Green apple",
+            "Rosemary",
+            "Chlorophyll",
+            "Elixir Focus blend"
+          ],
+          "ingredients_ar": [
+            "تفاح أخضر",
+            "إكليل الجبل",
+            "كلوروفيل",
+            "إكسير التركيز"
+          ],
           "price": 2.5,
           "function": "focus",
           "image": "assets/drinks/sh-08.webp",
@@ -715,6 +799,18 @@
           "id": "SH-09",
           "name_en": "Hb Plus Shot",
           "name_ar": "جرعة قوة الدم",
+          "ingredients_en": [
+            "Strawberry",
+            "Beetroot",
+            "Hibiscus",
+            "Elixir Hb Plus blend"
+          ],
+          "ingredients_ar": [
+            "فراولة",
+            "شمندر",
+            "كركديه",
+            "إكسير قوة الدم"
+          ],
           "price": 2.5,
           "function": "hb-plus",
           "image": "assets/drinks/sh-09.webp",
@@ -723,7 +819,21 @@
         {
           "id": "SH-10",
           "name_en": "Eve Shot",
-          "name_ar": "جرعة توازن الأنوثة",
+          "name_ar": "جرعة الأنوثة",
+          "ingredients_en": [
+            "Dragon fruit",
+            "Pineapple",
+            "Litchi",
+            "Rose",
+            "Elixir Eve blend"
+          ],
+          "ingredients_ar": [
+            "فاكهة التنين",
+            "ليتشي",
+            "أناناس",
+            "ورد",
+            "إكسير الأنوثة"
+          ],
           "price": 2.5,
           "function": "eve",
           "image": "assets/drinks/sh-10.webp",
