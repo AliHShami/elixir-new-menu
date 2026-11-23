@@ -15,28 +15,28 @@
 Everything else about them is fine: A–Z, a–z, 0–9 and `.` are all present, which
 covers every heading in the app.
 
-## 2. Photo mapping — 59 of 70 done
+## 2. Photo mapping — 60 of 70 done
 
 Photos come from `D:\Elixir\Product Images\Elixir Products Images` (`Cold Drinks`,
 `Hot Drinks`, `Shots`). They are converted to WebP in `assets/drinks/`, named by
-the price-list code: `sm-02.webp`, `sh-10.webp`, and so on. 59 photos, 8.7 MB.
+the price-list code: `sm-02.webp`, `sh-10.webp`, and so on. 60 photos, 8.9 MB.
 
 Files named `Image NN.png` were skipped as instructed — those are drinks that
 aren't on the current menu.
 
-**11 drinks still have no photo.** Each renders a dashed placeholder:
+**10 drinks still have no photo.** Each renders a dashed placeholder:
 
 | Category | Missing |
 |---|---|
 | Hot Herbal | HH-02 Turmeric |
-| Iced Tea | IT-04 Passion Fruit |
 | Milkshakes | MS-02 Crocant Anise |
 | Specialty Coffee | SC-02 Lungo, SC-04 American Filter, SC-05 Cappuccino, SC-06 Latte, SC-10 Hot Chocolate |
 | Iced Coffee | IC-01 Iced Coffee, IC-05 Iced Mocha, IC-06 Iced V60 |
 
-**Smoothies, Spirulina and Shots are complete.** Of the eleven gaps left,
-eight are coffee — five Specialty and three Iced — and the other three are one
-each in Hot Herbal, Iced Tea and Milkshakes.
+**Five of the eight categories are complete** — Smoothies, Iced Tea,
+Spirulina and Shots, plus Hot Herbal and Milkshakes one short each. **Eight of
+the ten gaps are coffee**, five Specialty and three Iced, so the remaining
+shoot is essentially a coffee shoot.
 
 **Five judgement calls to confirm** — the filename didn't match the menu name exactly:
 
@@ -87,19 +87,33 @@ That folder holds a tenth bottle, **`NA.png`** — a caramel-coloured shot with 
 function in its name. It is not on the price list and is not wired to anything.
 Worth asking whether it is the missing **SH-02** (see section 4).
 
-**`SM-13 Mango Spirulina` came from the original `Cold Drinks` folder**, not
-the 23-11 one — `smoothie-spirulina-mango.png` had been sitting there unmapped
-all along. It was missed because `SP-02 Spirulina Mango` takes the *milkshake*
-cut of the same flavour (`milkshake-spirulina-mango.png`), so the pair reads as
-one drink at a glance. They are two: SP-02 is the milkshake, SM-13 the
-smoothie, and each now has its own photo.
+**`SM-13 Mango Spirulina` and `IT-04 Passion Fruit Iced Tea` came from the
+original `Cold Drinks` folder**, not the 23-11 one —
+`smoothie-spirulina-mango.png` and `iced-tea-passion.png` were added to it
+after the first pass had already read it. SM-13 is also easy to confuse with
+`SP-02 Spirulina Mango`, which takes the *milkshake* cut of the same flavour
+(`milkshake-spirulina-mango.png`): they are two drinks, and each now has its
+own photo.
+
+**The unused list below is checked by pixels, not by bookkeeping.**
+`scratchpad/unused.js` crops every source PNG to its alpha box, thumbnails it
+and matches it against every shipped `.webp`, so a file dropped into a source
+folder later cannot quietly go unnoticed. Re-run it after any photo drop.
 
 **Five named files are still unused**, in case any belongs to a drink above:
-`Cold Drinks/pina-colada-patterson.png`,
-`Cold Drinks/smoothie-green-apple-kiwi-rosemary (2).png`,
-`Hot Drinks/dark-mocha-hot.png`, `Hot Drinks/matcha-hot.png`,
-`Hot Drinks/spirulina-hot.png`. Everything else named in those folders is
-wired to a drink.
+
+- `Cold Drinks/pina-colada-patterson.png` and
+  `Cold Drinks/smoothie-green-apple-kiwi-rosemary (2).png` are alternate takes
+  of photos already in use (MS-01 and SM-12).
+- `Hot Drinks/dark-mocha-hot.png`, `matcha-hot.png` and `spirulina-hot.png`
+  have no drink on the menu at all. **`dark-mocha-hot.png` is worth a
+  question**: `SC-10 Hot Chocolate` has no photo, and a dark mocha is the
+  nearest thing in the folder — but a mocha has coffee in it and a hot
+  chocolate does not, so it was not wired.
+
+The eight PNGs in `Shots/` are the pre-reshoot bottles, superseded by
+`Shots New/Bottles finals`. Everything else named in those folders is wired to
+a drink.
 
 To add a photo: drop the file in the source folder, and it converts to
 `assets/drinks/<price-list-code>.webp` with the `image` field set in

@@ -297,7 +297,8 @@
           "name_ar": "آيس تي باشن",
           "price": 3.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/it-04.webp",
+          "scale": 0.8
         },
         {
           "id": "IT-05",
