@@ -15,25 +15,28 @@
 Everything else about them is fine: A–Z, a–z, 0–9 and `.` are all present, which
 covers every heading in the app.
 
-## 2. Photo mapping — 49 of 70 done
+## 2. Photo mapping — 59 of 70 done
 
 Photos come from `D:\Elixir\Product Images\Elixir Products Images` (`Cold Drinks`,
 `Hot Drinks`, `Shots`). They are converted to WebP in `assets/drinks/`, named by
-the price-list code: `sm-02.webp`, `sh-10.webp`, and so on. 87.5 MB → 5.7 MB.
+the price-list code: `sm-02.webp`, `sh-10.webp`, and so on. 59 photos, 8.7 MB.
 
 Files named `Image NN.png` were skipped as instructed — those are drinks that
 aren't on the current menu.
 
-**21 drinks still have no photo.** Each renders a dashed placeholder:
+**11 drinks still have no photo.** Each renders a dashed placeholder:
 
 | Category | Missing |
 |---|---|
-| Smoothies | SM-01 Pomegranate Hibiscus Tamarind, SM-13 Mango Spirulina |
-| Hot Herbal | HH-02 Turmeric, HH-04 Ginkgo, HH-05 Peach, HH-06 Oregano |
-| Iced Tea | IT-01 Mango, IT-02 Cranberry, IT-03 Blueberry, IT-04 Passion Fruit |
-| Milkshakes | MS-02 Crocant Anise, MS-12 Hibiscus & Tamarind |
+| Hot Herbal | HH-02 Turmeric |
+| Iced Tea | IT-04 Passion Fruit |
+| Milkshakes | MS-02 Crocant Anise |
 | Specialty Coffee | SC-02 Lungo, SC-04 American Filter, SC-05 Cappuccino, SC-06 Latte, SC-10 Hot Chocolate |
-| Iced Coffee | IC-01 Iced Coffee, IC-05 Iced Mocha, IC-06 Iced V60, IC-07 Caramel Frappe |
+| Iced Coffee | IC-01 Iced Coffee, IC-05 Iced Mocha, IC-06 Iced V60 |
+
+**Smoothies, Spirulina and Shots are complete.** Of the eleven gaps left,
+eight are coffee — five Specialty and three Iced — and the other three are one
+each in Hot Herbal, Iced Tea and Milkshakes.
 
 **Five judgement calls to confirm** — the filename didn't match the menu name exactly:
 
@@ -43,10 +46,36 @@ aren't on the current menu.
 - `SP-04 Spirulina Mixed Berry` ← `milkshake-mixed-berries.png` (filename says neither spirulina nor lavender)
 - `SP-05 Spirulina Strawberry` ← `smoothie-strawberry-spirulina.png` (a smoothie file for a Spirulina-category drink)
 
-**One source file is misnamed.** `Cold Drinks/mango-ice-tea.png` is actually the
-**lemon** iced tea, confirmed by you, so it is wired to `IT-05 Lemon Iced Tea`
-(`assets/drinks/it-05.webp`) and `IT-01 Mango Iced Tea` has no photo. Worth
-renaming the source file so the next pass doesn't re-introduce the error.
+**Nine more arrived 23 Nov 2026**, from
+`D:\Elixir\Product Images\Elixir Products Images\Cold Drinks 23-11`. Every
+filename there names exactly one drink that had no photo, so none of these was
+a judgement call: SM-01, HH-04, HH-05, HH-06, IT-01, IT-02, IT-03, MS-12,
+IC-07. 12.4 MB of PNG became 1.27 MB of WebP.
+
+Three of them are worth a second look before go-live:
+
+- **The three new French presses face the other way.** Ginkgo, Peach and
+  Oregano have the handle on the right; Berry, Lemon Balm and the rest have it
+  on the left, so Hot Herbal now shows handles pointing both ways down the
+  grid. They cannot simply be flipped — see the next point.
+- **The new presses carry a visible `DUKA` logo** on the glass, which the older
+  three do not. It is another brand's name on an ELIXIR screen, and it is what
+  rules out mirroring them to match. Retouching or a re-shoot are the options.
+- **The two hibiscus-tamarind photos are styled with strawberries.** `SM-01
+  Hibiscus Tamarind` now looks almost identical to `SM-10 Strawberry Rosemary`
+  beside it, and `MS-12 Hibiscus & Tamarind` close to `MS-10 Strawberry
+  Rosemary`. The filenames are unambiguous, so they are wired as supplied — but
+  given `mango-ice-tea.png` turned out to be lemon, the files are worth
+  confirming. (SM-01 was renamed from *Pomegranate Hibiscus Tamarind* to
+  *Hibiscus Tamarind* on 23 Nov 2026, dropping `رمان` from the Arabic too, so
+  the drink and its photo now agree on the name at least.)
+
+**The misnamed iced tea is resolved.** `Cold Drinks/mango-ice-tea.png` was
+actually the **lemon** photo; it has since been renamed to `lemon-ice-tea.png`
+at source, and it is the file behind `IT-05 Lemon Iced Tea`
+(`assets/drinks/it-05.webp`) — verified by re-encoding it and comparing pixels.
+`IT-01 Mango Iced Tea` has its own photo from the 23-11 folder, and it is
+plainly mango rather than a second lemon. Nothing further to do here.
 
 **The nine shots were re-shot.** They now come from
 `D:\Elixir\Product Images\Shots New\Bottles finals`, where each file names its
@@ -58,9 +87,19 @@ That folder holds a tenth bottle, **`NA.png`** — a caramel-coloured shot with 
 function in its name. It is not on the price list and is not wired to anything.
 Worth asking whether it is the missing **SH-02** (see section 4).
 
-**Five named files went unused**, in case any belongs to a drink above:
-`pina-colada-patterson.png`, `smoothie-green-apple-kiwi-rosemary (2).png`,
-`dark-mocha-hot.png`, `matcha-hot.png`, `spirulina-hot.png`.
+**`SM-13 Mango Spirulina` came from the original `Cold Drinks` folder**, not
+the 23-11 one — `smoothie-spirulina-mango.png` had been sitting there unmapped
+all along. It was missed because `SP-02 Spirulina Mango` takes the *milkshake*
+cut of the same flavour (`milkshake-spirulina-mango.png`), so the pair reads as
+one drink at a glance. They are two: SP-02 is the milkshake, SM-13 the
+smoothie, and each now has its own photo.
+
+**Five named files are still unused**, in case any belongs to a drink above:
+`Cold Drinks/pina-colada-patterson.png`,
+`Cold Drinks/smoothie-green-apple-kiwi-rosemary (2).png`,
+`Hot Drinks/dark-mocha-hot.png`, `Hot Drinks/matcha-hot.png`,
+`Hot Drinks/spirulina-hot.png`. Everything else named in those folders is
+wired to a drink.
 
 To add a photo: drop the file in the source folder, and it converts to
 `assets/drinks/<price-list-code>.webp` with the `image` field set in

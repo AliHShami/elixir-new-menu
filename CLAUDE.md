@@ -96,7 +96,7 @@ Prices render as the number followed by `JOD`, trailing zeros stripped — `3 JO
 
 ## Images
 
-Drink photos live in `assets/drinks/` as WebP. The source PNGs were ~95 MB; at kiosk size (800×1100 max, quality 82) they are **6 MB, a 94% saving**. All are transparent cutouts, so they sit on any background.
+Drink photos live in `assets/drinks/` as WebP. At kiosk size (800×1100 max, quality 82) they run about a fifteenth of the supplied PNGs — **58 photos in 8.5 MB**. All are transparent cutouts, so they sit on any background.
 
 Conversion uses `sharp` installed **into the scratchpad, never the repo** — only the finished `.webp` files are committed, so the no-build-step rule holds. There is no WebP encoder on the machine otherwise.
 

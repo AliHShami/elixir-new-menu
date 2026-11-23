@@ -73,11 +73,12 @@
       "drinks": [
         {
           "id": "SM-01",
-          "name_en": "Pomegranate Hibiscus Tamarind",
-          "name_ar": "رمان كركديه تمر هندي",
+          "name_en": "Hibiscus Tamarind",
+          "name_ar": "كركديه تمر هندي",
           "price": 4.25,
           "function": null,
-          "image": null
+          "image": "assets/drinks/sm-01.webp",
+          "scale": 0.8
         },
         {
           "id": "SM-02",
@@ -184,7 +185,8 @@
           "name_ar": "مانجو سبيرولينا",
           "price": 4.25,
           "function": null,
-          "image": null
+          "image": "assets/drinks/sm-13.webp",
+          "scale": 0.8
         }
       ]
     },
@@ -225,7 +227,8 @@
           "name_ar": "هيربل جنكة",
           "price": 3.25,
           "function": null,
-          "image": null
+          "image": "assets/drinks/hh-04.webp",
+          "scale": 0.8
         },
         {
           "id": "HH-05",
@@ -233,7 +236,8 @@
           "name_ar": "هيربل خوخ (بيتش)",
           "price": 3.25,
           "function": "nour",
-          "image": null
+          "image": "assets/drinks/hh-05.webp",
+          "scale": 0.8
         },
         {
           "id": "HH-06",
@@ -241,7 +245,8 @@
           "name_ar": "هيربل أوريجانو",
           "price": 3.25,
           "function": "season",
-          "image": null
+          "image": "assets/drinks/hh-06.webp",
+          "scale": 0.8
         },
         {
           "id": "HH-07",
@@ -265,7 +270,8 @@
           "name_ar": "آيس تي مانجو",
           "price": 3.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/it-01.webp",
+          "scale": 0.8
         },
         {
           "id": "IT-02",
@@ -273,7 +279,8 @@
           "name_ar": "آيس تي كرانبيري",
           "price": 3.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/it-02.webp",
+          "scale": 0.8
         },
         {
           "id": "IT-03",
@@ -281,7 +288,8 @@
           "name_ar": "آيس تي بلوبيري",
           "price": 3.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/it-03.webp",
+          "scale": 0.8
         },
         {
           "id": "IT-04",
@@ -420,7 +428,8 @@
           "name_ar": "كركديه وتمر هندي",
           "price": 4.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/ms-12.webp",
+          "scale": 0.8
         }
       ]
     },
@@ -639,7 +648,8 @@
           "name_ar": "كراميل فرابيه",
           "price": 4.0,
           "function": null,
-          "image": null
+          "image": "assets/drinks/ic-07.webp",
+          "scale": 0.8
         }
       ]
     },
