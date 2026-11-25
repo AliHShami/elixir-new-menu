@@ -340,7 +340,8 @@
           "name_ar": "كروكان يانسون",
           "price": 4.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/ms-02.webp",
+          "scale": 0.8
         },
         {
           "id": "MS-03",
@@ -583,7 +584,8 @@
           "name_ar": "هوت تشوكلت",
           "price": 3.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/sc-10.webp",
+          "scale": 0.9
         }
       ]
     },

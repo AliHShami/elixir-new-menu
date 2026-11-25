@@ -15,28 +15,29 @@
 Everything else about them is fine: A–Z, a–z, 0–9 and `.` are all present, which
 covers every heading in the app.
 
-## 2. Photo mapping — 60 of 70 done
+## 2. Photo mapping — 62 of 70 done
 
-Photos come from `D:\Elixir\Product Images\Elixir Products Images` (`Cold Drinks`,
-`Hot Drinks`, `Shots`). They are converted to WebP in `assets/drinks/`, named by
-the price-list code: `sm-02.webp`, `sh-10.webp`, and so on. 60 photos, 8.9 MB.
+Photos come from `D:\Elixir\Product Images\Elixir Products Images` — `Cold
+Drinks`, `Hot Drinks` and `Shots`, plus the dated drops the client adds beside
+them (`Cold Drinks 23-11`, `Hot drinks 25-11`). They are converted to WebP in
+`assets/drinks/`, named by the price-list code: `sm-02.webp`, `sh-10.webp`, and
+so on. 62 photos, 9.0 MB.
 
 Files named `Image NN.png` were skipped as instructed — those are drinks that
 aren't on the current menu.
 
-**10 drinks still have no photo.** Each renders a dashed placeholder:
+**8 drinks still have no photo.** Each renders a dashed placeholder:
 
 | Category | Missing |
 |---|---|
 | Hot Herbal | HH-02 Turmeric |
-| Milkshakes | MS-02 Crocant Anise |
-| Specialty Coffee | SC-02 Lungo, SC-04 American Filter, SC-05 Cappuccino, SC-06 Latte, SC-10 Hot Chocolate |
+| Specialty Coffee | SC-02 Lungo, SC-04 American Filter, SC-05 Cappuccino, SC-06 Latte |
 | Iced Coffee | IC-01 Iced Coffee, IC-05 Iced Mocha, IC-06 Iced V60 |
 
-**Five of the eight categories are complete** — Smoothies, Iced Tea,
-Spirulina and Shots, plus Hot Herbal and Milkshakes one short each. **Eight of
-the ten gaps are coffee**, five Specialty and three Iced, so the remaining
-shoot is essentially a coffee shoot.
+**Six of the eight categories are complete** — Smoothies, Milkshakes, Iced Tea,
+Spirulina and Shots, with Hot Herbal one short. **Seven of the eight gaps are
+coffee**, four Specialty and three Iced, so what is left is a coffee shoot plus
+a single herbal.
 
 **Five judgement calls to confirm** — the filename didn't match the menu name exactly:
 
@@ -52,15 +53,9 @@ filename there names exactly one drink that had no photo, so none of these was
 a judgement call: SM-01, HH-04, HH-05, HH-06, IT-01, IT-02, IT-03, MS-12,
 IC-07. 12.4 MB of PNG became 1.27 MB of WebP.
 
-Three of them are worth a second look before go-live:
+One flag from that drop still stands; the other two were answered by the
+re-shoot below.
 
-- **The three new French presses face the other way.** Ginkgo, Peach and
-  Oregano have the handle on the right; Berry, Lemon Balm and the rest have it
-  on the left, so Hot Herbal now shows handles pointing both ways down the
-  grid. They cannot simply be flipped — see the next point.
-- **The new presses carry a visible `DUKA` logo** on the glass, which the older
-  three do not. It is another brand's name on an ELIXIR screen, and it is what
-  rules out mirroring them to match. Retouching or a re-shoot are the options.
 - **The two hibiscus-tamarind photos are styled with strawberries.** `SM-01
   Hibiscus Tamarind` now looks almost identical to `SM-10 Strawberry Rosemary`
   beside it, and `MS-12 Hibiscus & Tamarind` close to `MS-10 Strawberry
@@ -69,6 +64,25 @@ Three of them are worth a second look before go-live:
   confirming. (SM-01 was renamed from *Pomegranate Hibiscus Tamarind* to
   *Hibiscus Tamarind* on 23 Nov 2026, dropping `رمان` from the Arabic too, so
   the drink and its photo now agree on the name at least.)
+
+**Five more arrived 25 Nov 2026**, from
+`D:\Elixir\Product Images\Elixir Products Images\Hot drinks 25-11` — three
+replacements and two new drinks. 5.2 MB of PNG became 0.38 MB of WebP.
+
+- `herbal-ginko.png`, `herbal-peach.png` and `herbal-oregano.png` **replace**
+  `hh-04`, `hh-05` and `hh-06`. This is the re-shoot the 23-11 flags asked for,
+  and it answers both at once: the handle is back on the left, matching HH-01,
+  HH-03 and HH-07, and the `DUKA` logo is gone from the glass. Hot Herbal now
+  reads as one set. The superseded files are listed as unused below.
+- `milkshake-crocant-anise.png` fills **MS-02**, the last gap in Milkshakes.
+- `hot-chocolate.png` fills **SC-10**, and it settles the `dark-mocha-hot.png`
+  question: the two files are **byte-identical**
+  (`bfb6d922417cd1e9ada744329624af9e`). The client renamed the mocha shot and
+  sent it back as the hot chocolate, so the drink is wired to the photo they
+  chose rather than to a guess of mine. Its framing matches `sc-01` and `sc-09`
+  almost exactly, so it takes the same `scale: 0.9` as the other cups. Worth
+  noting it is a plain black cup and saucer, not the branded ELIXIR ceramic
+  that Espresso, Macchiato and the rest are shot in.
 
 **The misnamed iced tea is resolved.** `Cold Drinks/mango-ice-tea.png` was
 actually the **lemon** photo; it has since been renamed to `lemon-ice-tea.png`
@@ -100,16 +114,25 @@ own photo.
 and matches it against every shipped `.webp`, so a file dropped into a source
 folder later cannot quietly go unnoticed. Re-run it after any photo drop.
 
-**Five named files are still unused**, in case any belongs to a drink above:
+It compares in **colour**, and calls a match below **5**. Both of those were
+tightened on 25 Nov 2026: in greyscale the hot drinks are the same black cup
+over and over, so `matcha-hot.png` and `spirulina-hot.png` were scoring inside
+the old threshold of 12 against the new `sc-10.webp` and quietly counting as
+used. The distances are cleanly bimodal — a re-encode of the same photo scores
+under 3, the nearest genuinely different drink over 10 — so 5 sits in the gap
+with room either side.
+
+**Seven named files are still unused**, in case any belongs to a drink above:
 
 - `Cold Drinks/pina-colada-patterson.png` and
   `Cold Drinks/smoothie-green-apple-kiwi-rosemary (2).png` are alternate takes
   of photos already in use (MS-01 and SM-12).
-- `Hot Drinks/dark-mocha-hot.png`, `matcha-hot.png` and `spirulina-hot.png`
-  have no drink on the menu at all. **`dark-mocha-hot.png` is worth a
-  question**: `SC-10 Hot Chocolate` has no photo, and a dark mocha is the
-  nearest thing in the folder — but a mocha has coffee in it and a hot
-  chocolate does not, so it was not wired.
+- `Cold Drinks 23-11/herbal-ginko.png`, `herbal-peach.png` and
+  `herbal-oregano.png` are the mirrored, `DUKA`-branded presses, superseded by
+  the identically named files in `Hot drinks 25-11`. Same names, different
+  folders — mind which one a later pass reads.
+- `Hot Drinks/matcha-hot.png` and `spirulina-hot.png` have no drink on the menu
+  at all. (`dark-mocha-hot.png` is no longer in this list: it is SC-10.)
 
 The eight PNGs in `Shots/` are the pre-reshoot bottles, superseded by
 `Shots New/Bottles finals`. Everything else named in those folders is wired to
