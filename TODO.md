@@ -15,29 +15,29 @@
 Everything else about them is fine: A–Z, a–z, 0–9 and `.` are all present, which
 covers every heading in the app.
 
-## 2. Photo mapping — 62 of 70 done
+## 2. Photo mapping — 64 of 70 done
 
 Photos come from `D:\Elixir\Product Images\Elixir Products Images` — `Cold
 Drinks`, `Hot Drinks` and `Shots`, plus the dated drops the client adds beside
-them (`Cold Drinks 23-11`, `Hot drinks 25-11`). They are converted to WebP in
-`assets/drinks/`, named by the price-list code: `sm-02.webp`, `sh-10.webp`, and
-so on. 62 photos, 9.0 MB.
+them (`Drinks 23-11`, `Hot drinks 25-11`, `Drinks 27-11`). They are converted
+to WebP in `assets/drinks/`, named by the price-list code: `sm-02.webp`,
+`sh-10.webp`, and so on. 64 photos, 9.3 MB.
 
 Files named `Image NN.png` were skipped as instructed — those are drinks that
 aren't on the current menu.
 
-**8 drinks still have no photo.** Each renders a dashed placeholder:
+**6 drinks still have no photo.** Each renders a dashed placeholder:
 
 | Category | Missing |
 |---|---|
 | Hot Herbal | HH-02 Turmeric |
-| Specialty Coffee | SC-02 Lungo, SC-04 American Filter, SC-05 Cappuccino, SC-06 Latte |
-| Iced Coffee | IC-01 Iced Coffee, IC-05 Iced Mocha, IC-06 Iced V60 |
+| Specialty Coffee | SC-04 American Filter, SC-05 Cappuccino |
+| Iced Coffee | IC-01 Iced Americano, IC-05 Iced Mocha, IC-06 Iced V60 |
 
 **Six of the eight categories are complete** — Smoothies, Milkshakes, Iced Tea,
-Spirulina and Shots, with Hot Herbal one short. **Seven of the eight gaps are
-coffee**, four Specialty and three Iced, so what is left is a coffee shoot plus
-a single herbal.
+Spirulina and Shots, with Hot Herbal one short. **Five of the six gaps are
+coffee**, two Specialty and all three remaining Iced, so what is left is a
+small coffee shoot plus a single herbal.
 
 **Five judgement calls to confirm** — the filename didn't match the menu name exactly:
 
@@ -48,7 +48,8 @@ a single herbal.
 - `SP-05 Spirulina Strawberry` ← `smoothie-strawberry-spirulina.png` (a smoothie file for a Spirulina-category drink)
 
 **Nine more arrived 23 Nov 2026**, from
-`D:\Elixir\Product Images\Elixir Products Images\Cold Drinks 23-11`. Every
+`D:\Elixir\Product Images\Elixir Products Images\Drinks 23-11` (supplied as
+`Cold Drinks 23-11`, renamed at source since). Every
 filename there names exactly one drink that had no photo, so none of these was
 a judgement call: SM-01, HH-04, HH-05, HH-06, IT-01, IT-02, IT-03, MS-12,
 IC-07. 12.4 MB of PNG became 1.27 MB of WebP.
@@ -83,6 +84,28 @@ replacements and two new drinks. 5.2 MB of PNG became 0.38 MB of WebP.
   almost exactly, so it takes the same `scale: 0.9` as the other cups. Worth
   noting it is a plain black cup and saucer, not the branded ELIXIR ceramic
   that Espresso, Macchiato and the rest are shot in.
+
+**Two more arrived 27 Nov 2026**, from
+`D:\Elixir\Product Images\Elixir Products Images\Drinks 27-11` — both new
+drinks, no replacements. 3.2 MB of PNG became 0.27 MB of WebP.
+
+- `longo.png` fills **SC-02 Lungo** (the file spells it *longo*; the price list
+  and the menu both spell it *lungo*, so the drink is unchanged).
+- `latte.png` fills **SC-06 Latte**.
+
+**Specialty Coffee now shows four different cups.** Worth raising before
+go-live, since it is the one category where the vessel does the branding:
+
+| Cup | Drinks |
+|---|---|
+| Branded green ceramic | Americano, Flat White, Cortado |
+| Branded beige, runic band | Espresso, Macchiato |
+| Matte black, unbranded | Lungo, Hot Chocolate |
+| Brown textured, unbranded | Latte |
+
+Each photo is unambiguous about its drink, so all four are wired as supplied —
+but half the category is now served in cups that carry no ELIXIR mark, and the
+two unbranded styles do not match each other either.
 
 **The misnamed iced tea is resolved.** `Cold Drinks/mango-ice-tea.png` was
 actually the **lemon** photo; it has since been renamed to `lemon-ice-tea.png`
@@ -127,7 +150,7 @@ with room either side.
 - `Cold Drinks/pina-colada-patterson.png` and
   `Cold Drinks/smoothie-green-apple-kiwi-rosemary (2).png` are alternate takes
   of photos already in use (MS-01 and SM-12).
-- `Cold Drinks 23-11/herbal-ginko.png`, `herbal-peach.png` and
+- `Drinks 23-11/herbal-ginko.png`, `herbal-peach.png` and
   `herbal-oregano.png` are the mirrored, `DUKA`-branded presses, superseded by
   the identically named files in `Hot drinks 25-11`. Same names, different
   folders — mind which one a later pass reads.
@@ -178,11 +201,12 @@ order of how much they can be trusted:
   together: each shot is `جرعة` plus its function's name, so a change to one
   has to be made to the other. The descriptions are the client's original set
   and were not revised alongside the names.
-- **61 of the 70 drinks** — the `Arabic Name` column of
+- **60 of the 70 drinks** — the `Arabic Name` column of
   `D:\Elixir\ELIXIR_Price_List.xlsx`. Also clean, and every drink name and
   price in that sheet was checked against `data/menu.json` before use: they
   agree exactly. (The one divergence is SC-10 Hot Chocolate, whose price cell
-  reads `Not listed` — see section 4.)
+  reads `Not listed` — see section 4.) IC-01 has since been renamed away from
+  the sheet — see below.
 - **The eight category names — NEEDS SIGN-OFF.** No Arabic for these exists in
   any supplied file. They are plain translations of the section labels, in the
   register the spreadsheet already uses: سموذي، أعشاب ساخنة، شاي مثلج،
@@ -234,6 +258,14 @@ That spelling keeps Nour's line in the feminine imperative, which Spark's
 to leave it that way**, so the two imperatives disagree by decision, not by
 oversight. Seven of the nine descriptions have no verb at all and so carry no
 gender; only these two do.
+
+**IC-01 was renamed on 27 Nov 2026** — *Iced Coffee* became **Iced
+Americano**, at the client's request. The English is theirs; **the Arabic is
+not supplied and needs sign-off**. `آيس أمريكانو` is built from the two things
+already in the data rather than translated afresh: the category's own pattern
+of `آيس` plus a transliteration (`آيس لاتيه`, `آيس موكا`), and the exact
+spelling of `أمريكانو` as it stands on SC-03 Americano. It is the same name
+the two sources would produce, but it is still a string nobody has approved.
 
 **Never take Arabic from the price-list PDF.** Its text layer reverses word
 order (`رمان كركديه تمر هندي` comes out as `ھندي تمر كركدیھ رمان`), uses the

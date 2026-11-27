@@ -516,7 +516,8 @@
           "name_ar": "لونغو",
           "price": 2.5,
           "function": null,
-          "image": null
+          "image": "assets/drinks/sc-02.webp",
+          "scale": 0.9
         },
         {
           "id": "SC-03",
@@ -549,7 +550,8 @@
           "name_ar": "لاتيه",
           "price": 3.0,
           "function": null,
-          "image": null
+          "image": "assets/drinks/sc-06.webp",
+          "scale": 0.9
         },
         {
           "id": "SC-07",
@@ -596,8 +598,8 @@
       "drinks": [
         {
           "id": "IC-01",
-          "name_en": "Iced Coffee",
-          "name_ar": "آيس كوفي",
+          "name_en": "Iced Americano",
+          "name_ar": "آيس أمريكانو",
           "price": 2.5,
           "function": null,
           "image": null
